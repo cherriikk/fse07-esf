@@ -136,7 +136,7 @@ Describe the AMS used including at least the following:
 	\end{tabularx}%
 	\label{tab:acc-limits}%
 \end{table}%
-
+\iffalse
 \begin{itemize}
 	\item 	Sense wiring protection (fusing / fusible link wire used)
 	\item What upper and lower voltage does the AMS react at and how does it react?
@@ -145,7 +145,31 @@ Describe the AMS used including at least the following:
 	\item Describe how many cells are sensed by each AMS board, the configuration of the cells, the configuration of the boards and how any comms wiring between boards is protected 
 	\item Describe how the AMS is able to open the AIRs if any error is detected
 	\item Describe where galvanic isolation occurs between TS and GLV system connections.
-\end{itemize}
+\end{itemize}\fi
+Each sense connection is protected with fuse. There are two types of fuses used: 
+
+\noindent Littelfuse 0251001.MXL (Those are used, where the cells are contacted via PCB)
+
+\noindent Eaton TR/3216LV1-R (Those are used, where measure wires are connected directly to cells)
+
+Cell highest allowed voltage is 4.25 V so AMS reacts when the voltage is above 4.2 V. Cell lowest allowed voltage is 2 V so AMS reacts when the voltage is below 2.2 V. Reaching any of limits causes AIRs disconnection.
+
+Highest allowed temperature (by datasheet) for discharging is 80 $^\circ$C and for charging 60 $^\circ$C. Due to FSE rules our battery pack is limited to 60 $^\circ$C. AMS reacts when the temperature is higher than 60 $^\circ$C reaching limit causes AIRs disconnection.
+
+\paragraph{Recommended Operating Conditions}
+TA = 25°C and TOP = 57.6 V; Min/Max values stated where TA = –40°C to 105⁰C and TOP = 12 V to 79.2 V (unless otherwise noted)
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/BMS-operatingparms.png}
+	\caption{Recomended operating parameters.}
+	\label{fig:BMS-op-params}
+\end{figure}
+
+
+Each AMS board senses whole stack, that means it senses 144 cells, connected in 16s9p configuration. Comms wirings are protected by two 1kV 1nF capacitors CC1206KKX7RCBB102 by Yageo. There is placed one on each side (there is one on every AMS). The AMS is connected to Accumulator ECU that has capability of direct AIRs shutdown. The galvanic isolation between TS and GLV is done by two 1kV 1nF capacitors CC1206KKX7RCBB102 by Yageo. It is located on separated board connected between first AMS and Accumulator ECU.
+
+
+
 
 \subsubsection{Accumulator indicator}
 Describe the indicator, show wiring, provide tables with operation, PCB design, etc
