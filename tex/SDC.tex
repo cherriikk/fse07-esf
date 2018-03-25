@@ -8,17 +8,12 @@ Describe your concept of the shutdown circuit, the master switches, shut down bu
 Additionally, fill out the following table replacing the values with your specification and append additional switches from your setup:
 \fi
 
-Shutdown circuit (SDC) starts in ECUP unit, then goes through all SDC elements in the car and
-ends in ECUA, which is placed inside the Accumulator Pack. In ECUP SDC starts from LV
-power +24V and ends in ACP by powering AIR coils switching circuit (See \ref{fig:SDC-scheme}) The SDC consists of 2 master switches, 3 shut-down buttons(SDB), the brake-over-travel-switch(BOTS), the insulation monitoring device (IMD), the inertia switch, the
-brake system plausibility device(BSPD), interlocks in Motor Controllers and Accumulator Pack
-and the accumulator management system (AMS). All of these crucial parts do not act through
-any power stage, but carry directly the AIR current.
+Shutdown circuit (SDC) starts in ECUP unit, then goes through all SDC elements in the car and ends in ECUA, which is placed inside the Accumulator Pack. In ECUP SDC starts from LV power +24V and ends in ACP by powering AIR coils switching circuit (See \ref{fig:SDC-scheme}). The SDC consists of 2 master switches, 3 shut-down buttons(SDB), the brake-over-travel-switch(BOTS), the insulation monitoring device (IMD), the inertia switch, the brake system plausibility device(BSPD), interlocks in Motor Controllers and Accumulator Pack and the accumulator management system (AMS). All of these crucial parts do not act through any power stage, but carry directly the AIR current.
 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{./img/sdc-scheme.pdf}
+	\includegraphics[width=\textwidth, trim={2cm 3cm 2cm 2cm},clip]{./img/sdc-scheme.pdf}
 	\caption{SDC scheme.}
-	\label{fig:SDC-schema}
+	\label{fig:SDC-scheme}
 \end{figure}
 
 \begin{table}[H]
@@ -41,13 +36,13 @@ any power stage, but carry directly the AIR current.
 
 
 \paragraph{Monitoring SDC}
-Every part of SDC is monitored by specific ECU (Electronic Control Unit) in order to identify disconnected element. BOTS is measured by ECUP, SDB-center and Inertia switch are measured by ECUF , interlocks in Motor Controllers are measured by Motor Controllers, Interlock in Accumulator Pack is measured by ECUA and finally SDB-right, SDB-left and TSMS are measured by ECUB. Every piece of information regarding the state of closure SDC are running between ECU´s by CAN.
+Every part of SDC is monitored by specific ECU (Electronic Control Unit) in order to identify disconnected element. BOTS is measured by ECUP, SDB-center  and Inertia switch are measured by ECUF , interlocks in Motor Controllers are measured by Motor Controllers, Interlock in Accumulator Pack is measured by ECUA  and finally SDB-right, SDB-left and TSMS   are measured by ECUB. Every piece of information regarding the state of closure SDC are running between ECU´s by CAN. 
 
 We designed SDC to be ‘single wire’ alike and distanced it from the system as much as it was possible. In order to remain SDC as a stand-alone wire we used optocouplers for main points of SDC. Optocouplers are connected in such a way, that they become active only in case of nonzero voltage occurance at a certain point of SDC.
 
-ECUB monitors the last poit of SDC (behind TSMS). If a state of error od SDC is detected ECUB latches the off-state of SDC to stay off. If the ocured error is non-critical, it allows pilot to re-enter the TSON state. If monitored error is criticall (such as IMD etc.), it notes the error to the memory-storrage and does not allow SDC to become active until appropriate steps are taken. The logic flow-chart is shown in Figure 15 - ECUB error handling algorithm flowchart. For more info about this look to next and \nameref{subsec:Reset} sections.
-SDC error states that require special handling
+ECUB monitors the last poit of SDC (behind TSMS). If a state of error od SDC is detected ECUB latches the off-state of SDC to stay off. If the ocured error is non-critical, it allows pilot to re-enter the TSON state. If monitored error is criticall (such as IMD etc.), it notes the error to the memory-storrage and does not allow SDC to become active until appropriate steps are taken. The logic flow-chart is shown in \ref{ECUA-Jansixta}. For more info about this look to next and \nameref{subsec:Reset} sections. SDC error states that require special handling
 
+\ref{Jan sixta}
 ECUB is last part of SDC before TSMS. It implements latching function using external memory so even in case of total shutdown of LV power it is possible to remember error states that occurred before the breakdown. The ECUB implements enough capacitor storrage, that it is able to write the error to the memory even in case of imidiate power-loss cased by the error. It is not possible to reactivate SDC and close AIRs until all the steps required by rules are done.
 
 \paragraph{Master Switch}
@@ -95,7 +90,8 @@ Additionally, fill out and add information to the following table:
 \fi
 
 If connector is used to connect SDC between control units, disconnecting any of them results in opening SDC and therefore opening AIRs as well. In other words the SDC directly carries the current driving the accumulator isolation relays(AIRs). All circuits that are part of the shutdown circuit have been designed in a way, that, when in disconnected state, they remove the current controlling the AIRs.
-The cross-section of Shutdown System wire is AWG22. Block wiring scheme shown on \ref{fig:SDC-scheme}.\\
+
+The cross-section of Shutdown System wire is AWG22. Block wiring scheme shown on \ref{fig:SDC-schematic}.\\
 
 \begin{figure}[H]
 	\centering
@@ -130,6 +126,6 @@ As shown, 4k7 resistors are used to limit current through optocoupler. With 24V 
 \iffalse Provide CAD-renderings showing the relevant parts. Mark the parts in the renderings, if necessary. \fi
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{./img/SDC-positionInCar.png}
-	\caption{Inertia switch, SDB Left, Right and Cockpit, TSMS, GLVMS, HVD, Measure points}
+	\caption{IMD position.}
 	\label{fig:SDC-positionInCar}
 \end{figure}
