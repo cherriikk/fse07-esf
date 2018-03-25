@@ -1,0 +1,160 @@
+\documentclass{article}[12pt]
+%----------------Package-Only----------
+\usepackage{eForceStyle}
+% --------------Names-------------
+\def\CarNumber{E67}% Car number
+\def\UniversityName{CTU Prague}% University Name
+\def\Event{2017 Formula Student East}% Event
+%--------acronyms
+\input{./tex/acronym.tex}
+\glsaddall
+\begin{document}
+
+%--------titlepage-------
+	\begin{titlepage}
+		\input{./tex/titlePage.tex}
+	\end{titlepage}
+%--------table of contens--------------------------------------
+\pagenumbering{Roman}
+%\sectionnumbering{Roman}
+\setcounter{page}{1}
+
+\addcontentsline{toc}{section}{\contentsname} \tableofcontents 
+\newpage
+ % List of Figures
+	%\pagenumbering{roman} This is just Stupid
+\addcontentsline{toc}{section}{I\quad\listfigurename} \listoffigures
+\newpage
+% List of Tables
+\addcontentsline{toc}{section}{II \thinspace\thinspace \listtablename} \listoftables
+\newpage
+% List of Acronyms
+\addcontentsline{toc}{section}{III List of Acronyms} \printglossary[type=\acronymtype,title=List of Acronyms]
+\newpage
+
+%\cleardoubleoddpage
+\pagenumbering{arabic}
+%\sectionnumbering{arabic}
+%\setcounter{page}{1}
+%-------ESF---------------------------------------------------
+\section{System Overview}
+\input{./tex/SystemOverview.tex}
+
+\section{Electrical Systems}
+% chybi obrazky a schema sdc a pozice v aute
+\subsection{Shutdown Circuit}\label{subsec:SDC}
+\input{./tex/SDC.tex}
+
+\subsection{IMD}
+% chybi tady reference na datasheet
+\input{./tex/IMD.tex}\label{sebsec:IMD}
+
+\subsection{Inertia Switch} \label{subsec:InertiaSwitch}
+% nefunguje odakzy
+\input{./tex/InertiaSwitch.tex}
+
+\subsection{Brake Plausability Device} \label{subsec:BSPD}
+% Responsible: Mark G.
+\input{./tex/BSPD.tex}
+
+\subsection{Reset / Latching for IMD and BMS} \label{subsec:Reset}
+% Responsible: Kdokoliv
+% ECUB scheme and circuitry, state machine and other
+\input{./tex/ResetAndLatch.tex}
+
+\subsection{Shutdown System Interlocks}\label{subsec:SDCInterlocks}
+% figures and renderings 
+%Responsible: Jano
+\input{./tex/SDCInterlocks.tex}
+
+\subsection{Tractive System Active Light}\label{subsec:TSAL}
+% Responsible: Janko, Emil, Manek
+%ECUB, schemata tsal + schema v ecub + schemes + renders
+\input{./tex/TSAL.tex}
+
+\subsection{Measurement points}\label{subsec:MeasurementPoints}
+%Responsible: Janko
+%schemata
+\input{./tex/MeasurementPoints.tex}
+
+\subsection{Pre-Charge circuitry}\label{subsec:PrechargeCircuitry}
+%Responsible: JSi
+%ECUA
+\input{./tex/PrechargeCircuitry.tex}
+
+\subsection{Discharge circuitry}\label{subsec:PrechargeSafety}
+%ECUB
+\input{./tex/PrechargeSafety.tex}
+
+\subsection{HV Disconect (HVD)}\label{subsec:HVD}
+%Responsible: Jano
+%Datasheety, rendery
+\input{./tex/HVD.tex}
+
+\subsection{Ready-To-Drive-Sound (RTDS)}\label{subsec:RTDS}
+%Responsible: Jano
+% obrazky, schemata, rendery
+\input{./tex/RTDS.tex}
+
+\newpage
+\section{Accumulator}\label{sec:Accumualtor}
+\subsection{HV Accumulator pack}\label{subsec:AccumulatorPack1}
+%Responsible: Adam, JM
+\input{./tex/AccumulatorPack1.tex}
+
+\subsection{GLVS Accmulator}
+\input{./tex/AccumulatorPack2.tex}
+
+\newpage
+\section{Energy meter mounting}\label{sec:DataLogger}
+%Responsible: Kosina
+\input{./tex/DataLogger.tex}
+
+\newpage
+\section{Motor Controller}\label{sec:MotorController}
+%Res:Hotovo
+%Kontrola kabelaze
+\input{./tex/MotorController.tex}
+
+\newpage
+\section{Motors}\label{sec:Motors}
+%res: Nove datasheet
+%Kontrola ale nakopirovano
+\input{./tex/Motors.tex}
+
+\newpage
+\section{Torque Encoder}\label{sec:TorqueEncoder}
+%Responsible: Bacha
+%ECUP
+\input{./tex/TorqueEncoder.tex}
+
+\newpage
+\section{Brake Encoder}\label{sec:BrakeEncoder}%added
+%Responsible: Bacha
+%ECUP
+\input{./tex/BrakeEncoder.tex}
+
+\newpage
+\section{Additional LV-parts interfering with tractive system}\label{sec:AdditionalLV}
+\input{./tex/AdditionalLV.tex}
+
+\newpage
+\section{Overall Grounding Concept}\label{sec:GroundingConcept}
+%Zalaminovat, kopie
+\input{./tex/GroundingConcept.tex}
+
+\newpage
+\section{Firewall}\label{sec:Firewall}
+%Responsible: hotov
+\input{./tex/Firewall.tex}
+
+%------Appendix------
+\appendix
+%\setcounter{figure}{0} 
+\renewcommand{\figurename}{Appendix}
+
+\section{Appendix}\label{sec:Appendix}
+
+\input{./tex/Appendix.tex}
+
+\end{document}

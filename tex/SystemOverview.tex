@@ -1,0 +1,67 @@
+
+Electrical systems of the car are divided into small blocks. The concept is to have all the systems distributed by 2 CAN buses (1st “CAN\_Powertrain” for systems crucial data to proper function, 2nd “CAN\_Aux” for all the other systems) and, if possible, all the signals transferred just by CAN bus. Baud rate is 500kbps and CAN is terminated in ECUP in front of car and in front motor controller by 120 Ohm resistor. There are in total 5 main control units – of course all the units are fully self-made (HW and FW).
+
+\begin{itemize}
+\item	ECUP (Electronic Control Unit Pedal)
+This device measures brake pedal and acceleration pedal positions, implements safety algorithms regarding to rules about torque encoder check and outputs these values to the CAN bus as driver’s foot requests. It also monitors Shutdown Circuit – point BOTS. 
+
+\item	VDCU – (Vehicle Dynamcs Control Unit)
+This device reads driver’s foot requests, actual every wheel speed provided by ECUM and implements Traction Control Algorithms. The result is sent over private CAN bus to the MCF and MCR. 
+
+\item	MC (Dual Motor Controller)
+2 units in total – Front (MCF) and Rear (MCR). These units drives 4 motors in total, so every unit drives 2 motors. It provides speed of every wheel by actual RPM, temperatures and so on. Field Oriented Control is implemented with Resolvers as a position feedbacks.
+
+\item	ECUF (Front + Dashboard)
+Interaction with driver in cooperation with ECUS (Steering Wheel – LCD inside) by informing, warning and error LEDs, switches, rotary switches, push buttons. This is like a driver’s CAN bus console. 
+
+\item	ECUB
+Providing low voltage power distribution to all the control units and periphery (Li-Ion LV battery with BMS inside). This unit implements all the safety and control algorithms regarding to Shutdown Circuit rules. The main function is to latch SDC and evaluation of SDC interruption point. 
+
+\item	ECUA
+DC-DC converter, BMS, Pre-charge and AIR controlling is implemented. This unit also communicate with Charging Station.
+There are other control and measuring systems not listed above, but systems listed are most important for safety and control. 
+
+\end{itemize}
+
+\iffalse
+% table done
+\begin{itemize}
+\item Short description of the system’s concept 
+\item Rough Schematic (blocks) showing all parts affected with the electrical systems and function of the tractive-system
+\item No detailed wiring
+\item Additionally, fill out the following table, replacing the values with your specifications:
+\end{itemize}
+\fi
+
+\begin{table}[H]
+	\centering
+	\caption{General parameters}
+	\begin{tabularx}{\textwidth}{|X|X|}
+		\hline
+		Maximum Tractive-system voltage: & 400 VDC  \\[\TableSize]
+		\hline Nominal Tractive-system voltage: & 345.6 VDC\\[\TableSize]
+		\hline
+		Control-system voltage: & 24 VDC \\[\TableSize]
+		\hline
+		Accumulator configuration: & 96s9p \\[\TableSize]
+		\hline
+		Total Accumulator capacity: & 7.78 kWh\\[\TableSize]
+		\hline
+		Nominal HV Accumulator current: & 270 A \\[\TableSize]
+		\hline
+		Maximum HV Accumulator current: & 315 A \\[\TableSize]
+		\hline
+		HV accumulator cell type: & Lithium-Ion  \\[\TableSize]
+		\hline
+		LV Accumulator cell type: & Lithium-In \\[\TableSize]
+		\hline
+		Motor type: & PMSM with resolvers \\[\TableSize]
+		\hline
+		Number of motors: &  4, one per wheel \\[\TableSize]
+		\hline
+		Maximum combined motor power in kW & 109 \\[\TableSize]
+		\hline
+	\end{tabularx}%
+	\label{tab:system-general}%
+\end{table}%
+

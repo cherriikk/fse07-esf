@@ -1,0 +1,29 @@
+\subsubsection{Description (type, operation parameters)}
+\iffalse Describe the Inertia Switch used and use a table for the common operation parameters, like supply voltage, temperature, etc.
+Additionally, fill out the following table replacing the values with your specification: \fi
+
+Inertia switch opens shutdown circuit in case of acceleration more than 6g. After acting the driver can reset this switch.
+\begin{table}[H]
+	\centering
+	\caption{Parameters of the Inertia Switch}
+	\begin{tabularx}{\textwidth}{|X|l|}
+	\hline	Inertia Switch type: & Sensata 510FCS01-01 \\[\TableSize]
+	\hline	Supply voltage range: & No supply needed \\[\TableSize]
+	\hline	Supply voltage: & No supply needed \\[\TableSize]
+	\hline	Environmental temperature range: & -30..120°C \\[\TableSize]
+	\hline	Max. operation current: & 10A \\[\TableSize]
+	\hline	Trigger characteristics: & 6g for 60ms / 11g for 15ms \\[\TableSize]
+	\hline
+	\end{tabularx}%
+	\label{tab:inertiaSwitch}%
+\end{table}%
+
+
+\subsubsection{Wiring/cables/connectors}
+%Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
+
+Inertia switch is electrically placed between Shutdown button center on dashboard and the Shutdown input to ECUB, where is connected right Shutdown button on main hoop. Inertia switch will be connected by original connector SSC (Sealed Sensor Connector) System from TE connectivity (producer number 184032-1). Wiring of inertia switch is shown on \ref{fig:sdc-schema}.
+\subsubsection{Position in car}
+%Provide CAD-renderings showing the relevant parts. Mark the parts in the rendering, if necessary.
+
+Inertia switch is placed on the right side in the cockpit clearly shown in \ref{fig:SDC-positionInCar}.
