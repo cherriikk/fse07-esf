@@ -69,11 +69,20 @@ Fill out the following table:
 \subsubsection{Cell configuration}
 %Describe cell configuration, cell interconnect, show schematics of electrical configuration and CAD of connection techniques, cover additional parts like internal cell fuses etc.
 
-Cell configuration is 96s9p. Cells are divided into 6 stacks, configuration of each stack is 16s9p. Cells are connected by welding. Main cells interconnection is done by nickel sheet. This sheet is welded to each cell. There is additional copper sheet welded over the nickel sheet (for lowering resistance of the main current path). 
+Cell configuration is 96s9p. Cells are divided into 6 stacks, configuration of each stack is 16s9p. Cells are connected by welding. Main cells interconnection is done by nickel sheet. This sheet is welded to each cell. There is additional copper sheet welded over the nickel sheet (for lowering resistance of the main current path).
+
+ 
 \subsubsection{Cell temperature monitoring}
 %Describe how the temperature of the cells is monitored, where the temperature sensors are placed, how many cells are monitored, etc. Show schematics, cover additional parts, etc.
 
 The cells’ temperature is monitored by NTC temperature sensors. The manufacturer is TDK, type is: B57330V2103F260. Insulation of the sensors is done by 3M™ PTFE Film Electrical Tape. Breakdown voltage of this tape 9.5 kV, operating temperature is 180 $^\circ$C. Thickness of this tape is 0.1 mm. Sensors are soldered in PCBs that are covered with insulating tape and then mounted to each stack. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/ACP-stack.png}
+	\caption{Stack configuration.}
+	\label{fig:acp-stack}
+\end{figure}
 
 Position of temperature sensors on the top of each stack (highlighted objects)
 \begin{figure}[H]
@@ -198,6 +207,34 @@ Describe the internal wiring, show schematics, provide calculations for currents
 	\end{tabularx}%
 	\label{tab:acc-wire}%
 \end{table}%
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/ACP-nut.png}
+	\caption{Maintance plugs I.}
+	\label{fig:acp-maintance-plug}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/ACP-nut2.png}
+	\caption{Maintance plugs II.}
+	\label{fig:acp-maintance-plug2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/ACP-view.png}
+	\caption{Accumulator pack HV wiring I.}
+	\label{fig:acp-hv-wiring}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/ACP-fuse.png}
+	\caption{Accumulator pack HV wiring II.}
+	\label{fig:acp-hv-wiring2}
+\end{figure}
 
 \subsubsection{Accumualtor insulation relays}
 Describe the AIRs used and their main operation parameters, use tables, etc.
