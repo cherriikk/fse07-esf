@@ -1,26 +1,77 @@
 \subsubsection{Description}
-Describe your concept of the discharge circuitry.
+%Describe your concept of the discharge circuitry.
+
+Discharge circuit is activated whenever SDC is open, this is ensured by ECUB which monitors latching of SDC. The idea of discharging capacity is to have discharge resistors in the device with that capacity – so in both Motor Controllers. So ECUB sends message to Motor Controllers and they close circuit with Discharge resistors banks. When AIRs are closed, ECUB informs Motor Controllers and they open discharge circuits.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
+	\caption{Discharge circuit.}
+	\label{fig:discharge-circuit}
+\end{figure}
 
 \subsubsection{Wiring, calbes, current calculations, connectors}
-Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
+\iffalse Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
 \begin{itemize}
 	\item 	Give a plot “Voltage” vs. time
 	\item 	Give the formula describing this behavior
 	\item 	Give a plot “Discharge current” vs. time
 	\item 	Give the formula describing your plot
-\end{itemize}
-Additionally, fill out the table:
+\end{itemize}\fi
+
+Following \ref{fig:discharge-circuit} shows a siplified connection of a discharge resistors. It is connected the same way, only unnecessary detail parts of the circuit were cover as a „block“. The resistor is placed in MC right next to only capacity that provides a storrage for potencially dangerous charge/energy. If the HV cable is disconnected on either side, the SDC opens due to the interlocks and AIRs open. Because there is no output capacitance in ACP there is no way the power could be on ACP output HV connector.
+
+The capacity of all the capacitors in Motor Controllers is in the sum 2360 uF. For discharging this capacity in less than 5 seconds to voltage under 60V, maximum value is calculated by solving R from the formula
+
+with values:
+VC = 60 V
+VS = 403.2 V
+t = 5 s
+C = 1180-6 F
+The resulting R = 1000 Ohm. In total 8 discharge resistors are used in configuration 2s4p – so 2s2p in each motor controller. Each resistor is type THS151K5J (1k5, 15W). In total the final value of Discharge Resistor Bank is R = 750 Ohm, which is less than 1316 Ohm. The 60V threshold with this configuration is reached in 2,84s. Calculated plot “Voltage vs. time”:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
+	\caption{Voltage vs. time plot.}
+	\label{fig:dis-voltagae-time}
+\end{figure}
+
+I assume the plot Discharge current vs. time as a plot of discharge current through 1 resistor. So the Discharge current of the whole Discharge resistor bank can be obtained by multiplication Y values by 4. So Discharge current (through 1 resistor) vs. time:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
+	\caption{Discharge current on resistor vs. time.}
+	\label{fig:dis-curr}
+\end{figure}
+
+The formula describing the plot is:
+I = VS / RB / 4
+VS … Capacitor voltage function
+RB … Discharge Resistor Bank resistance = 750 Ohm (resulting resistance of 2s4p 1k5 resistor connection)
+4 … Number of parallel connection, so through 1 resistor flows ¼ of total current
+Power on 1 resistor is expressed by multiplication ½ VS with resistor current described above.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
+	\caption{Power on resistor vs. time.}
+	\label{fig:dis-res}
+\end{figure}
+
+Peak power is 15 W and the resistor can handle this power over 20 s, see Abbildung 1 - Discharge datasheet.
 
 \begin{table}[H]
 	\centering
 	\caption{General data of the discharge circuit}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Resistor Type: &\\[\TableSize]
+		Resistor Type: & THS151K5J (in configuration 2s4p) \\[\TableSize]
 		\hline
-		Resistance: & \\[\TableSize]
+		Resistance: & 1500$\Omega$ \\[\TableSize]
 		\hline
-		Continuous power rating: & \\[\TableSize]
+		Continuous power rating: & 15W \\[\TableSize]
 		\hline
 		Overload power rating (1 sec): & \\[\TableSize]
 		\hline
@@ -28,13 +79,13 @@ Additionally, fill out the table:
 		\hline
 		Overload power rating (15 sec): &  \\[\TableSize]
 		\hline
-		Voltage rating: &\\[\TableSize]
+		Voltage rating: & 265V (2 in series result in ~530V) \\[\TableSize]
 		\hline
-		Maximum expected current: &\\[\TableSize]
+		Maximum expected current: & 0.1A per resistor, (2s4p configuration with total 0.4A current) \\[\TableSize]
 		\hline
-		Average current: &\\[\TableSize]
+		Average current: & 0.04A on resistor(taking account 4 seconds of discharging) \\[\TableSize]
 		\hline
-		Cross-sectional area of the wire used: & \\[\TableSize]
+		Cross-sectional area of the wire used: & 0.129 mm² \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:dischrage-circ}%
@@ -71,4 +122,6 @@ Additionally, fill out the table:
 
 
 \subsubsection{Position in car}
-Provide CAD-renderings showing all relevant parts. Mark the parts in the rendering, if necessary.
+%Provide CAD-renderings showing all relevant parts. Mark the parts in the rendering, if necessary.
+
+Discharge resistors are mounted on aluminum cooler also with IGBT modules in Motor Controller boxes.
