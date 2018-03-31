@@ -35,6 +35,9 @@ thus it gets to reset only in case of the main power reset.
 	\end{tabularx}%
 	\label{tab:bspd}%
 \end{table}%
+
+Complete datasheet: \ref{app:bspd_lem_datasheet}
+
 \iffalse
 \begin{figure}[H]
 	\centering
@@ -55,8 +58,8 @@ Brake state is measured in \gls{ecup}, converted with help of a comparator to tw
 voltage and is sent directly to \gls{bspd} via wiring.
 
 Both logic signals are connected to NAND inputs. When both inputs are at “High” level, a
-capacitor $C_1$ starts to charge through resistance $R_16$. When voltage on $C_1$ is higher than 2.5V, a
-comparator $U_1B$ sends signal to open \gls{sdc}.
+capacitor $C_1$ starts to charge through resistance $R_{16}$. When voltage on $C_1$ is higher than 2.5V, a
+comparator $U_{1B}$ sends signal to open \gls{sdc}.
 
 \begin{figure}[H]
 	\centering
