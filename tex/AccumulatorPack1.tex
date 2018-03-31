@@ -7,11 +7,11 @@ Fill out the following table:
 	\caption{Main accumulator parameters}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Maximum Voltage: & 400 $V_DC$ \\[\TableSize]
+		Maximum Voltage: & 400 $V_{DC}$ \\[\TableSize]
 		\hline
-		Nominal Voltage: & 345.6 $V_DC$ \\[\TableSize]
+		Nominal Voltage: & 345.6 $V_{DC}$ \\[\TableSize]
 		\hline
-		Minimum Voltage: & 182 $V_DC$ \\[\TableSize]
+		Minimum Voltage: & 182 $V_{DC}$ \\[\TableSize]
 		\hline
 		Maximum output current: & 315 A (until any cell reaches 80 $^\circ$C) \\[\TableSize]
 		\hline
@@ -25,7 +25,7 @@ Fill out the following table:
 		\hline
 		Total Capacity: & 27.99 MJ \\[\TableSize]
 		\hline
-		Number of cell stacks < 120 $V_DC$ & 6 \\[\TableSize]
+		Number of cell stacks < 120 $V_{DC}$ & 6 \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:acc-main}%
@@ -145,16 +145,15 @@ Describe the \gls{ams} used including at least the following:
 	\end{tabularx}%
 	\label{tab:acc-limits}%
 \end{table}%
-\iffalse
-\begin{itemize}
-	\item Sense wiring protection (fusing / fusible link wire used)
-	\item What upper and lower voltage does the AMS react at and how does it react?
-	\item What cell temperature does the AMS react at and how does it react?
-	\item Show tables of operation parameters
-	\item Describe how many cells are sensed by each AMS board, the configuration of the cells, the configuration of the boards and how any communications wiring between boards is protected 
-	\item Describe how the AMS is able to open the AIRs if any error is detected
-	\item Describe where galvanic isolation occurs between TS and GLV system connections.
-\end{itemize}\fi
+
+%\item Sense wiring protection (fusing / fusible link wire used)
+%\item What upper and lower voltage does the AMS react at and how does it react?
+%\item What cell temperature does the AMS react at and how does it react?
+%\item Show tables of operation parameters
+%\item Describe how many cells are sensed by each AMS board, the configuration of the cells, the configuration of the boards and how any communications wiring between boards is protected 
+%\item Describe how the AMS is able to open the AIRs if any error is detected
+%\item Describe where galvanic isolation occurs between TS and GLV system connections.
+
 Each sense connection is protected with fuse. There are two types of fuses used: 
 
 \noindent Littelfuse 0251001.MXL (Those are used, where the cells are contacted via \gls{pcb})
@@ -169,7 +168,7 @@ Highest allowed temperature (by datasheet) for discharging is 80 $^\circ$C and f
 TA = 25 $^\circ$C and TOP = 57.6 V; Min/Max values stated where TA = -40 $^\circ$C to 105 $^\circ$C and TOP = 12 V to 79.2 V (unless otherwise noted)
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./img/BMS-operatingparms.png}
+	\includegraphics[width=\textwidth]{./img/BMS-operatingparms.pdf}
 	\caption{Recommended operating parameters.}
 	\label{fig:BMS-op-params}
 \end{figure}
