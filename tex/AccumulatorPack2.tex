@@ -1,24 +1,28 @@
 \subsubsection{Description}
-Describe your concept of the GLVS Accumulator.
+
+The GLVS Accumulator is built out of 6 rechargeable Lithium-Ion cells connected in series. It shares a Kevlar enclosure with ECU-B, which provides the required fire resitance. The battery is secured to the enclosure using 3M Dual Lock fasteners.
+
+The accumulator provides GLVS power at startup until the HV-to-LV DCDC Converter takes over. Temperature and voltages are monitored using an XXXXX IC. Voltages are measured by the IC directly and temperatures are measured on N NTC thermistors.
 
 \subsubsection{Wiring, cables, current calculations, connectors}
 Describe wiring, show schematics, describe connectors and cables and show useful data regarding the wiring.  Include information on the working voltage and current rating of the accumulator.
+TODO: connector XT-60, fuse atd.
 
 \begin{table}[H]
 	\centering
 	\caption{GLVS accumualtor general parameters.}
 	\begin{tabularx}{\textwidth}{|X|X|}\hline
-		Cell/Accumulator: & Li-ion\\[\TableSize]\hline
+		Cell/Accumulator: & SONY US18650VTC5A (Lithium-Ion)\\[\TableSize]\hline
 		Accumulator configuration – parallel: & 1 \\[\TableSize]\hline
 		Accumulator configuration – series: & 6 \\[\TableSize]\hline
 		Maximum Voltage: & 25.5 V \\[\TableSize]\hline
 		Nominal Voltage: & 21.6V \\[\TableSize]\hline
 		Minimum Voltage: & 12V \\[\TableSize]\hline
-		Max. Continuous Discharge Current: &  \\[\TableSize]\hline
-		Peak Discharge Current: &  \\[\TableSize]\hline
-		Peak Discharge Current Time: &  \\[\TableSize]\hline
-		Max. Continuous Charge Current &  \\[\TableSize]\hline
-		Total capacity[MJ]: &  \\[\TableSize]\hline
+		Max. Continuous Discharge Current: & 35 A \\[\TableSize]\hline
+		Peak Discharge Current: & 40 A \\[\TableSize]\hline
+		Peak Discharge Current Time: & 78 seconds \\[\TableSize]\hline
+		Max. Continuous Charge Current & 6 A \\[\TableSize]\hline
+		Total capacity[MJ]: & 0.2387 \\[\TableSize]\hline
 	\end{tabularx}%
 	\label{tab:LVbatt-general}%
 \end{table}%
