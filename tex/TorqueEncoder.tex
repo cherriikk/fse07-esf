@@ -1,5 +1,5 @@
 \subsection{Description/additional circuitry}
-Car is using two torque encoders for accelerator pedal. Encoders are linear potentiometers. Sensors are powered and measured by ECU-P (electrical control unit - pedals). They output analog voltage signal equal to accelerator pedal position. Both output signals goes through \label{fig:ecup_analog_input} and low pass filters. Then they are fed to ADC (analog to digital converter) and analyzed by MCU (microcontroller unit) for validity and plausability. Information about position and errors is send though CAN.
+Car is using two torque encoders for accelerator pedal. Encoders are linear potentiometers. Sensors are powered and measured by \gls{ecup}. They output analog voltage signal equal to accelerator pedal position. Both output signals goes through \ref{fig:ecup_analog_input} and low pass filters. Then they are fed to \gls{adc} and analyzed by \gls{mcu} for validity and plausibility. Information about position and errors is send though \gls{can}.
 
 \begin{table}[H]
 	\centering
@@ -12,30 +12,32 @@ Car is using two torque encoders for accelerator pedal. Encoders are linear pote
 		Total number of Torque Encoder Sensors: & 2  \\[\TableSize]\hline
 		Supply voltage: & +5V  \\[\TableSize]\hline
 		Maximum supply current: & 1mA  \\[\TableSize]\hline
-		Operating temperature: & -30degC to -150degC  \\[\TableSize]\hline
+		Operating temperature: & -30$^\circ$C to -150$^\circ$C  \\[\TableSize]\hline
 		Used output: & DC voltage 0V to 5V\\[\TableSize]\hline
 	\end{tabularx}%
 	\label{tab:encoder-general}%
 \end{table}%
 
-\subsection{Torque Encoder Plausability Check}
-Torque encoder implausability, short circuit and open circuit checks are done by MCU. Sensors are powered from +5V. Used travel of sensors does not contain end positions. Converted analog signal ranges are normalized according to calibration.
-If any following sensor error is detected, motor controllers are shut down and message is send through CAN to other units.
+Full datasheet: \ref{app:torque_encoder_datasheet}
+
+\subsection{Torque Encoder Plausibility Check}
+Torque encoder implausibility, short circuit and open circuit checks are done by \gls{mcu}. Sensors are powered from +5V. Used travel of sensors does not contain end positions. Converted analog signal ranges are normalized according to calibration.
+If any following sensor error is detected, motor controllers are shut down and message is send through \gls{can} to other units.
 
 \paragraph{Electrical check} 
 Using only part of whole range of sensor excluding end positions allows detection of signal short to Ground or voltages higher or equal to sensor's power voltage.
 
-Analog input circuitry of ECUP is shown in \ref{fig:ecup_analog_input}. In normal conditions, signal from sensor (RAW) goes through R2, then is clamped by D1 and continues through R1 and C1 to filters and other circuits of ECUP (AIN). TEST signal is held \textit{low} but due to high resistance of R3 has minimal impact on input signal.
+Analog input circuitry of \gls{ecup} is shown in \ref{fig:ecup_analog_input}. In normal conditions, signal from sensor (RAW) goes through $R_2$, then is clamped by $D_1$ and continues through $R_1$ and $C_1$ to filters and other circuits of \gls{ecup} (AIN). TEST signal is held \textit{low} but due to high resistance of $R_3$ has minimal impact on input signal.
 
-When ADC measures 0V or value close to 0V, TEST signal logic level is switched \textit{high} to charge C1 through R3. After short while, logic level of TEST signal is read back. If \textit{high} logic level is read, sensor input is evaluated as \textit{open circuit}, otherwise it is \textit{short circuit} to GND. If measured value is close to power voltage of sensor or above measurable range, it is evaluated as \textit{short circuit} to power voltage or higher.
+When \gls{adc} measures 0V or value close to 0V, TEST signal logic level is switched \textit{high} to charge $C_1$ through $R_3$. After short while, logic level of TEST signal is read back. If \textit{high} logic level is read, sensor input is evaluated as \textit{open circuit}, otherwise it is \textit{short circuit} to GND. If measured value is close to power voltage of sensor or above measurable range, it is evaluated as \textit{short circuit} to power voltage or higher.
 
-\paragraph{Implausability}
+\paragraph{Implausibility}
 Position values difference is calculated and compared with maximal allowed error threshold (10\%).
 
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[width=0.5\textwidth]{./img/ECUP_AIN.pdf}
-	\caption{ECU-P analog input circuit}
+	\caption{\gls{ecup} analog input circuit}
 	\label{fig:ecup_analog_input}
 \end{center}
 \end{figure}
@@ -43,7 +45,7 @@ Position values difference is calculated and compared with maximal allowed error
 
 
 \subsection{Wiring}
-\ref{fig:ecup_wiring} is diagram of sensor wiring.
+\ref{fig:ecup_wiring} is diagram of wiring between accelerator pedal sensors and \gls{ecup}.
 
 \begin{figure}[H]
 \begin{center}
