@@ -1,91 +1,178 @@
 \subsubsection{Description}
 %Describe your concept of the discharge circuitry.
 
-Discharge circuit is activated whenever SDC is open, this is ensured by ECUB which monitors latching of SDC. The idea of discharging capacity is to have discharge resistors in the device with that capacity – so in both Motor Controllers. So ECUB sends message to Motor Controllers and they close circuit with Discharge resistors banks. When AIRs are closed, ECUB informs Motor Controllers and they open discharge circuits.
+Discharge circuit's purpose is to discharge capacities connected to \gls{ts} voltage and ensure \gls{ts} safety in shutdown state. Such capacities are only in two \glspl{mc}.
+Discharge is activated whenever \gls{sdc} is open. (That means, \gls{acp} is disconnected from \gls{ts} by\glspl{air} ) This behavior is controlled by \gls{ecub}, which monitors latching of \gls{sdc}. It's state is distributed through CAN to other units.
+When \gls{sdc} opens, \gls{ecub} sends message to \glspl{mc}, which then closes relays and connects discharge resistors to capacitor bank charged on \gls{ts} voltage.
+When \glspl{air} are closed, \gls{ecub} sends message to \gls{mc} to open discharge circuit.
+
+\subsubsection{Wiring, cables, current calculations, connectors}
+%\iffalse Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
+%\begin{itemize}
+	%	\item 	Give a plot “Voltage” vs. time 
+	%	\item 	Give the formula describing this behavior
+	%	\item 	Give a plot “Discharge current” vs. time
+	%	\item 	Give the formula describing your plot
+%\end{itemize}\fi
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
-	\caption{Discharge circuit.}
+	\includegraphics[width=0.7\textwidth]{./img/MC_discharge.pdf}
+	\caption{Discharge circuit of one \gls{mc}.}
 	\label{fig:discharge-circuit}
 \end{figure}
 
-\subsubsection{Wiring, calbes, current calculations, connectors}
-\iffalse Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
+\ref{fig:discharge-circuit} shows a simplified discharge circuitry. Discharge resistors are placed in \glspl{mc} right next to the only capacity that provides a storage for potentially dangerous charge/energy in \gls{ts}. If \gls{hv} cable is disconnected on either side, the \gls{sdc} opens due to the interlocks and both \glspl{air} open. Because there is no output capacitance in \gls{acp} there is no way the power could be on \gls{acp} output \gls{hv} connector.
+
+Capacity sum of all capacitors in \glspl{mc} is 2360 uF. For discharging this capacity in less than 5 seconds to voltage (below 60V), maximum resistor value is calculated by solving R from \ref{eq:discharge_voltage}.
+
+\begin{equation}
+	V_{c}=V_{s}*e^{(\frac{-t}{R*C})}
+	\label{eq:discharge_voltage}
+\end{equation}
+
+\paragraph{Values}
 \begin{itemize}
-	\item 	Give a plot “Voltage” vs. time
-	\item 	Give the formula describing this behavior
-	\item 	Give a plot “Discharge current” vs. time
-	\item 	Give the formula describing your plot
-\end{itemize}\fi
+	\item $V_c = 60 V$ (safe voltage limit)
+	\item $V_s = 403.2 V$ (TS voltage)
+	\item $t = 5 s$ (maximum discharge time)
+	\item $C = 2360\mu$F (total capacity in TS)
+\end{itemize}
 
-Following \ref{fig:discharge-circuit} shows a siplified connection of a discharge resistors. It is connected the same way, only unnecessary detail parts of the circuit were cover as a „block“. The resistor is placed in MC right next to only capacity that provides a storrage for potencially dangerous charge/energy. If the HV cable is disconnected on either side, the SDC opens due to the interlocks and AIRs open. Because there is no output capacitance in ACP there is no way the power could be on ACP output HV connector.
+Maximum resistance from \ref{eq:discharge_voltage}, $R = 1112\Omega$ is for discharging all capacitors in \gls{ts}. In our case, capacity is split between two \glspl{mc}. Two parallel resistor combinations of three $1k\Omega$ resistors in series (3s2p) in each \gls{mc} is used (3s4p in total). $1k\Omega$ resistors are PWR221T-30-1001F. Total value of Discharge resistor bank is $R = 750\Omega$, which is less than maximal calculated $R = 1112\Omega$. The 60V threshold with such configuration is reached in $3.37s$. \ref{fig:discharge_voltage_time} shows TS voltage in time during discharging.
 
-The capacity of all the capacitors in Motor Controllers is in the sum 2360 uF. For discharging this capacity in less than 5 seconds to voltage under 60V, maximum value is calculated by solving R from the formula
-
-with values:
-VC = 60 V
-VS = 403.2 V
-t = 5 s
-C = 1180-6 F
-The resulting R = 1000 Ohm. In total 8 discharge resistors are used in configuration 2s4p – so 2s2p in each motor controller. Each resistor is type THS151K5J (1k5, 15W). In total the final value of Discharge Resistor Bank is R = 750 Ohm, which is less than 1316 Ohm. The 60V threshold with this configuration is reached in 2,84s. Calculated plot “Voltage vs. time”:
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
-	\caption{Voltage vs. time plot.}
-	\label{fig:dis-voltagae-time}
+\begin{figure}
+	\begin{tikzpicture}
+		\begin{axis}[
+			use units,
+			x unit=s,
+			y unit=V,
+			xlabel=time,
+			ylabel=voltage,
+			width=0.9\textwidth,
+			height=0.5\textwidth,
+			grid=major,
+			xmin=0,
+			ymin=0,
+			xmax=20,
+			ymax=410
+			]
+			\addplot[red, smooth] table[
+				x=time,
+				y=voltage,
+				col sep=comma
+				] {./data/TS_discharge.csv}; 
+			\addplot [mark=none, black, dashed] coordinates {(0, 60) (20, 60)};
+			\addplot [mark=none, black, dashed] coordinates {(5, 0) (5, 410)};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{\gls{ts} voltage during discharge. (\glspl{air} open)}
+	\label{fig:discharge_voltage_time}
 \end{figure}
 
-I assume the plot Discharge current vs. time as a plot of discharge current through 1 resistor. So the Discharge current of the whole Discharge resistor bank can be obtained by multiplication Y values by 4. So Discharge current (through 1 resistor) vs. time:
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
-	\caption{Discharge current on resistor vs. time.}
-	\label{fig:dis-curr}
+\begin{figure}
+	\begin{tikzpicture}
+		\begin{axis}[
+			use units,
+			x unit=s,
+			y unit=A,
+			xlabel=time,
+			ylabel=current,
+			width=0.9\textwidth,
+			height=0.5\textwidth,
+			grid=major,
+			xmin=0,
+			ymin=0,
+			xmax=20
+			]
+			\addplot[red, smooth] table[
+			x=time,
+			y=current,
+			col sep=comma
+			] {./data/TS_discharge.csv}; 
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Discharge current through resistor bank vs. time}
+	\label{fig:discharge_current_time}
 \end{figure}
 
-The formula describing the plot is:
-I = VS / RB / 4
-VS … Capacitor voltage function
-RB … Discharge Resistor Bank resistance = 750 Ohm (resulting resistance of 2s4p 1k5 resistor connection)
-4 … Number of parallel connection, so through 1 resistor flows ¼ of total current
-Power on 1 resistor is expressed by multiplication ½ VS with resistor current described above.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{./img/tsal-wiring.jpg}
-	\caption{Power on resistor vs. time.}
-	\label{fig:dis-res}
+
+The formula describing \ref{fig:discharge_current_time} is:
+
+\begin{equation}
+	I_{d}=\frac{V_{c}}{R_{d}}	
+\end{equation}
+
+\begin{equation}
+	I_{d}=\frac{V_{s}*e^{(\frac{-t}{R*C})}}{R_{d}}
+	\label{eq:discharge_current}
+\end{equation}
+
+Where $V_{s}$ is voltage on \gls{ts}, $R_{d}$ is total value of discharge resistor bank and $I_{d}$ is discharge current. Current through individual 3s resistor combinations can be calculated as $I_{d}$/$4$.
+
+
+\begin{figure}
+	\begin{tikzpicture}
+		\begin{axis}[
+			use units,
+			x unit=s,
+			y unit=W,
+			xlabel=time,
+			ylabel=power loss,
+			width=0.9\textwidth,
+			height=0.5\textwidth,
+			grid=major,
+			xmin=0,
+			ymin=0,
+			xmax=20
+			]
+			%\pgfplotstableread{./data/TS_discharge_current.csv}\dischargeData;
+			\addplot[red, smooth] table[
+				x=time,
+				y expr=(\thisrow{current}/4)^2*3000,
+				col sep=comma
+				] {./data/TS_discharge.csv}; 
+			\addlegendentry{3s resistor combination $P_{loss}$}
+			\addplot[orange, smooth] table[
+				x=time,
+				y expr=(\thisrow{current}/4)^2*1000,
+				col sep=comma
+				] {./data/TS_discharge.csv};
+			\addlegendentry{1 resistor $P_{loss}$}
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Discharge power loss on 3s resistor combination and individual resistors vs. time}
+	\label{fig:discharge_power_time}
 \end{figure}
 
-Peak power is 15 W and the resistor can handle this power over 20 s, see \ref{app:discharge-sheet}.
+Peak power on individual resistors is 18W and resistor can handle up to 30W, see \ref{app:discharge_resistor_sheet}.
 
 \begin{table}[H]
 	\centering
 	\caption{General data of the discharge circuit}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Resistor Type: & THS151K5J (in configuration 2s4p) \\[\TableSize]
+		Resistor Type: & PWR221T-30-1001F in 3s4p configuration \\[\TableSize]
 		\hline
-		Resistance: & 1500$\Omega$ \\[\TableSize]
+		Resistance: & $1k\Omega$ \\[\TableSize]
 		\hline
-		Continuous power rating: & 15W \\[\TableSize]
+		Continuous power rating: & 30W \\[\TableSize]
 		\hline
-		Overload power rating (1 sec): & \\[\TableSize]
+		Overload power rating (1 sec): & not specified \\[\TableSize]
 		\hline
-		Overload power rating (5 sec): &  \\[\TableSize]
+		Overload power rating (5 sec): & not specified \\[\TableSize]
 		\hline
-		Overload power rating (15 sec): &  \\[\TableSize]
+		Overload power rating (15 sec): & not specified \\[\TableSize]
 		\hline
-		Voltage rating: & 265V (2 in series result in ~530V) \\[\TableSize]
+		Voltage rating: & 250V (3 in series: 750V) \\[\TableSize]
 		\hline
-		Maximum expected current: & 0.1A per resistor, (2s4p configuration with total 0.4A current) \\[\TableSize]
+		Maximum expected current: & 0.1A per resistor, (3s4p configuration with total 0.4A current) \\[\TableSize]
 		\hline
 		Average current: & 0.04A on resistor(taking account 4 seconds of discharging) \\[\TableSize]
 		\hline
-		Cross-sectional area of the wire used: & 0.129 mm² \\[\TableSize]
+		Cross-sectional area of the wire used: & $0.129 mm^2$ \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:dischrage-circ}%
@@ -96,25 +183,17 @@ Peak power is 15 W and the resistor can handle this power over 20 s, see \ref{ap
 	\caption{General data of the dis-charge relay}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Relay Type: &  \\[\TableSize]
+		Relay Type: & TE PE014012 \\[\TableSize]
 		\hline
-		Contact arrangment: &  \\[\TableSize]
+		Contact arrangement: & 1 pole, normally closed  \\[\TableSize]
 		\hline
-		Continuous DC current:  &  \\[\TableSize]
+		Continuous DC current: & 5A \\[\TableSize]
 		\hline
-		Voltage rating  & \\[\TableSize]
+		Voltage rating  & $250V_{ac}$/$30V_{dc}$ \footnote{contact is opened when discharge voltage reaches 0V a thus no arcing occurs} \\[\TableSize]
 		\hline
-		Nominal Coil Voltage: & \\[\TableSize]
+		Nominal Coil Voltage: 12V & \\[\TableSize]
 		\hline
-		FET type: &  \\[\TableSize]
-		\hline
-		Maximum Drain-Source Current: &\\[\TableSize]
-		\hline
-		Drain-Source Breakdown Voltage: &  \\[\TableSize]
-		\hline
-		On Charasteristics Gate Threshold Voltage: & \\[\TableSize]
-		\hline
-		Cross-sectional area of the wire used: & \\[\TableSize]
+		Cross-sectional area of the wire used: & $0.129 mm^2$ \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:discharge-relay}%
@@ -124,4 +203,4 @@ Peak power is 15 W and the resistor can handle this power over 20 s, see \ref{ap
 \subsubsection{Position in car}
 %Provide CAD-renderings showing all relevant parts. Mark the parts in the rendering, if necessary.
 
-Discharge resistors are mounted on aluminum cooler also with IGBT modules in Motor Controller boxes.
+Discharge resistors are mounted on aluminum cooler also with IGBT modules in \gls{mc} boxes.

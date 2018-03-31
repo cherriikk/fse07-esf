@@ -1,0 +1,12 @@
+**/*.log
+*.acn
+*.aux
+*.dvi
+*.ist
+*.lof
+*.lot
+*.out
+*.sin.gnuplot
+*.toc
+*.synctex.gz
+ESF.pdf

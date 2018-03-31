@@ -9,6 +9,15 @@
 \usepackage{tabularx}% sized tables
 \usepackage{nameref}% section ref names
 \usepackage{bigstrut}% tables
+
+\usepackage{todonotes}% todos
+
+\usepackage{pgfplots}%plots
+
+\usepackage{pdfpages}%including whole pdf pages (datasheets,...)
+
+\pgfplotsset{compat=newest} % Allows to place the legend below plot
+\usepgfplotslibrary{units} % Allows to enter the units nicely
 %-------------------------------------
 \usepackage{appendix}% appendixy
 %---------------------------------------------------
@@ -38,10 +47,10 @@
 % Fancy Header
 	\pagestyle{fancy}
 	\fancyhf{}
-	\fancyhead[LE,RO]{\rightmark}
-	\fancyhead[RE,LO]{\UniversityName, \CarNumber}
-	\fancyfoot[CE,lO]{\Event}
-	\fancyfoot[RE,RO]{\thepage}
+	\fancyhead[R]{\rightmark}
+	\fancyhead[L]{\UniversityName, \CarNumber}
+	\fancyfoot[l]{\Event}
+	\fancyfoot[R]{\thepage}
 	%\renewcommand{\headrulewidth}{1pt}
 	\renewcommand{\footrulewidth}{.5pt}
 	
