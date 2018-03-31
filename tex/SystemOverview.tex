@@ -1,49 +1,45 @@
 
-Electrical systems of the car are divided into small blocks. The concept is to have all the systems distributed by 2 CAN buses (1st “CAN\_Powertrain” for systems crucial data to proper function, 2nd “CAN\_Aux” for all the other systems) and, if possible, all the signals transferred just by CAN bus. Baud rate is 500kbps and CAN is terminated in ECUP in front of car and in front motor controller by 120 Ohm resistor. There are in total 5 main control units – of course all the units are fully self-made (HW and FW).
+Electrical systems of the car are divided into small blocks. The concept is to have all the systems distributed by 2 \gls{can} buses (1st “CAN\_Powertrain” for systems crucial data to proper function, 2nd “CAN\_Aux” for all the other systems) and, if possible, all the signals transferred just by \gls{can} bus. Baud rate is 500kbps and \gls{can} is terminated in \gls{ecup} in front of car and in \gls{mcf} by 120$\Omega$ resistor. There are in total 5 main control units – of course all the units are fully self-made (\gls{hw} and \gls{fw}).
 
 \begin{itemize}
-\item	ECUP (Electronic Control Unit Pedal)
+\item	\Glsdesc{ecup}
 This device measures brake pedal and acceleration pedal positions, implements safety algorithms regarding to rules about torque encoder check and outputs these values to the CAN bus as driver’s foot requests. It also monitors Shutdown Circuit – point BOTS. 
 
-\item	VDCU – (Vehicle Dynamcs Control Unit)
-This device reads driver’s foot requests, actual every wheel speed provided by ECUM and implements Traction Control Algorithms. The result is sent over private CAN bus to the MCF and MCR. 
+\item	\Glsdesc{vdcu}
+This device reads driver’s foot requests, actual every wheel speed provided by ECUM and implements Traction Control Algorithms. The result is sent over private \gls{can} bus to the \gls{mcf} and \gls{mcr}. 
 
-\item	MC (Dual Motor Controller)
-2 units in total – Front (MCF) and Rear (MCR). These units drives 4 motors in total, so every unit drives 2 motors. It provides speed of every wheel by actual RPM, temperatures and so on. Field Oriented Control is implemented with Resolvers as a position feedbacks.
+\item	\Glsdesc{mc}
+2 units in total – \gls{mcf} and \gls{mcr}. These units drives 4 motors in total, so every unit drives 2 motors. It provides speed of every wheel by actual RPM, temperatures and so on. Field Oriented Control is implemented with Resolvers as a position feedbacks.
 
-\item	ECUF (Front + Dashboard)
-Interaction with driver in cooperation with ECUS (Steering Wheel – LCD inside) by informing, warning and error LEDs, switches, rotary switches, push buttons. This is like a driver’s CAN bus console. 
+\item	\Glsdesc{ecuf} (+ Dashboard)
+Interaction with driver in cooperation with \gls{ecus} (LCD inside) by informing, warning and error LEDs, switches, rotary switches, push buttons. This is like a driver’s \gls{can} bus console. 
 
-\item	ECUB
-Providing low voltage power distribution to all the control units and periphery (Li-Ion LV battery with BMS inside). This unit implements all the safety and control algorithms regarding to Shutdown Circuit rules. The main function is to latch SDC and evaluation of SDC interruption point. 
+\item	\Glsdesc{ecub}
+Providing low voltage power distribution to all the control units and periphery (Li-Ion \gls{lv} battery with \gls{bms} inside). This unit implements all the safety and control algorithms regarding to Shutdown Circuit rules. The main function is to latch \gls{sdc} and evaluation of \gls{sdc} interruption point. 
 
-\item	ECUA
-DC-DC converter, BMS, Pre-charge and AIR controlling is implemented. This unit also communicate with Charging Station.
-There are other control and measuring systems not listed above, but systems listed are most important for safety and control. 
+\item	\Glsdesc{ecua}
+DC-DC converter, \gls{bms}, Pre-charge and \gls{air} controlling is implemented. This unit also communicate with Charging Station.
+
+There are other control and measuring systems not listed above, but these systems are most important for safety and control.
 
 \end{itemize}
 
-There are other control and measuring systems not listed above, but systems listed are most important for safety and control.  
+There are other control and measuring systems not listed above, but systems listed are most important for safety and control.
 
-\iffalse
-% table done
-\begin{itemize}
-\item Short description of the system’s concept 
-\item Rough Schematic (blocks) showing all parts affected with the electrical systems and function of the tractive-system
-\item No detailed wiring
-\item Additionally, fill out the following table, replacing the values with your specifications:
-\end{itemize}
-\fi
+%\item Short description of the system’s concept 
+%\item Rough Schematic (blocks) showing all parts affected with the electrical systems and function of the tractive-system
+%\item No detailed wiring
+%\item Additionally, fill out the following table, replacing the values with your specifications:
 
 \begin{table}[H]
 	\centering
 	\caption{General parameters}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Maximum Tractive-system voltage: & 400 VDC  \\[\TableSize]
-		\hline Nominal Tractive-system voltage: & 345.6 VDC\\[\TableSize]
+		Maximum Tractive-system voltage: & 400 $V_{DC}$  \\[\TableSize]
+		\hline Nominal Tractive-system voltage: & 345.6 $V_{DC}$\\[\TableSize]
 		\hline
-		Control-system voltage: & 24 VDC \\[\TableSize]
+		Control-system voltage: & 24 $V_{DC}$ \\[\TableSize]
 		\hline
 		Accumulator configuration: & 96s9p \\[\TableSize]
 		\hline
@@ -57,7 +53,7 @@ There are other control and measuring systems not listed above, but systems list
 		\hline
 		LV Accumulator cell type: & Lithium-Ion \\[\TableSize]
 		\hline
-		Motor type: & PMSM with resolvers \\[\TableSize]
+		Motor type: & \gls{pmsm} with resolvers \\[\TableSize]
 		\hline
 		Number of motors: &  4, one per wheel \\[\TableSize]
 		\hline
@@ -66,4 +62,3 @@ There are other control and measuring systems not listed above, but systems list
 	\end{tabularx}%
 	\label{tab:system-general}%
 \end{table}%
-

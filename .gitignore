@@ -9,4 +9,7 @@
 *.sin.gnuplot
 *.toc
 *.synctex.gz
-ESF.pdf
+*.acr
+*.alg
+*.glsdefs
+*ESF.pdf
