@@ -40,13 +40,13 @@ Every part of SDC is monitored by specific ECU (Electronic Control Unit) in orde
 
 We designed SDC to be ‘single wire’ alike and distanced it from the system as much as it was possible. In order to remain SDC as a stand-alone wire we used optocouplers for main points of SDC. Optocouplers are connected in such a way, that they become active only in case of nonzero voltage occurance at a certain point of SDC.
 
-ECUB monitors the last poit of SDC (behind TSMS). If a state of error od SDC is detected ECUB latches the off-state of SDC to stay off. If the ocured error is non-critical, it allows pilot to re-enter the TSON state. If monitored error is criticall (such as IMD etc.), it notes the error to the memory-storrage and does not allow SDC to become active until appropriate steps are taken. The logic flow-chart is shown in \ref{ECUA-Jansixta}. For more info about this look to next and \nameref{subsec:Reset} sections. SDC error states that require special handling
+ECUB monitors the last point of SDC (behind TSMS). If a state of error on SDC is detected ECUB latches the off-state of SDC to stay off. If the ocured error is non-critical, it allows pilot to re-enter the TSON state. If monitored error is critical (such as IMD etc.), it notes the error to the memory-storage and does not allow SDC to become active until appropriate steps are taken. The logic flow-chart is shown in \ref{ECUA-Jansixta}. For more info about this look to next and \nameref{subsec:Reset} sections. SDC error states that require special handling
 
 \ref{Jan sixta}
 ECUB is last part of SDC before TSMS. It implements latching function using external memory so even in case of total shutdown of LV power it is possible to remember error states that occurred before the breakdown. The ECUB implements enough capacitor storrage, that it is able to write the error to the memory even in case of imidiate power-loss cased by the error. It is not possible to reactivate SDC and close AIRs until all the steps required by rules are done.
 
 \paragraph{Master Switch}
-We use Autolec Mini-Master battery cut-out switches with continuous current rating 100A, shown on \ref{fig:SDC-TSMS}.
+We use SCI A23-5 battery cut-out switches with continuous current rating 100A, shown on \ref{fig:SDC-TSMS}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\textwidth]{./img/SDC-TSMS.jpg}
