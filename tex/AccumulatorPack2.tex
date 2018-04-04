@@ -2,11 +2,12 @@
 
 The GLVS Accumulator is built out of 6 rechargeable Lithium-Ion cells connected in series. It shares a Kevlar enclosure with ECU-B, which provides the required fire resitance. The battery is secured to the enclosure using 3M Dual Lock fasteners.
 
-The accumulator provides GLVS power at startup until the HV-to-LV DCDC Converter takes over. Temperature and voltages are monitored using an XXXXX IC. Voltages are measured by the IC directly and temperatures are measured on N NTC thermistors.
+The accumulator provides GLVS power at startup until the HV-to-LV DCDC Converter takes over. Temperature and voltages are monitored using an LTC6804-2 IC. Voltages are measured by the IC directly and temperatures are measured on N NTC thermistors.
 
 \subsubsection{Wiring, cables, current calculations, connectors}
-Describe wiring, show schematics, describe connectors and cables and show useful data regarding the wiring.  Include information on the working voltage and current rating of the accumulator.
-TODO: connector XT-60, fuse atd.
+%Describe wiring, show schematics, describe connectors and cables and show useful data regarding the wiring.  Include information on the working voltage and current rating of the accumulator.TODO: connector XT-60, fuse atd.
+
+The GLVS Accumulator is connected directly to ECU-B by XT60 connector. This connector is rated for 60A of continuous current and 500V(see. \ref{app:XT60connector}). For wiring we use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor}). We use AWG 12 for power supply and AWG 17 for balancing.
 
 \begin{table}[H]
 	\centering
