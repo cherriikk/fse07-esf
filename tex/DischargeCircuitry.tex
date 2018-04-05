@@ -34,7 +34,7 @@ Capacity sum of all capacitors in \glspl{mc} is 2360 uF. For discharging this ca
 \paragraph{Values}
 \begin{itemize}
 	\item $V_c = 60 V$ (safe voltage limit)
-	\item $V_s = 403.2 V$ (TS voltage)
+	\item $V_s = 400 V$ (TS voltage)
 	\item $t = 5 s$ (maximum discharge time)
 	\item $C = 2360\mu$F (total capacity in TS)
 \end{itemize}
@@ -156,9 +156,9 @@ Peak power on individual resistors is 18W and resistor can handle up to 30W, see
 		\hline
 		Resistor Type: & PWR221T-30-1001F in 3s4p configuration \\[\TableSize]
 		\hline
-		Resistance: & $1k\Omega$ \\[\TableSize]
+		Resistance: & $1 k\Omega$ \\[\TableSize]
 		\hline
-		Continuous power rating: & 30W \\[\TableSize]
+		Continuous power rating: & 30 W \\[\TableSize]
 		\hline
 		Overload power rating (1 sec): & not specified \\[\TableSize]
 		\hline
@@ -166,11 +166,11 @@ Peak power on individual resistors is 18W and resistor can handle up to 30W, see
 		\hline
 		Overload power rating (15 sec): & not specified \\[\TableSize]
 		\hline
-		Voltage rating: & 250V (3 in series: 750V) \\[\TableSize]
+		Voltage rating: & 250V (3 in series: 750 V) \\[\TableSize]
 		\hline
-		Maximum expected current: & 0.1A per resistor, (3s4p configuration with total 0.4A current) \\[\TableSize]
+		Maximum expected current: & 0.1 A per resistor, (3s4p configuration with total 0.4A current) \\[\TableSize]
 		\hline
-		Average current: & 0.04A on resistor(taking account 4 seconds of discharging) \\[\TableSize]
+		Average current: & 0.04 A through resistor(average from 4 seconds of discharging) \\[\TableSize]
 		\hline
 		Cross-sectional area of the wire used: & $0.129 mm^2$ \\[\TableSize]
 		\hline
@@ -187,17 +187,20 @@ Peak power on individual resistors is 18W and resistor can handle up to 30W, see
 		\hline
 		Contact arrangement: & 1 pole, normally closed  \\[\TableSize]
 		\hline
-		Continuous DC current: & 5A \\[\TableSize]
+		Continuous DC current: & 5 A \\[\TableSize]
 		\hline
-		Voltage rating  & $250V_{ac}$/$30V_{dc}$ \footnotemark \\[\TableSize]
+		Voltage rating  & $250 V_{ac}$/$30 V_{dc}$ \footnotemark \\[\TableSize]
 		\hline
-		Nominal Coil Voltage: 12V & \\[\TableSize]
+		Nominal Coil Voltage: 12 V & \\[\TableSize]
 		\hline
 		Cross-sectional area of the wire used: & $0.129 mm^2$ \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:discharge-relay}%
 \end{table}%
+
+\todo[inline]{prilozit datasheet kvuli grafu max proudu a napeti}
+\todo[inline]{zminit, ze jedno rele odpojuje jen jednu 3s kombinaci -> 130mA}
 
 \footnotetext{contact is opened when discharge voltage reaches 0V and thus no arcing occurs}
 
