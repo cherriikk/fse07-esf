@@ -1,6 +1,6 @@
 \subsubsection{Overview / description/parameters}
 %Describe concept of accumulator pack, provide table with main parameters like number of cells, cell stacks separated by maintenance plugs, cell configuration, resulting voltages->minimum, maximum, nominal, currents, capacity etc.
-Our accumulator pack is designed using 18650 Li-ion cells in 6 stacks configuration, active cooled by air. The accumulator pack contains cells, AMS modules (slaves), ACP main control unit (AMS master) with DC/DC converter, IMD unit, cooling fans and current sensor. There is smaller insulated box inside the accumulator pack, that accomodates AIRs and main fuse.
+Our accumulator pack is designed using 18650 Li-ion cells in 6 stacks configuration, active cooled by air. The accumulator pack contains cells, \gls{ams} modules (slaves), \gls{acp} main control unit (\gls{ams} master) with DC/DC converter, \gls{imd} unit, cooling fans and current sensor. There is smaller insulated box inside the accumulator pack, that accomodates \glspl{air} and main fuse.
 Details are filled in following table:
 
 \begin{table}[H]
@@ -35,7 +35,7 @@ Details are filled in following table:
 \subsubsection{Cell description}
 %Describe the cell type used and the chemistry, provide table with main parameters.
 
-The used cell is the 18650 type cylindrical Li-ion cell. Detailed specification is shown in table below. Each cell has a CID (Circuit Interrupt Device) which disconnect the cell from others in parallel in case of cell failure (such an internal short circuit or over pressure) or in case of excessive discharge current. 
+The used cell is the 18650 type cylindrical Li-ion cell. Detailed specification is shown in table below. Each cell has a \gls{cid} which disconnect the cell from others in parallel in case of cell failure (such an internal short circuit or over pressure) or in case of excessive discharge current. 
 
 \begin{table}[H]
 	\centering
@@ -54,9 +54,9 @@ The used cell is the 18650 type cylindrical Li-ion cell. Detailed specification 
 		\hline
 		Maximum output current: & 35 A (until cell reaches 80 $^\circ$C) (14C)\\[\TableSize]
 		\hline
-		Maximum nominal output current: & 30A(12C) \\[\TableSize]
+		Maximum nominal output current: & 30 A(12C) \\[\TableSize]
 		\hline
-		Maximum charging current: & 6A(2.4C) \\[\TableSize]
+		Maximum charging current: & 6 A(2.4C) \\[\TableSize]
 		\hline
 		Maximum Cell Temperature (discharging) & 80 $^\circ$C \\[\TableSize]
 		\hline
@@ -121,9 +121,9 @@ Top and bottom view of one stack
 		\hline
 		Max. distance from monitored negative cell terminal: & 2 mm \\[\TableSize]
 		\hline
-		\gls{ams} opens \glspl{air} during dis-charging if cell temperature is above: & 60$^\circ$C \\[\TableSize]
+		\gls{ams} opens \glspl{air} during dis-charging if cell temperature is above: & 60 $^\circ$C \\[\TableSize]
 		\hline
-		\gls{ams} opens \glspl{air} during charging if cell temperature is above: & 60$^\circ$C \\[\TableSize]
+		\gls{ams} opens \glspl{air} during charging if cell temperature is above: & 60 $^\circ$C \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:acc-temp}%
@@ -132,7 +132,7 @@ Top and bottom view of one stack
 \subsubsection{Accumulator Management System}
 %Describe the \gls{ams} used including at least the following:
 
-Sem by to jeste chtelo neco napsat o pouzitem svabu.
+\todo[inline]{Sem by to jeste chtelo neco napsat o pouzitem svabu.}
 
 \begin{table}[H]
 	\centering
@@ -165,7 +165,7 @@ Each sense connection is protected with fuse. There are two types of fuses used:
 
 Cell highest allowed voltage is 4.25 V so \gls{ams} reacts when the voltage is above 4.2 V. Cell lowest allowed voltage is 2 V so \gls{ams} reacts when the voltage is below 2.2 V. Reaching any of limits causes \glspl{air} disconnection.
 
-Highest allowed temperature (by datasheet) for discharging is 80 $^\circ$C and for charging 60 $^\circ$C. Due to FSE rules our battery pack is limited to 60 $^\circ$C. \gls{ams} reacts when the temperature is higher than 60 $^\circ$C reaching limit causes AIRs disconnection.
+Highest allowed temperature (by datasheet) for discharging is 80 $^\circ$C and for charging 60 $^\circ$C. Due to FSE rules our battery pack is limited to 60 $^\circ$C. \gls{ams} reacts when the temperature is higher than 60 $^\circ$C reaching limit causes \glspl{air} disconnection.
 
 \paragraph{Recommended Operating Conditions}
 TA = 25 $^\circ$C and TOP = 57.6 V; Min/Max values stated where TA = -40 $^\circ$C to 105 $^\circ$C and TOP = 12 V to 79.2 V (unless otherwise noted)
@@ -185,21 +185,20 @@ Each \gls{ams} board senses whole stack, that means it senses 144 cells, connect
 \subsubsection{Accumulator indicator}
 %Describe the indicator, show wiring, provide tables with operation, PCB design, etc
 
-We use LED indicator placed on Accumulator pack chassis. The LED is powered by a separate circuit which is also used to power the TSAL. The circuit function explanation is shared with TSAL HV part. 
+We use LED indicator placed on Accumulator pack chassis. The LED is powered by a separate circuit which is also used to power the \gls{tsal}. The circuit function explanation is shared with \gls{tsal} HV part. 
 
 \subsubsection{Wiring, cables, current calculations, connectors}
 %Describe the internal wiring, show schematics, provide calculations for currents and voltages and show data regarding the cables and connectors used.
-%\begin{itemize}
 %	\item 	Discuss maximum expected current, DC and AC how long will this be provided?
 %	\item Compare the maximum values to nominal currents
 %	\item Give a table for each kind of wire in your tractive-system:
 %	\item Describe your maintenance plugs, provide pictures
 %	\item Use tables like the one shown below:
-%\end{itemize}
 
-We use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor})as Tractive System wires. Total gauge is 16mm2. Total ampacity is 165A for main DC power buses. All other LV wiring in Accumulator is also done using OLFLEX HEAT 180 SiF wires with gauges ranging from 0,25mm2 to 1mm2. Basic data are given in tables below. We use 2 pin Deutsch ASHD connectors as HV Tractive system connectors as the Accumulator Pack outlet, Service box inlet and Motor controllers inlet. For Motor controllers outlets to motors we use 4 pin Deutsch ASHD connectors. Pins are rated each to 200A of continous current. According to our data from last season, average continuous DC current is expected to be to 80A. The maximum DC current is to be 250A for max. 5 seconds.
 
-To ensure that connectors will withstand in-rush currents, we did following calculation. The most stressed connector is Accumulator pack outlet. The maximum power Motor Controllers will take is 80kW, which is 250A in maximum (depends on state of charge of accumulators). Based on heating a thermal capacity of mass of pins and nearest wiring, by power losses on contact resistance and temperature difference 50°C, theese connectors will definitely withstand this current for more than 10 seconds, which is far ahead of motors overload capacity (cca. 4-5 seconds). Therefore, theese connectors will never get to critical overload condition.
+We use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor})as Tractive System wires. Total gauge is 16mm2. Total ampacity is 165 A for main DC power buses. All other LV wiring in Accumulator is also done using OLFLEX HEAT 180 SiF wires with gauges ranging from 0,25 mm$^2$ to 1 mm$^2$. Basic data are given in tables below. We use 2 pin Deutsch ASHD connectors as HV Tractive system connectors as the Accumulator Pack outlet, Service box inlet and Motor controllers inlet. For Motor controllers outlets to motors we use 4 pin Deutsch ASHD connectors. Pins are rated each to 200 A of continuous current. According to our data from last season, average continuous DC current is expected to be to 80 A. The maximum DC current is to be 250 A for max. 5 seconds.
+
+To ensure that connectors will withstand in-rush currents, we did following calculation. The most stressed connector is Accumulator pack outlet. The maximum power Motor Controllers will take is 80kW, which is 250A in maximum (depends on state of charge of accumulators). Based on heating a thermal capacity of mass of pins and nearest wiring, by power losses on contact resistance and temperature difference 50 $^\circ$C, these connectors will definitely withstand this current for more than 10 seconds, which is far ahead of motors overload capacity (cca. 4-5 seconds). Therefore, these connectors will never get to critical overload condition.
 
 
 % Table generated by Excel2LaTeX from sheet 'List1'
@@ -208,11 +207,11 @@ To ensure that connectors will withstand in-rush currents, we did following calc
 	\caption{Wire data of company A, 0.205 mm$^2$.}
 	\begin{tabularx}{\textwidth}{|X|X|}\hline
 		Wire type & OLFLEX HEAT 180 SiF \\[\TableSize]\hline
-		Continuous current rating: & 165A \\[\TableSize]\hline
+		Continuous current rating: & 165 A \\[\TableSize]\hline
 		Cross-sectional area & $16mm^2$ \\[\TableSize]\hline
-		Maximum operating voltage: &  500VDC\\[\TableSize]\hline
-		Temperature rating: &  125 °C\\[\TableSize]\hline
-		Wire connects the following components: & Stacks > AIRs, fuse >HV Connector \\[\TableSize]\hline
+		Maximum operating voltage: &  500 V$_DC$\\[\TableSize]\hline
+		Temperature rating: &  125 $^\circ$C\\[\TableSize]\hline
+		Wire connects the following components: & Stacks $\,\to\,$ \glspl{air}, fuse $\,\to\,$ \gls{hv} Connector \\[\TableSize]\hline
 	\end{tabularx}%
 	\label{tab:acc-wire}%
 \end{table}%
@@ -220,14 +219,14 @@ To ensure that connectors will withstand in-rush currents, we did following calc
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./img/ACP-nut.png}
-	\caption{Maintance plugs I.}
+	\caption{Maintenance plugs I.}
 	\label{fig:acp-maintance-plug}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./img/ACP-nut2.png}
-	\caption{Maintance plugs II.}
+	\caption{Maintenance plugs II.}
 	\label{fig:acp-maintance-plug2}
 \end{figure}
 
@@ -245,10 +244,10 @@ To ensure that connectors will withstand in-rush currents, we did following calc
 	\label{fig:acp-hv-wiring2}
 \end{figure}
 
-\subsubsection{Accumulator insulation relays}
+\subsubsection{Accumulator insulation relays}\label{subsubsection:airs}
 %Describe the AIRs used and their main operation parameters, use tables, etc.
 
-We use Kilovac EV200 as AIRs, it is widely used standard contactor designed for EVs, working with inert gas atmosphere. Detailed specification is given in the folowing table:
+We use Kilovac EV200 as \glspl{air}, it is widely used standard contactor designed for EVs, working with inert gas atmosphere. Detailed specification is given in the following table:
 
 % Table generated by Excel2LaTeX from sheet 'List1'
 \begin{table}[H]
@@ -258,19 +257,19 @@ We use Kilovac EV200 as AIRs, it is widely used standard contactor designed for 
 		\hline
 		Relay Type: & Kilovac EV200 \\[\TableSize]
 		\hline
-		Contact arragment: & SPST \\[\TableSize]
+		Contact arrangement: & SPST \\[\TableSize]
 		\hline
-		Continous DC current rating: & 500A \\[\TableSize]
+		Continuous DC current rating: & 500 A \\[\TableSize]
 		\hline
-		Overload DC current rating:  & 2000A for 1sec \\[\TableSize]
+		Overload DC current rating:  & 2000 A for 1 second \\[\TableSize]
 		\hline
-		Maximum operation voltage: & 900VDC \\[\TableSize]
+		Maximum operation voltage: & 900 V$_{DC}$ \\[\TableSize]
 		\hline
-		Nominal coil voltage: & 24VDC \\[\TableSize]
+		Nominal coil voltage: & 24 V$_{DC}$ \\[\TableSize]
 		\hline
-		Normal Load switching: & Make and break up to 650A \\[\TableSize]
+		Normal Load switching: & Make and break up to 650 A \\[\TableSize]
 		\hline
-		Maximum Load switching & 3 times at 2000A \\[\TableSize]
+		Maximum Load switching & 3 times at 2000 A \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:acc-air}%
@@ -280,7 +279,7 @@ We use Kilovac EV200 as AIRs, it is widely used standard contactor designed for 
 %Describe the fuses used and their main operation parameters, use tables, etc.
 %Additionally, fill out the following table for each fuse type used:
 
-We use OEZ Varius P51T06 as the main fuse. It is intended to protect semiconductors. Both contactors and main fuse are enclosed in separate enclosure as it can be seen in the pictures above. Detailed specification is given in the folowing table:
+We use OEZ Varius P51T06 as the main fuse. It is intended to protect semiconductors. Both contactors and main fuse are enclosed in separate enclosure as it can be seen in the pictures above. Detailed specification is given in the following table:
 
 \begin{table}[H]
 	\centering
@@ -289,15 +288,15 @@ We use OEZ Varius P51T06 as the main fuse. It is intended to protect semiconduct
 		\hline
 		Fuse manufacturer and type: & OEZ Varius P51T06 160A aR \\[\TableSize]
 		\hline
-		Continous current rating:  & 160A \\[\TableSize]
+		Continuous current rating:  & 160 A \\[\TableSize]
 		\hline
-		Maximum operating voltage  & 440VDC \\[\TableSize]
+		Maximum operating voltage  & 440 V$_{DC}$ \\[\TableSize]
 		\hline
 		Type of fuse: & High speed for semiconductors \\[\TableSize]
 		\hline
-		I2t rating: & 3300A$^{2}$s \\[\TableSize]
+		I2t rating: & 3300 A$^{2}$s \\[\TableSize]
 		\hline
-		Interrupt Current (maximum current at which the fuse can interrupt the current) & 50kA \\[\TableSize]
+		Interrupt Current (maximum current at which the fuse can interrupt the current) & 50 kA \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:acc-fuse}%
@@ -305,7 +304,7 @@ We use OEZ Varius P51T06 as the main fuse. It is intended to protect semiconduct
 
 %Create a table with components and wires protected by the fuse(s) and the according continuous current rating, below is an example table with some potential entries.  Complete this table with information for your design and add/remove additional locations as applicable.  Ensure that the rating of all the components is greater than the rating of the fuse such that none of the other components become the fuse.
 
-Tohle je ještě potřeba vyplnit!
+\todo[inline]{Tohle je ještě potřeba vyplnit!}
 
 % Table generated by Excel2LaTeX from sheet 'List1'
 \begin{table}[H]
@@ -315,42 +314,47 @@ Tohle je ještě potřeba vyplnit!
 		\hline
 		Location & Wire Size & Wire Ampacity & Fuse type & Fuse rating\\[\TableSize]
 		\hline
-		Cells to AIRs & 2 AWG & XXX & MNO Fuse & XXX \\[\TableSize]
+		Cells to AIRs & 6 AWG & 165 A & High-speed & 160 A \\[\TableSize]
 		\hline
-		AIR to Motor controller & 0 AWG & XXX & 2x MNO Fuse & XXX \\[\TableSize]
+		AIR to Motor controller & 6 AWG & 165 A & High-speed & 160 A \\[\TableSize]
 		\hline
-		AIR to TSAL & 20 AWG & XXX & EFG Fuse & XXX \\[\TableSize]
+		AIR to TSAL & 22 AWG & 5 A & High-speed & 3 A \\[\TableSize]
 		\hline
-		Accumulator output connector & 2 AWG & XXX &     &  \\[\TableSize]
+		Accumulator output connector & 6 AWG & 165 A & High-speed  & 160 A \\[\TableSize]
 		\hline
-		Cells to AMS &     &     &     &  \\[\TableSize]
+		Cells to AMS & N/A (PCB trace) & 5 A    & SMD    & 2 A \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:acc-fuse-protection}%
 \end{table}%
 
 \subsubsection{Charging}
-Describe how the accumulator will be charged. How will the charger be connected? How will the accumulator be supervised during charging? Show schematics, CAD-Renderings, etc., if needed
-Additionally, fill out the table:
+%Describe how the accumulator will be charged. How will the charger be connected? How will the accumulator be supervised during charging? Show schematics, CAD-Renderings, etc., if needed
+%Additionally, fill out the table:
+We use self developed charger to charge our accumulator pack. Topologically it consist of galvanically isolated step-up transformer, followed by step-down "chopper" converter.
+Charger is connected to the accumulator pack by separate low voltage and high voltage connector. They use \gls{can} bus to communicate, which goes through low voltage cord.
+Charger is equipped with properly designed Shutdown Circuit, safety features...
+\todo[inline]{Describe how the accumulator will be charged. How will the charger be connected? How will the accumulator be supervised during charging? Show schematics, CAD-Renderings, etc., if needed}
+\todo[inline]{Honzo dopis to tady co vsechno umi a jak probiha proces rizeni nabijeni podle zakomentovaného zadani vyse.}
 
 \begin{table}[H]
 	\centering
 	\caption{General charger data}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Charger Type: & \\[\TableSize]
+		Charger Type: & Self developed charger \\[\TableSize]
 		\hline
-		Maximum charging power: &\\[\TableSize]
+		Maximum charging power: & 9 kVA  \\[\TableSize]
 		\hline
-		Maximum charging voltage: &  \\[\TableSize]
+		Maximum charging voltage: & 600 V \\[\TableSize]
 		\hline
-		Maximum charging current: &  \\[\TableSize]
+		Maximum charging current: & 25 A \\[\TableSize]
 		\hline
-		Interface with accumulator &  \\[\TableSize]
+		Interface with accumulator & CAN bus \\[\TableSize]
 		\hline
-		Input voltage: & \\[\TableSize]
+		Input voltage: & 3x400 V, 50 Hz \\[\TableSize]
 		\hline
-		Input current: &  \\[\TableSize]
+		Input current: & 3x16 A \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:acc-charger}%

@@ -12,13 +12,13 @@ The TSAL is a distributed system consisting of the following components:
 
 The TSAL proper is connected with 2 wires. When voltage of 24 V is applied, the TSAL lights up either in green or red color depending on the polarity.
 
-% TODO aktualizovat schema
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth,trim={6cm 10cm 6cm 7cm},clip]{./img/TSAL-schematic.pdf}
 	\caption{TSAL schematic.}
 	\label{fig:TSAL-schematic}
 \end{figure}
+\todo[inline]{aktualizovat schema}
 
 \begin{table}[H]
 	\centering
@@ -108,18 +108,18 @@ Finally, a H-bridge is used to drive the proper power outputs with switchable po
 
 To ensure that the TSAL continues to operate even after disabling GLVS, the following circuit is used:
 
-% TODO: JSix + Patrik -- vsechno okolo ACP casti TSALu
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./img/tsal-hv.jpg}
+	\includegraphics[width=\textwidth]{./img/ECUA_TSAL_POWER.pdf}
 	\caption{TSAL HV part schematic.}
 	\label{fig:TSAL-HV}
 \end{figure}
 
 \paragraph{Explanation of TSAL circuit}
+TSAL HV part schematic \ref{fig:TSAL-HV} is directly connected to the output HV pins of ACP. The circuit is designed with STMicroelectronics chip VIPer53 (DATASHEET?). The circuit functions as a fly-back DC/DC converter, directly supplying the TSAL. The converter starts operating at about 40 V, but the output to TSAL is switched through $Q_2$ only when the HV voltage is more than 60 V. That is ensured using D4, which together with $Q_1$ works as a precise 60 V comparator with a little introduced hysteresis.
 
-TODO TODO JSix Patrik Left top corner of \ref{fig:TSAL-HV} (input marked as HV-Viper) is directly connected to the output HV pins of ACP. The circuit is designed with STM chip „VIPER16HN“. It behaves as normal fly-back, with input voltage range from 50V up to 500V. Output of flyback is used to directly power the TSAL. ACP indication led is powered from primary side of transformer. To ensure correct behaviour, we also measure and compare input voltage (using U12A OAMP as comparator with little hysteresis), to enable output (Q36 \& Q33) only if input voltage is >=60VDC.
+The ACP indication led is powered from the primary side of the transformer, from the VIPER53's own supply voltage.
+In case of any of the AIRs closed, or the pre-charge relay contact being detected closed (please see secion 2.9.1  for details), the TSAL is supplied from the GLVS 24 V system, through Qxxxx. The "relay closed" signals from both AIRs and the pre-charge relay are OR-ed together using hardwired logic (i.e. 74LVC2G32).
 
 \begin{figure}[H]
 	\centering
