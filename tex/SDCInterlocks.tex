@@ -5,13 +5,14 @@ Note: Interlocks are circuits used to open the shutdown circuit if a connector i
 We have interlocks in ACP HV connector (connector HV\_A), Motor controller HV inputs and outputs, HV connector in Service box, HVD and in the LV connectors from ECUM´s (ECUM Rear and ECUM Front) to motor (connectors M1, M2, M3 and M4). 
 
 
-In the M1-4 connectors we have a loop, that protects motor from disconnecting from a vehicle (disconnection of any of them triggers the Shutdown circuit).
-\todo[inline]{^^ WTF?? motory to nijak nechrani...}
+In the M1-4 connectors we have a loop, that in case of disconection from car opens Shutdown circuit.
+%\todo[inline]{^^ WTF?? motory to nijak nechrani...}
 
 \subsubsection{Wiring/cables/connectors}
 %Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
 
-Scheme of entire Shutdown circuit can be found at Figure 6 - Block SDC wiring scheme
+Scheme of entire Shutdown circuit can be found at \ref{fig:SDC-scheme}.
+
 \subsubsection{Position in car}
 %Provide CAD-renderings showing the relevant parts. Mark the parts in the rendering, if necessary.
 HVD is clearly shown above in Figure 8 - Inertia switch, SDB Left, Right and Cockpit, TSMS, GLVMS, HVD, Measure points. For Service box position see Figure 17 - Motor controllers

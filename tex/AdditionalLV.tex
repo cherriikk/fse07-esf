@@ -26,12 +26,7 @@ Module is connected using headers to \gls{ecub}.
 \subsubsection{Position in car}
 Inside \gls{ecub} box.
 
-\subsection{LV part 2}
-\todo[inline]{Describe those parts here which interfere or influence the tractive system, for example a controlling unit that measures wheel speeds and steering angle and calculates a target torque for each motor or a DC/DC-Converter providing power for the LV-system from the HV-system, etc.}
-\todo[inline]{wheel speed - ECUB}
-\todo[inline]{steering wh. angle - ECUP}
-
-\subsubsection {DC/DC-Converters for the car GLVS and ACP cooling fans}
+\subsection {DC/DC-Converters for the car GLVS and ACP cooling fans}
 Two additional DC/DC converters are present in the \gls{acp}, within the \gls{ecua}. The first DC/DC supplies the car \gls{glvs} with 24 V. The second one is the power supply for \gls{acp} cooling fans. Both DC/DC converters are of the same type, CINCON, CFB600-300S24. This type converter is an isolated type, 3000 V$_{AC}$ min., as per the device datasheet. (\ref{app:glvs_dcdc}). The \gls{glvs} is therefore safely isolated from the \gls{hv}, same applies for the \gls{acp} cooling system, that is also isolated from the car \gls{glvs}, due to having a separate DC/DC converter.
 
 \subsubsection{Description}
@@ -66,3 +61,9 @@ Describe the wiring, show schematics, etc.
 
 \subsubsection{Position in car}
 The DC/DC converters and all their associated circuitry are present on the \gls{ecua} PCB. \gls{ecua} is located withing the \gls{acp} container, in a separated compartment neighbouring the AIR box. Please see figure XXXXXXXXXXX for details about the \gls{acp} container component placement.
+
+
+\subsection{LV part 2}
+\todo[inline]{Describe those parts here which interfere or influence the tractive system, for example a controlling unit that measures wheel speeds and steering angle and calculates a target torque for each motor or a DC/DC-Converter providing power for the LV-system from the HV-system, etc.}
+\todo[inline]{wheel speed - ECUB}
+\todo[inline]{steering wh. angle - ECUP}
