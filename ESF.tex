@@ -19,14 +19,17 @@
 %\sectionnumbering{Roman}
 \setcounter{page}{1}
 
-\addcontentsline{toc}{section}{\contentsname} \tableofcontents 
+\tableofcontents
+\addcontentsline{toc}{section}{\contentsname}  
 \newpage
  % List of Figures
 	%\pagenumbering{roman} This is just Stupid
-\addcontentsline{toc}{section}{I\quad\listfigurename} \listoffigures
+\listoffigures
+\addcontentsline{toc}{section}{I\quad\listfigurename} 
 \newpage
 % List of Tables
-\addcontentsline{toc}{section}{II \thinspace\thinspace \listtablename} \listoftables
+\listoftables
+\addcontentsline{toc}{section}{II \thinspace\thinspace \listtablename} 
 \newpage
 % List of Acronyms
 \addcontentsline{toc}{section}{III List of Acronyms} \printglossary[type=\acronymtype,title=List of Acronyms]
