@@ -121,20 +121,6 @@ To ensure that the \gls{tsal} continues to operate even after disabling \gls{glv
 The \gls{acp} indication led is powered from the primary side of the transformer, from the VIPER53's own supply voltage.
 In case of any of the \glspl{air} closed, or the pre-charge relay contact being detected closed (please see \ref{subsec:precharge}  for details), the \gls{tsal} is supplied from the \gls{glvs} 24 V system, through Q$_2$. The "relay closed" signals from both \glspl{air} and the pre-charge relay are OR-ed together using hardwired logic (i.e. 74LVC2G32).
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{./img/tsal-position.jpg}
-	\caption{TSAL enable scheme}
-	\label{fig:TSAL-enable}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{./img/tsal-indicator.jpg}
-	\caption{ACP indication LED wiring}
-	\label{fig:TSAL-ACPindicator}
-\end{figure}
-
 %schema z backu
 \subsubsection{Wiring/cables/connectors}
 \iffalse Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.  Include gauge, voltage and temperature rating of wiring used and any fuses or other overcurrent protection used.\fi
