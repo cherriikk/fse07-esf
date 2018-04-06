@@ -31,8 +31,8 @@ Inside \gls{ecub} box.
 \todo[inline]{wheel speed - ECUB}
 \todo[inline]{steering wh. angle - ECUP}
 
-\subsubsection {DC/DC-Converters for the car GLVS and ACP cooling fans}\label{subsec:glvs_dcdc}
-Two additional DC/DC converters are present in the \gls{acp}, within the \gls{ecua}. The first DC/DC supplies the car \gls{glvs} with 24 V. The second one is the power supply for \gls{acp} cooling fans. Both DC/DC converters are of the same type, CINCON, CFB600-300S24. This type converter is an isolated type, 3000 V$_{AC}$ min., as per the device datasheet. (\ref{app:glvs_dcdc}). The \gls{glvs} is therefore safely isolated from the \gls{hv}, same applies for the \gls{acp} cooling system, that is also isolated from the car \gls{glvs}, due to having a separate DC/DC converter.
+\subsection {DC/DC-Converters for the car GLVS and ACP cooling fans}\label{subsec:glvs_dcdc}
+Two additional DC/DC converters are present in the \gls{acp}, within the \gls{ecua}. The first DC/DC supplies the car \gls{glvs} with 24 V. The second one is the power supply for \gls{acp} cooling fans. Both DC/DC converters are of the same type, CINCON, CFB600-300S24. This type converter is an isolated type, 3000 V$_{AC}$ min., as per the device datasheet. (\ref{app:glvs_dcdc}). The \gls{glvs} is therefore safely isolated from the \gls{hv}, same applies for the \gls{acp} cooling system, that is also isolated from the car \gls{glvs}, due to having a separate DC/DC converter. DC/DC inputs are fused by a FU$_1$, fast blow 2A 500V rated fuse (\ref{app:dcdc_fuse_datasheet}).
 
 \subsubsection{Description}
 
@@ -44,7 +44,7 @@ Two additional DC/DC converters are present in the \gls{acp}, within the \gls{ec
 \end{figure}
 
 Overall block diagram of the DC/DC circuitry is in \ref{fig:precharge_dcdc_sch}. Both DC/DC converters DCDC$_1$ and DCDC$_2$ share the same HV supply circuit, fused by fuse FU$_1$. Both DC/DC converters are isolated from the \gls{acp} \gls{hv} using relay RE$_1$. As additional DC link capacitors $C_{dclink}$ are required for the converters on the input HV side, a separate pre-charge circuit utilizing relay RE$_2$ and \gls{ntc} thermistor RT$_1$ is also required (\ref{app:ntc_datasheet}). 
-All relays are the same type, Finder 40.52 (\ref{app:precharge_relay_datasheet}), two contacts always series connected to enhance the DC breaking capacity. Both DC/DC converters are always switched off first using their dedicated ON/OFF inputs, therefore there is no requirement for full DC current breaking capacity for the relays RE$_1$ and RE$_2$. In case of failure of one of the DC/DC converters, a fuse FU$_1$ will act to protect against further damage.
+All relays are the same type, Finder 40.52 (\ref{app:precharge_relay_datasheet}), two contacts always series connected to enhance the DC breaking capacity. Both DC/DC converters are always switched off first using their dedicated ON/OFF inputs, therefore there is no requirement for full DC current breaking capacity for the relays RE$_1$ and RE$_2$. In case of failure of one of the DC/DC converters, a fuse FU$_1$ will act to protect against further damage. 
 
 \paragraph{Failure behavior and response}
 \begin{itemize}
@@ -58,7 +58,6 @@ All relays are the same type, Finder 40.52 (\ref{app:precharge_relay_datasheet})
 
 
 Both DC/DC converters DCDC$_1$ and DCDC$_2$ are fully protected against continuous overload or short circuit condition on their output, as specified in the device datasheet. Additional isolated current sense circuits are used on both converters, using a hall effect sensor, type ACS712 from Allegro \ref{app:acs712_datasheet}. These sensors are only informative, used only for diagnostic purposes to measure current consumption from the car's \gls{glvs} system and \gls{acp} cooling.
-\todo[inline]{taky do seznamu failu?}
 
 \subsubsection{Wiring, cables}
 Describe the wiring, show schematics, etc.
