@@ -36,14 +36,11 @@ Shutdown circuit (SDC) starts in ECUP unit, then goes through all SDC elements i
 
 
 \paragraph{Monitoring SDC}
-Every part of SDC is monitored by specific ECU (Electronic Control Unit) in order to identify disconnected element. BOTS is measured by ECUP, SDB-center  and Inertia switch are measured by ECUF , interlocks in Motor Controllers are measured by Motor Controllers, Interlock in Accumulator Pack is measured by ECUA  and finally SDB-right, SDB-left and TSMS   are measured by ECUB. Every piece of information regarding the state of closure SDC are running between ECU´s by CAN. 
+Every part of \gls{sdc} is monitored by specific \gls{ecu} in order to identify disconnected element. \gls{bots} is measured by \gls{ecup}, SDB-center  and Inertia switch are measured by \gls{ecuf} , interlocks in \glspl{mc} (\gls{fwil}) are measured by \glspl{mc}, Interlock in Accumulator Pack is measured by \gls{ecua}  and finally SDB-right, SDB-left and \gls{tsms} are measured by \gls{ecub}. Every piece of information regarding the state of closure \gls{sdc} are running between ECU´s by \gls{can}. 
 
-We designed SDC to be ‘single wire’ alike and distanced it from the system as much as it was possible. In order to remain SDC as a stand-alone wire we used optocouplers for main points of SDC. Optocouplers are connected in such a way, that they become active only in case of nonzero voltage occurance at a certain point of SDC.
+We designed \gls{sdc} to be ‘single wire’ alike and distanced it from the system as much as it was possible. In order to remain \gls{sdc} as a stand-alone wire we used optocouplers for main points of \gls{sdc}. Optocouplers are connected in such a way, that they become active only in case of nonzero voltage occurance at a certain point of \gls{sdc}.
 
-ECUB monitors the last point of SDC (behind TSMS). If a state of error on SDC is detected ECUB latches the off-state of SDC to stay off. If the ocured error is non-critical, it allows pilot to re-enter the TSON state. If monitored error is critical (such as IMD etc.), it notes the error to the memory-storage and does not allow SDC to become active until appropriate steps are taken. The logic flow-chart is shown in \ref{ECUA-Jansixta}. For more info about this look to next and \nameref{subsec:Reset} sections. SDC error states that require special handling
-
-\ref{Jan sixta}
-ECUB is last part of SDC before TSMS. It implements latching function using external memory so even in case of total shutdown of LV power it is possible to remember error states that occurred before the breakdown. The ECUB implements enough capacitor storrage, that it is able to write the error to the memory even in case of imidiate power-loss cased by the error. It is not possible to reactivate SDC and close AIRs until all the steps required by rules are done.
+\Gls{ecub} is last part of \gls{sdc} before \gls{tsms}. If a state of error on \gls{sdc} is detected \gls{ecub} latches the off-state of \gls{sdc} to stay off. If the occurred error is non-critical, it allows pilot to re-enter the TSON state. If monitored error is critical (such as \gls{imd} etc.), it notes the error to the memory-storage and does not allow \gls{sdc} to become active until appropriate steps are taken.
 
 \paragraph{Master Switch}
 We use SCI A23-5 battery cut-out switches with continuous current rating 100A, shown on \ref{fig:SDC-TSMS}.
@@ -89,14 +86,14 @@ Describe wiring and additional circuitry, show extra schematics for example if a
 Additionally, fill out and add information to the following table:
 \fi
 
-If connector is used to connect SDC between control units, disconnecting any of them results in opening SDC and therefore opening AIRs as well. In other words the SDC directly carries the current driving the accumulator isolation relays(AIRs). All circuits that are part of the shutdown circuit have been designed in a way, that, when in disconnected state, they remove the current controlling the AIRs.
+If connector is used to connect \gls{sdc} between control units, disconnecting any of them results in opening \gls{sdc} and therefore opening \glspl{air} as well. In other words the \gls{sdc} directly carries the current driving the accumulator isolation relays(\glspl{air}). All circuits that are part of the shutdown circuit have been designed in a way, that, when in disconnected state, they remove the current controlling the \glspl{air}.
 
 The cross-section of Shutdown System wire is AWG22. Block wiring scheme shown on \ref{fig:SDC-schematic}.\\
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth,trim={4cm 8cm 5cm 3cm}, clip]{./img/SDC-monitoring.pdf}
-	\caption{Example of used SDC monitoring method with optocouplers.}
+	\caption{Example of used \gls{sdc} monitoring method with optocouplers.}
 	\label{fig:SDC-schematic}
 \end{figure}
 
@@ -107,15 +104,15 @@ As shown, 4k7 resistors are used to limit current through optocoupler. With 24V 
 	\caption{Wiring – Shutdown circuit}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Total Number of AIRs: & 2 \\[\TableSize]
+		Total Number of \glspl{air}: & 2 \\[\TableSize]
 		\hline
-		Current per AIR: & 70mA \\[\TableSize]
+		Current per \gls{air}: & 70 mA \\[\TableSize]
 		\hline
-		Additional parts consumption within the shutdown circuit: & 182,4mA \\[\TableSize]
+		Additional parts consumption within the shutdown circuit: & 182.4 mA \\[\TableSize]
 		\hline
-		Total current: & 322,4mA \\[\TableSize]
+		Total current: & 322.4 mA \\[\TableSize]
 		\hline
-		Cross sectional area of the wiring used: & 0,322mm2 (AWG22) \\[\TableSize]
+		Cross sectional area of the wiring used: & 0.322 mm$^2$ (AWG22) \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:SDC-Wiring}%
@@ -126,6 +123,6 @@ As shown, 4k7 resistors are used to limit current through optocoupler. With 24V 
 \iffalse Provide CAD-renderings showing the relevant parts. Mark the parts in the renderings, if necessary. \fi
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{./img/SDC-positionInCar.png}
-	\caption{Inertia switch, SDB Left, Right and Cockpit, TSMS, GLVMS, HVD, Measure points.}
+	\caption{Inertia switch, SDB Left, Right and Cockpit, \gls{tsms}, \gls{glvms}, HVD, Measure points.}
 	\label{fig:SDC-positionInCar}
 \end{figure}

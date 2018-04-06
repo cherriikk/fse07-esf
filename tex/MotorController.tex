@@ -4,13 +4,13 @@
 
 \subsubsection{Description, type, operation parameters}
 %Describe important functions; provide table with main parameters like resulting voltages->minimum, maximum, nominal, currents etc.
-Motor controller is a prototype of MiRy X-Boss Motor Controller. It is fully self-designed for driving 2 PMSM motors simultaneously with Resolver sensors as a position feedback. Field Oriented Control is implemented with galvanic isolated current sensors LEM HTFS 200-P.
+Motor controller is a prototype of MiRy X-Boss Motor Controller. It is fully self-designed for driving 2 \gls{pmsm} motors simultaneously with Resolver sensors as a position feedback. Field Oriented Control is implemented with galvanic isolated current sensors LEM HTFS 200-P.
 
-Galvanic isolation on PCB is shown in \ref{app:mc-top} and \ref{app:mc-bot}. The only place where isolation is smaller then required 4mm is between pins of DC/DC NME1215SC. Real space gap is 1.54mm. The NME1215SC has rated voltage of 1kV. See \ref{app:NME1215SC}.
+Galvanic isolation on PCB is shown in \ref{app:mc-top} and \ref{app:mc-bot}. The only place where isolation is smaller then required 4mm is between pins of DC/DC NME1215SC. Real space gap is 1.54 mm. The NME1215SC has rated voltage of 1kV. See \ref{app:NME1215SC}.
 
 Motor Controller communicate with traction control unit by private CAN bus. If any error occurs in their communication – Motor Controller stops driving both motors (error mode). It also implements discharge circuit which is activated by CAN or in case of Auxiliary supply disconnection (resistors are driven by normally-closed relay).
 
-A current limit is set to not overload used motors. For each motor controller different. Rear motor controller has set peak current limit to 202A and temperature limit to 120°C. Front Motor Controller’s current limit is 70A and temperature limit also 120$\circ$C.
+A current limit is set to not overload used motors. For each motor controller different. Rear motor controller has set peak current limit to 202 A and temperature limit to 120 $^\circ$C. Front Motor Controller’s current limit is 70 A and temperature limit also 120 $^\circ$C.
 
 \begin{table}[H]
 	\centering
