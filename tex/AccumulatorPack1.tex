@@ -129,7 +129,7 @@ Top and bottom view of one stack
 	\label{tab:acc-temp}%
 \end{table}%
 
-\subsubsection{Accumulator Management System}
+\subsubsection{Accumulator Management System}\label{subsec:ams}
 %Describe the \gls{ams} used including at least the following:
 
 \todo[inline]{Sem by to jeste chtelo neco napsat o pouzitem svabu.}
@@ -187,7 +187,7 @@ Each \gls{ams} board senses whole stack, that means it senses 144 cells, connect
 
 We use LED indicator placed on Accumulator pack chassis. The LED is powered by a separate circuit which is also used to power the \gls{tsal}. The circuit function explanation is shared with \gls{tsal} HV part. 
 
-\subsubsection{Wiring, cables, current calculations, connectors}
+\subsubsection{Wiring, cables, current calculations, connectors}\label{subsec:acp_wiring}
 %Describe the internal wiring, show schematics, provide calculations for currents and voltages and show data regarding the cables and connectors used.
 %	\item 	Discuss maximum expected current, DC and AC how long will this be provided?
 %	\item Compare the maximum values to nominal currents
@@ -329,13 +329,37 @@ We use OEZ Varius P51T06 as the main fuse. It is intended to protect semiconduct
 \end{table}%
 
 \subsubsection{Charging}
-%Describe how the accumulator will be charged. How will the charger be connected? How will the accumulator be supervised during charging? Show schematics, CAD-Renderings, etc., if needed
-%Additionally, fill out the table:
-We use self developed charger to charge our accumulator pack. Topologically it consist of galvanically isolated step-up transformer, followed by step-down "chopper" converter.
-Charger is connected to the accumulator pack by separate low voltage and high voltage connector. They use \gls{can} bus to communicate, which goes through low voltage cord.
-Charger is equipped with properly designed Shutdown Circuit, safety features...
-\todo[inline]{Describe how the accumulator will be charged. How will the charger be connected? How will the accumulator be supervised during charging? Show schematics, CAD-Renderings, etc., if needed}
-\todo[inline]{Honzo dopis to tady co vsechno umi a jak probiha proces rizeni nabijeni podle zakomentovaného zadani vyse.}
+We use self developed charger to charge our accumulator pack. Figure \ref{fig:charger_topology} shows the charger concept. It is comprised of galvanically isolated step-up transformer, followed by step-down converter. Charger is connected to the accumulator pack by a separate low voltage and high voltage connectors. CAN bus is used for data communication, which goes through the low voltage cord. 
+
+Charger is equipped with properly designed Shutdown Circuit, and several safety features. The overall shutdown circuit through the charger is in \ref{fig:charger_sdc_scheme}. The \gls{sdc} begins in the charger and goes through the charger's shutdown button SB1. Kd is a door switch of the electrical panel, S$_1$ is a software controlled relay that needs to be closed first in order to start the charging process. S$_1$ is closed after the charger goes through a self-test. Charging is started by pressing SB$_2$, which is the charging start button. If the \gls{sdc} is completed through all safety checks (including connector interlocks on the charger and \gls{acp}, also \gls{imd} and \gls{ams}, the charging process is started. The charging process is fully automatic. Voltage and current is dictated by the \gls{acp} \gls{ams} system (\gls{ecua}) and negotiated through the CAN bus.
+
+Charger HV output is fused in both poles, using a 32 A fuse. (\ref{app:charger_fuse_datasheet}) For additional safety, charger \gls{hv} output terminals are switched using two contactors, same type as the \gls{acp} \glspl{air} (\ref{app:air_datasheet}). Charger output terminals are isolated by the charger isolation relays whenever the \gls{sdc} is interrupted. The step-down converter in the charger contains significant dc-link capacitance, that is always discharged using the KM$_4$ contactor. The KM$_4$ contactor is a normally closed type and controlled by a hardwired contact logic.
+
+Note: The Ix denoted points in the \ref{fig:charger_sdc_scheme} are signals for the charger control unit, to sense the state of the \gls{sdc}. The Sx denoted contacts are software controlled relays from the charger control unit.
+
+\ref{fig:charger_layout} shows proper isolation gaps are always maintained on the \gls{hv} circuitry.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/charger_topology.png}
+	\caption{Charger topology.}
+	\label{fig:charger_topology}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/charger_sdc_schematic.png}
+	\caption{Charger SDC scheme.}
+	\label{fig:charger_sdc_scheme}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./img/charger_layout.png}
+	\caption{Charger layout.}
+	\label{fig:charger_layout}
+\end{figure}
 
 \begin{table}[H]
 	\centering

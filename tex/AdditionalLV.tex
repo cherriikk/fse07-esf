@@ -51,18 +51,17 @@ Relays type is Finder 40.52 (\ref{app:precharge_relay_datasheet}), two contacts 
 	\item Failure of the RE$_1$ relay in closed position only presents risk of draining the \gls{acp} charge away because of the pre-charge current and stand-by currents of both DC/DC converters. As the stand-by current of both DC/DC converters is negligible and the state of the HV circuitry of the DC/DC converters is monitored using the measurement circuitry block, the \gls{ecua} maintenance members can be notified of the failure, using the car diagnostics over the CAN bus. 
 	
 	\item RE$_1$ failing open presents no risk, as none of the DC/DC converters will work (\gls{acp} cooling failure, \gls{glvs} supply failure) and both the car would not be able to turn on properly and transition to the TS ON state.
-	The measurement block of the DC/DC converter HV input side is supplied using a small auxiliary isolated DC/DC converter (\ref{app:aux_dcdc_datasheet}). Signaling from the measurement block to the \gls{glvs} control side of the car is done utilizing a combination of digital signal isolator, SiLabs Si8600 series (\ref{app:ecua_isloator_datasheet}).
+	The measurement block of the DC/DC converter \gls{hv} input side is supplied using a small auxiliary isolated DC/DC converter (\ref{app:aux_dcdc_datasheet}). Signaling from the measurement block to the \gls{glvs} control side of the car is done utilizing a combination of digital signal isolator, SiLabs Si8600 series (\ref{app:ecua_isloator_datasheet}).
 \end{itemize}
 
 
 Both DC/DC converters DCDC$_1$ and DCDC$_2$ are fully protected against continuous overload or short circuit condition on their output, as specified in the device datasheet. Additional isolated current sense circuits are used on both converters, using a hall effect sensor, type ACS712 from Allegro \ref{app:acs712_datasheet}. These sensors are only informative, used only for diagnostic purposes to measure current consumption from the car's \gls{glvs} system and \gls{acp} cooling.
 
 \subsubsection{Wiring, cables}
-Describe the wiring, show schematics, etc.
-\todo[inline]{Vynechat! Bo o tom vim hovno!!! nebo at to laskave doplní ten, koho se to týká! JSi}
+All wiring in \gls{acp} is described in \ref{subsec:acp_wiring}.
 
 \subsubsection{Position in car}
-The DC/DC converters and all their associated circuitry are present on the \gls{ecua} PCB. \gls{ecua} is located withing the \gls{acp} container, in a separated compartment neighbouring the AIR box. Please see figure XXXXXXXXXXX for details about the \gls{acp} container component placement.
+The DC/DC converters and all their associated circuitry are present on the \gls{ecua} PCB. \gls{ecua} is located withing the \gls{acp} container, in a separated compartment neighbouring the AIR box. Please see \ref{fig:ECUA} for details about the \gls{acp} container component placement.
 
 
 \subsection{LV part 2}

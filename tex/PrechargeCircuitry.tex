@@ -102,7 +102,7 @@ Except from what rules require we implemented several safety precautions. In cas
 First one is completely non-programmable protection against switching voltage difference by \gls{air}. It uses voltage measurement and then comparators and logic to disable \gls{mcu} decision in case of SW error.
 Second one is measuring all states and voltages by \gls{mcu} on \gls{ecua} which can determinate error before non-programmable protection would have to act.
 
-Third (time-out) protection is used when everything seems to be OK, but the charging is too slow – caused by too high pre-charge resistance (any of pre-charge resistors fails), or some leakage of charge in capacitor or any other possible error occurs. If voltage difference is not equaled in time less them 2seconds, the \gls{ecua} stops pre-charge and waits 5 seconds before trying again. (In order to not overpower resistors.) If number of attempts to pre-charge is in this state higher then 8, something is clearly wrong and \gls{ecua} opens \gls{sdc} and indicates error. Sending message about error and sets car into not-ready state.
+Third (time-out) protection is used when everything seems to be OK, but the charging is too slow – caused by too high pre-charge resistance (any of pre-charge resistors fails), or some leakage of charge in capacitor or any other possible error occurs. If voltage difference is not equaled in time less them 2 seconds, the \gls{ecua} stops pre-charge and waits 5 seconds before trying again. (In order to not overpower resistors.) If number of attempts to pre-charge is in this state higher then 8, something is clearly wrong and \gls{ecua} opens \gls{sdc} and indicates error. Sending message about error and sets car into not-ready state.
 
 \subsubsection{Wiring, cables, current calculations, connectors}
 %Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
@@ -110,7 +110,7 @@ Third (time-out) protection is used when everything seems to be OK, but the char
 %\item Give a plot “Percentage of Maximum Voltage” vs. time
 %\item Give a plot Current vs. time 
 %\item For each plot, give the basic formula describing the plots
-There is no connectors nor cables it is realised on PCB in ECUA. 
+There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}. 
 
 %Additionally, fill out the tables:
 
@@ -119,12 +119,12 @@ There is no connectors nor cables it is realised on PCB in ECUA.
 	\caption{General data of the pre-charge resistor}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Resistor Type: & NTC \\[\TableSize]
+		Resistor Type: & Wirewound \\[\TableSize]
 		\hline
 
-		Resistance: & 25 $\Omega$ at 25 $^\circ$C\\[\TableSize]
+		Resistance: & 250 $\Omega$ in 2s configuration (500 $\Omega$ in total) \\[\TableSize]
 		\hline
-		Continuous power rating: & 25 W \\[\TableSize]
+		Continuous power rating: & 25W per resistor \\[\TableSize]
 		\hline
 		Overload power rating (1 sec): & not specified \\[\TableSize]
 		\hline
@@ -132,7 +132,7 @@ There is no connectors nor cables it is realised on PCB in ECUA.
 		\hline
 		Overload power rating (15 sec): & not specified \\[\TableSize]
 		\hline
-		Voltage rating: & 680 V$\_AC$\\[\TableSize]
+		Voltage rating: & 680 V$_{AC}$\\[\TableSize]
 		\hline
 		Cross-sectional area of the wire used: & 0.195 mm$^2$\\[\TableSize]
 		\hline
@@ -160,7 +160,6 @@ There is no connectors nor cables it is realised on PCB in ECUA.
 	\end{tabularx}%
 	\label{tab:precharge-relay}%
 \end{table}%
-\todo[inline]{civka 24 V?}
 
 \subsubsection{Position in car}
 %Provide CAD-renderings showing all relevant parts. Mark the parts in the rendering, if necessary.
