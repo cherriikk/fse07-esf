@@ -1,16 +1,16 @@
 \subsubsection{Description / circuitry}
 % Describe the tractive system active light and additional circuitry. Additionally, fill out the table:
 
-The TSAL is a distributed system consisting of the following components:
+The \gls{tsal} is a distributed system consisting of the following components:
 \begin{itemize}
 \item Tractive System Active Light mounted on main hoop
-\item TSAL logic \& power circuitry (located in ECU-B; LV only)
-\item DC-DC converter to power the TSAL in case of charged TS but unpowered GLVS (located in the ACP; has a HV side and a LV side)
+\item \gls{tsal} logic \& power circuitry (located in \gls{ecub}; LV only)
+\item DC-DC converter to power the \gls{tsal} in case of charged TS but unpowered \gls{glvs} (located in the \gls{acp}; has a \gls{hv} side and a LV side)
 \end{itemize}
 
 \paragraph{Tractive System Active Light}
 
-The TSAL proper is connected with 2 wires. When voltage of 24 V is applied, the TSAL lights up either in green or red color depending on the polarity.
+The \gls{tsal} proper is connected with 2 wires. When voltage of 24 V is applied, the \gls{tsal} lights up either in green or red color depending on the polarity.
 
 \begin{figure}[H]
 	\centering
@@ -45,14 +45,14 @@ The TSAL proper is connected with 2 wires. When voltage of 24 V is applied, the 
 
 \paragraph{TSAL logic \& power circuitry}
 
-To power the TSAL, a voltage of approximately 24 V is needed. This can be supplied either by the GLVS, or by a charged Tractive System by means of an isolated DC-DC converter.
+To power the \gls{tsal}, a voltage of approximately 24 V is needed. This can be supplied either by the \gls{glvs}, or by a charged Tractive System by means of an isolated DC-DC converter.
 
 A 5V rail is also generated to control all TSAL-related logic. (\ref{fig:TSAL-ECUB-5V})
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./img/TSAL-ECUB-5V.png}
-	\caption[Powering of the TSAL]{Powering of the TSAL. GLVS power is denoted \texttt{VCC}.}
+	\caption[Powering of the TSAL]{Powering of the \gls{tsal}. \gls{glvs} power is denoted \texttt{VCC}.}
 	\label{fig:TSAL-ECUB-5V}
 \end{figure}
 
@@ -70,7 +70,7 @@ A 555 IC is used to generate the required frequency which is used to modulate th
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./img/TSAL-555.png}
-	\caption[TSAL frequency generator]{TSAL frequency generator. When a green light is desired (GLVS active, TS not charged), oscillation is suppressed and the output \texttt{TSAL-PWM-IN} is a constant logical '1'.}
+	\caption[TSAL frequency generator]{\gls{tsal} frequency generator. When a green light is desired (\gls{glvs} active, \gls{ts} not charged), oscillation is suppressed and the output \texttt{TSAL-PWM-IN} is a constant logical '1'.}
 	\label{fig:TSAL-555}
 \end{figure}
 
@@ -79,11 +79,11 @@ Finally, a H-bridge is used to drive the proper power outputs with switchable po
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./img/TSAL-H-bridge.png}
-	\caption{TSAL power H-bridge}
+	\caption{\gls{tsal} power H-bridge}
 	\label{fig:TSAL-H-bridge}
 \end{figure}
 
-\ref{fig:TSAL-logic-table} summarizes operation of the TSAL.
+\ref{fig:TSAL-logic-table} summarizes operation of the \gls{tsal}.
 
 \begin{table}[H]
 	\centering
@@ -106,7 +106,7 @@ Finally, a H-bridge is used to drive the proper power outputs with switchable po
 
 \paragraph{DC-DC converter}
 
-To ensure that the TSAL continues to operate even after disabling GLVS, the following circuit is used:
+To ensure that the \gls{tsal} continues to operate even after disabling \gls{glvs}, the following circuit is used:
 
 \begin{figure}[H]
 	\centering
@@ -116,10 +116,10 @@ To ensure that the TSAL continues to operate even after disabling GLVS, the foll
 \end{figure}
 
 \paragraph{Explanation of TSAL circuit}
-TSAL HV part schematic \ref{fig:TSAL-HV} is directly connected to the output HV pins of ACP. The circuit is designed with STMicroelectronics chip VIPer53 (DATASHEET?). The circuit functions as a fly-back DC/DC converter, directly supplying the TSAL. The converter starts operating at about 40 V, but the output to TSAL is switched through $Q_2$ only when the HV voltage is more than 60 V. That is ensured using D4, which together with $Q_1$ works as a precise 60 V comparator with a little introduced hysteresis.
+\Gls{tsal} \gls{hv} part schematic \ref{fig:TSAL-HV} is directly connected to the output \gls{hv} pins of \gls{acp}. The circuit is designed with STMicroelectronics chip VIPer53 (\ref{app:viper_datasheet}). The circuit functions as a fly-back DC/DC converter, directly supplying the \gls{tsal}. The converter starts operating at about 40 V, but the output to \gls{tsal} is switched through $Q_2$ only when the HV voltage is more than 60 V. That is ensured using D4, which together with $Q_1$ works as a precise 60 V comparator with a little introduced hysteresis.
 
-The ACP indication led is powered from the primary side of the transformer, from the VIPER53's own supply voltage.
-In case of any of the AIRs closed, or the pre-charge relay contact being detected closed (please see secion 2.9.1  for details), the TSAL is supplied from the GLVS 24 V system, through Qxxxx. The "relay closed" signals from both AIRs and the pre-charge relay are OR-ed together using hardwired logic (i.e. 74LVC2G32).
+The \gls{acp} indication led is powered from the primary side of the transformer, from the VIPER53's own supply voltage.
+In case of any of the \glspl{air} closed, or the pre-charge relay contact being detected closed (please see \ref{subsec:precharge}  for details), the \gls{tsal} is supplied from the \gls{glvs} 24 V system, through Q$_2$. The "relay closed" signals from both \glspl{air} and the pre-charge relay are OR-ed together using hardwired logic (i.e. 74LVC2G32).
 
 \begin{figure}[H]
 	\centering
@@ -127,8 +127,6 @@ In case of any of the AIRs closed, or the pre-charge relay contact being detecte
 	\caption{TSAL enable scheme}
 	\label{fig:TSAL-enable}
 \end{figure}
-
-Function of circuit on \ref{fig:TSAL-enable} is that the TSAL is enabled even when the 60VDC limit is not reached, but the AIR is closed nonetheless. In such state, the TSAL is enabled by signal AIR\_EN. The circuit is powered by MAIN24 power (which is equal to the 24V enabled by GLVMS) or by the TSAL\_ACP-EN power signal from the Viper-TSAL schematic (\ref{fig:TSAL-ACPindicator}) below.
 
 \begin{figure}[H]
 	\centering
@@ -141,22 +139,22 @@ Function of circuit on \ref{fig:TSAL-enable} is that the TSAL is enabled even wh
 \subsubsection{Wiring/cables/connectors}
 \iffalse Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.  Include gauge, voltage and temperature rating of wiring used and any fuses or other overcurrent protection used.\fi
 
-LEDs are supplied from ECUB (by Harness\_D by connector D1) by 2-wire low voltage cable (\ref{fig:TSAL-wiring}).
+LEDs are supplied from \gls{ecub} (by Harness\_D by connector D1) by 2-wire low voltage cable (\ref{fig:TSAL-wiring}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth,]{./img/tsal-wiring.jpg}
-	\caption{Wiring TSAL from ECUB}
+	\caption{Wiring \gls{tsal} from \gls{ecub}}
 	\label{fig:TSAL-wiring}
 \end{figure}
 
 \subsubsection{Position in car}
 %Provide CAD-renderings showing the relevant parts. Mark the parts in the rendering, if necessary.
-TSAL is placed under the main roll hoop, see \ref{fig:TSAL-position}
+\gls{tsal} is placed under the main roll hoop, see \ref{fig:TSAL-position}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth,trim={3cm 11cm 2cm 1cm},clip]{./img/tsal-position.pdf}
-	\caption{TSAL position.}
+	\caption{\Gls{tsal} position.}
 	\label{fig:TSAL-position}
 \end{figure}
