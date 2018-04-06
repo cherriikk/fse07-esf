@@ -24,11 +24,11 @@ When \glspl{air} are closed, \gls{ecub} sends message to \gls{mc} to open discha
 
 \ref{fig:discharge-circuit} shows a simplified discharge circuitry. Discharge resistors are placed in \glspl{mc} right next to the only capacity that provides a storage for potentially dangerous charge/energy in \gls{ts}. If \gls{hv} cable is disconnected on either side, the \gls{sdc} opens due to the interlocks and both \glspl{air} open. Because there is no output capacitance in \gls{acp} there is no way the power could be on \gls{acp} output \gls{hv} connector.
 
-Capacity sum of all capacitors in \glspl{mc} is 2360 uF. For discharging this capacity in less than 5 seconds to voltage (below 60V), maximum resistor value is calculated by solving R from \ref{eq:discharge_voltage}.
+Capacity sum of all capacitors in \glspl{mc} is 2360 uF. For discharging this capacity in less than 5 seconds to voltage (below 60V), maximum resistor value is calculated by solving R from \ref{eq:discharge_voltage_eq}.
 
 \begin{equation}
 	V_{c}=V_{s}*e^{(\frac{-t}{R*C})}
-	\label{eq:discharge_voltage}
+	\label{eq:discharge_voltage_eq}
 \end{equation}
 
 \paragraph{Values}
@@ -39,7 +39,7 @@ Capacity sum of all capacitors in \glspl{mc} is 2360 uF. For discharging this ca
 	\item $C = 2360\mu$F (total capacity in TS)
 \end{itemize}
 
-Maximum resistance from \ref{eq:discharge_voltage}, $R = 1112\Omega$ is for discharging all capacitors in \gls{ts}. In our case, capacity is split between two \glspl{mc}. Two parallel resistor combinations of three $1k\Omega$ resistors in series (3s2p) in each \gls{mc} is used (3s4p in total). $1k\Omega$ resistors are PWR221T-30-1001F. Total value of Discharge resistor bank is $R = 750\Omega$, which is less than maximal calculated $R = 1112\Omega$. The 60V threshold with such configuration is reached in $3.37s$. \ref{fig:discharge_voltage_time} shows TS voltage in time during discharging.
+Maximum resistance from equation \ref{eq:discharge_voltage_eq}, $R = 1112\Omega$ is for discharging all capacitors in \gls{ts}. In our case, capacity is split between two \glspl{mc}. Two parallel resistor combinations of three $1k\Omega$ resistors in series (3s2p) in each \gls{mc} is used (3s4p in total). $1k\Omega$ resistors are PWR221T-30-1001F. Total value of Discharge resistor bank is $R = 750\Omega$, which is less than maximal calculated $R = 1112\Omega$. The 60V threshold with such configuration is reached in $3.37s$. \ref{fig:discharge_voltage_time} shows TS voltage in time during discharging.
 
 \begin{figure}
 	\begin{tikzpicture}
@@ -102,13 +102,9 @@ Maximum resistance from \ref{eq:discharge_voltage}, $R = 1112\Omega$ is for disc
 The formula describing \ref{fig:discharge_current_time} is:
 
 \begin{equation}
-	I_{d}=\frac{V_{c}}{R_{d}}	
+	I_{d}=\frac{V_{C}-V_{s}}{R_{d}}	
 \end{equation}
 
-\begin{equation}
-	I_{d}=\frac{V_{s}*e^{(\frac{-t}{R*C})}}{R_{d}}
-	\label{eq:discharge_current}
-\end{equation}
 
 Where $V_{s}$ is voltage on \gls{ts}, $R_{d}$ is total value of discharge resistor bank and $I_{d}$ is discharge current. Current through individual 3s resistor combinations can be calculated as $I_{d}$/$4$.
 
