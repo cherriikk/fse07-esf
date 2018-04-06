@@ -6,7 +6,7 @@ Electrical systems of the car are divided into small blocks. The concept is to h
 This device measures brake pedal and acceleration pedal positions, implements safety algorithms regarding to rules about torque encoder check and outputs these values to the CAN bus as driver’s foot requests. It also monitors Shutdown Circuit – point BOTS. 
 
 \item	\Glsdesc{vdcu}
-This device reads driver’s foot requests, actual every wheel speed provided by ECUM and implements Traction Control Algorithms. The result is sent over private \gls{can} bus to the \gls{mcf} and \gls{mcr}. 
+This device reads driver’s foot requests, actual every wheel speed provided by MC and implements Traction Control Algorithms. The result is sent over private \gls{can} bus to the \gls{mcf} and \gls{mcr}. 
 
 \item	\Glsdesc{mc}
 2 units in total – \gls{mcf} and \gls{mcr}. These units drives 4 motors in total, so every unit drives 2 motors. It provides speed of every wheel by actual RPM, temperatures and so on. Field Oriented Control is implemented with Resolvers as a position feedbacks.
