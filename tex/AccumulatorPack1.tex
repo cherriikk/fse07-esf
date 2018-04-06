@@ -132,7 +132,8 @@ Top and bottom view of one stack
 \subsubsection{Accumulator Management System}\label{subsec:ams}
 %Describe the \gls{ams} used including at least the following:
 
-\todo[inline]{Sem by to jeste chtelo neco napsat o pouzitem svabu.}
+In our \gls{ams} system, we use the bq76PL455A-Q1 device that is an integrated 16-cell battery monitoring and protection device, designed for high-reliability automotive applications. The communication is high-speed, differential, capacitor-isolated and allows to communicate with a host via a single high-speed Universal Asynchronous Receiver/Transmitter (UART) interface.
+The bq76PL455A-Q1 monitors and detects several different fault conditions, including: overvoltage, undervoltage, overtemperature, and communication faults. Six GPIO ports as well as eight analog AUX \gls{adc} inputs (that are externally multiplexed to measure temperature of almost half of the cells) are included for additional monitoring. A secondary thermal shutdown is included for further protection. \ref{app:bms_datasheet}
 
 \begin{table}[H]
 	\centering
@@ -165,7 +166,7 @@ Each sense connection is protected with fuse. There are two types of fuses used:
 
 Cell highest allowed voltage is 4.25 V so \gls{ams} reacts when the voltage is above 4.2 V. Cell lowest allowed voltage is 2 V so \gls{ams} reacts when the voltage is below 2.2 V. Reaching any of limits causes \glspl{air} disconnection.
 
-Highest allowed temperature (by datasheet) for discharging is 80 $^\circ$C and for charging 60 $^\circ$C. Due to FSE rules our battery pack is limited to 60 $^\circ$C. \gls{ams} reacts when the temperature is higher than 60 $^\circ$C reaching limit causes \glspl{air} disconnection.
+Highest allowed temperature (by datasheet) for discharging is 80 $^\circ$C and for charging 60 $^\circ$C. Due to FSE rules our battery pack is limited to 60 $^\circ$C. \gls{ams} reacts when the temperature is higher than 60 $^\circ$C and causes \glspl{air} disconnection.
 
 \paragraph{Recommended Operating Conditions}
 TA = 25 $^\circ$C and TOP = 57.6 V; Min/Max values stated where TA = -40 $^\circ$C to 105 $^\circ$C and TOP = 12 V to 79.2 V (unless otherwise noted)
@@ -196,9 +197,9 @@ We use LED indicator placed on Accumulator pack chassis. The LED is powered by a
 %	\item Use tables like the one shown below:
 
 
-We use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor})as Tractive System wires. Total gauge is 16mm2. Total ampacity is 165 A for main DC power buses. All other LV wiring in Accumulator is also done using OLFLEX HEAT 180 SiF wires with gauges ranging from 0,25 mm$^2$ to 1 mm$^2$. Basic data are given in tables below. We use 2 pin Deutsch ASHD connectors as HV Tractive system connectors as the Accumulator Pack outlet, Service box inlet and Motor controllers inlet. For Motor controllers outlets to motors we use 4 pin Deutsch ASHD connectors. Pins are rated each to 200 A of continuous current. According to our data from last season, average continuous DC current is expected to be to 80 A. The maximum DC current is to be 250 A for max. 5 seconds.
+We use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor})as Tractive System wires. Total gauge is 16mm2. Total ampacity is 165 A for main DC power buses. All other LV wiring in Accumulator is also done using OLFLEX HEAT 180 SiF wires with gauges ranging from 0,25 mm$^2$ to 1 mm$^2$. Basic data are given in tables below. We use 2 pin Deutsch ASHD connectors as \gls{ts} connectors as the Accumulator Pack outlet, Service box inlet and Motor controllers inlet. For Motor controllers outlets to motors we use 4 pin Deutsch ASHD connectors. Pins are rated each to 200 A of continuous current. According to our data from last season, average continuous DC current is expected to be around 80 A. The maximum DC current should be 250 A for 5 seconds at maximum.
 
-To ensure that connectors will withstand in-rush currents, we did following calculation. The most stressed connector is Accumulator pack outlet. The maximum power Motor Controllers will take is 80kW, which is 250A in maximum (depends on state of charge of accumulators). Based on heating a thermal capacity of mass of pins and nearest wiring, by power losses on contact resistance and temperature difference 50 $^\circ$C, these connectors will definitely withstand this current for more than 10 seconds, which is far ahead of motors overload capacity (cca. 4-5 seconds). Therefore, these connectors will never get to critical overload condition.
+To ensure that connectors will withstand in-rush currents, we did following calculation. The most stressed connector is Accumulator pack outlet. The maximum power, Motor Controllers will take, is 80kW, which is 250A in maximum (depends on state of charge of accumulators). Based on heating, thermal capacity of mass of pins and nearest wiring, by power losses on contact resistance and temperature difference 50 $^\circ$C, these connectors will definitely withstand this current for more than 10 seconds, which is far ahead of motors overload capacity (cca. 4-5 seconds). Therefore, these connectors will never reach critical overload condition.
 
 
 % Table generated by Excel2LaTeX from sheet 'List1'
