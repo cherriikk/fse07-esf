@@ -105,14 +105,14 @@ Second one is measuring all states and voltages by \gls{mcu} on \gls{ecua} which
 Third (time-out) protection is used when everything seems to be OK, but the charging is too slow – caused by too high pre-charge resistance (any of pre-charge resistors fails), or some leakage of charge in capacitor or any other possible error occurs. If voltage difference is not equaled in time less them 2seconds, the \gls{ecua} stops pre-charge and waits 5 seconds before trying again. (In order to not overpower resistors.) If number of attempts to pre-charge is in this state higher then 8, something is clearly wrong and \gls{ecua} opens \gls{sdc} and indicates error. Sending message about error and sets car into not-ready state.
 
 \subsubsection{Wiring, cables, current calculations, connectors}
-Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
+%Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
 
 %\item Give a plot “Percentage of Maximum Voltage” vs. time
 %\item Give a plot Current vs. time 
 %\item For each plot, give the basic formula describing the plots
+There is no connectors nor cables it is realised on PCB in ECUA. 
 
-
-Additionally, fill out the tables:
+%Additionally, fill out the tables:
 
 \begin{table}[H]
 	\centering
