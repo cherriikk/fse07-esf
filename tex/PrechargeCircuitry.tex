@@ -84,20 +84,20 @@ All three TS relays RE$_1$ to RE$_3$ coils are powered directly from the \gls{sd
 
 After the \gls{sdc} circuit is complete and closed (voltage present at \gls{sdc} END), the pre-charge sequence is begun by closing AIR I (RE$_1$). Then a pre-charge relay RE$_3$ is closed. Voltage both on the \gls{acp} and output side is monitored using the measurement block, through the $HVR_1$ and HVR$_2$ resistor dividers. After the voltage difference is low enough (determined by \gls{ecua} software), AIR II (RE$_2$) is closed, RE$_3$ can be released.
 
-Safety of the AIR switching and pre-charging is done by the \gls{ecua} firmware, that evaluates all possible circuit states. Voltages are measured on the \gls{acp} and \gls{acp} output sides using the measurement block, AIR physical states are observed using the auxiliary contacts and the pre-charge relay physical contact state is observed using the principle in the \ref{fig:precharge_sch}, via the diode D$_1$. The PCH\_SNS signal is pulled low whenever the pre-charge relay RE$_3$ contact is closed.
+Safety of the \gls{air} switching and pre-charging is done by the \gls{ecua} firmware, that evaluates all possible circuit states. Voltages are measured on the \gls{acp} and \gls{acp} output sides using the measurement block, AIR physical states are observed using the auxiliary contacts and the pre-charge relay physical contact state is observed using the principle in the \ref{fig:precharge_sch}, via the diode D$_1$. The PCH\_SNS signal is pulled low whenever the pre-charge relay RE$_3$ contact is closed.
 
 Several safety precautions are implemented, on top of the Rules. First of such implemented protections is HW non-programmable voltage difference sensing across the pre-charge relay or AIR II respectively. This is done using the two voltage measurement dividers HVR$_1$ and HVR$_2$. There is a differential amplifier and comparator, that prevents closing both AIR relays in case of high voltage difference across the AIR II. 
 
 Diodes D$_2$ and D$_3$ serve to block current flow to the output in case of AIR I is open. This specific topology was chosen to be able to measure the difference voltage across the AIR II utilizing only analog non-programmable circuitry.
 
-Second precaution is a \gls{hv} circuit limiting the maximum pre-charge relay closed time, and assuring a minimum off time for the pre-charge resistor to cool off. This circuit is a non-programmable one, realized using a discrete logic. In case of a pre-charge time-out or failure (voltages not equalized), AIR I (the Tyco Kilovac EV200 \ref{app:air_datasheet}) is disconnected always first (instead of the pre-charge relay RE$_3$), because the \gls{air} does have the required DC breaking capacity.
+Second precaution is a \gls{hv} circuit limiting the maximum pre-charge relay closed time, and assuring a minimum off time for the pre-charge resistor to cool off. This circuit is a non-programmable one, realized using a discrete logic. \phantomsection\label{precharge_arc_breaking}\textbf{In case of a pre-charge time-out or failure (voltages not equalized), AIR I (the Tyco Kilovac EV200 \ref{app:air_datasheet}) is disconnected always first (instead of the pre-charge relay RE$_3$), because the \gls{air} does have the required DC breaking capacity.}
 
 Additional precision \gls{acp} voltage measurement is taken using the HVR$_3$ sense divider, as this measurement is not influenced by the forward voltage drops of diodes D$_2$ to D$_5$. This measurement together with the measured \gls{acp} current serves to calculate power drawn from the \gls{acp}. This measurement is then presented on the \gls{can} bus for other car \glspl{ecu}, for example to estimate the SOC, instantenous power, etc.  
 
 The TS voltage sensing dividers HVR$_1$, HVR$_2$ and HVR$_3$ are realized with a high voltage 3500 V rated resistors from Vishay, HVR$_{37}$ series (\ref{app:hvr37_datasheet}). All dividers use 10 M$\Omega$ resistors as the top side of the divider. All diodes D$_1$ to D$_5$ are SM4007 (DATASHEET) or equivalent type, 1000 V rated. The blocking voltage is therefore sufficient to safely withstand the maximum \gls{acp} voltage of 400 V.
 
 \paragraph{Pre-charge safety on \gls{ecua}}
-Except from what rules require we implemented several safety precautions. In case, that \gls{sdc} error doesn’t occur and driver pushed TS ON button following safety precautions are taken to prevent switching AIR in case of problem that has not yet been detected.
+Except from what rules require we implemented several safety precautions. In case, that \gls{sdc} error does not occur and driver pushed TS ON button following safety precautions are taken to prevent switching AIR in case of problem that has not yet been detected.
 
 First one is completely non-programmable protection against switching voltage difference by \gls{air}. It uses voltage measurement and then comparators and logic to disable \gls{mcu} decision in case of SW error.
 Second one is measuring all states and voltages by \gls{mcu} on \gls{ecua} which can determinate error before non-programmable protection would have to act.
@@ -124,11 +124,11 @@ There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}.
 
 		Resistance: & 250 $\Omega$ in 2s configuration (500 $\Omega$ in total) \\[\TableSize]
 		\hline
-		Continuous power rating: & 25W per resistor \\[\TableSize]
+		Continuous power rating: & 25 W per resistor (50 W  in total)\\[\TableSize]
 		\hline
-		Overload power rating (1 sec): & not specified \\[\TableSize]
+		Overload power rating (1 sec): & 250 W per resistor (500 W in total) \\[\TableSize]
 		\hline
-		Overload power rating (5 sec): & not specified \\[\TableSize]
+		Overload power rating (5 sec): & 125 W per resistor (250 W in total) \\[\TableSize]
 		\hline
 		Overload power rating (15 sec): & not specified \\[\TableSize]
 		\hline
@@ -139,6 +139,11 @@ There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}.
 	\end{tabularx}%
 	\label{tab:precharge-general}%
 \end{table}%
+
+\ref{app:precharge_resistors}
+
+\ref{app:precharge_resistors_overload}
+
 
 \begin{table}[H]
 	\centering
@@ -160,6 +165,10 @@ There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}.
 	\end{tabularx}%
 	\label{tab:precharge-relay}%
 \end{table}%
+
+\ref{app:precharge_relay_datasheet}
+\\\\
+Due to relay insufficient DC breaking current rating, we use different approach to break flowing current described in \ref{precharge_arc_breaking}.
 
 \subsubsection{Position in car}
 %Provide CAD-renderings showing all relevant parts. Mark the parts in the rendering, if necessary.

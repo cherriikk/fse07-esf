@@ -25,9 +25,9 @@ The \gls{tsal} proper is connected with 2 wires. When voltage of 24 V is applied
 	\caption{Parameters of the TSAL}
 	\begin{tabularx}{\textwidth}{|X|X|}
 		\hline
-		Supply voltage: & +/- 24VDC \\[\TableSize]
+		Supply voltage: & +/- 24 V$_{DC}$ \\[\TableSize]
 		\hline
-		Max. operational current: & 300mA \\[\TableSize]
+		Max. operational current: & 300 mA \\[\TableSize]
 		\hline
 		Lamp type & Bi-color LED \\[\TableSize]
 		\hline
@@ -35,9 +35,9 @@ The \gls{tsal} proper is connected with 2 wires. When voltage of 24 V is applied
 		\hline
 		Brightness & 124 Lumen (red), 29 Lumen (green) \\[\TableSize]
 		\hline
-		Frequency: & 3.96Hz \\[\TableSize]
+		Frequency: & 3.96 Hz \\[\TableSize]
 		\hline
-		Size (length x height x width): & 128mm x 20mm x 32mm \\[\TableSize]
+		Size (length x height x width): & 128 mm x 20 mm x 32 mm \\[\TableSize]
 		\hline
 	\end{tabularx}%
 	\label{tab:TSAL}%
@@ -47,7 +47,7 @@ The \gls{tsal} proper is connected with 2 wires. When voltage of 24 V is applied
 
 To power the \gls{tsal}, a voltage of approximately 24 V is needed. This can be supplied either by the \gls{glvs}, or by a charged Tractive System by means of an isolated DC-DC converter.
 
-A 5V rail is also generated to control all TSAL-related logic. (\ref{fig:TSAL-ECUB-5V})
+A 5V rail is also generated to control all \gls{tsal} related logic. (\ref{fig:TSAL-ECUB-5V})
 
 \begin{figure}[H]
 	\centering
@@ -94,11 +94,11 @@ Finally, a H-bridge is used to drive the proper power outputs with switchable po
 		\hline
 		not charged & off & not powered & -- & -- \\
 		\hline
-		not charged & on & 24V GLVS & negative (green) & Always-on \\
+		not charged & on & 24 V GLVS & negative (green) & Always-on \\
 		\hline
-		precharging & on & 24V GLVS & positive (red) & Square wave, 3.96Hz, 50\% duty cycle \\
+		precharging & on & 24 V GLVS & positive (red) & Square wave, 3.96 Hz, 50\% duty cycle \\
 		\hline
-		charged & don't care & TS & positive (red) & Square wave, 3.96Hz, 50\% duty cycle \\
+		charged & don't care & TS & positive (red) & Square wave, 3.96 Hz, 50\% duty cycle \\
 		\hline
 	\end{tabularx}%
 	\label{fig:TSAL-logic-table}

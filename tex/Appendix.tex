@@ -56,62 +56,141 @@ Full datasheet at: \url{http://power.murata.com/data/power/ncl/kdc_nme.pdf}
 %\subsection{GLVS Accmulator}
 % dhs k IC na mereni lvbat
 
-\subsection{Discharge resistors datasheet}\label{app:discharge_resistor_sheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/discharge_resistor.pdf}
 
-\subsection{Torque encoder datasheet}\label{app:torque_encoder_datasheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/torque_encoder_datasheet.pdf}
+ 
+\newcommand{\insertOnce}[1]{
+	\ifundef{\once}{#1 \global\def\once{}}{}
+}
 
-\subsection{Current transducer datasheet}\label{app:bspd_lem_datasheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/bspd_lem_datasheet.pdf}
+\newcommand{\insertOnceReset}{
+	\global\undef{\once}	
+}
 
-\subsection{ACS712 datasheet}\label{app:acs712_datasheet}
-	\includepdf[pages=2,pagecommand={},width=\textwidth]{./dsh/ACS712-datasheet.pdf}
-
-\subsection{Relay datasheet}\label{app:precharge_relay_datasheet}
-	\includepdf[pages=2,pagecommand={},width=\textwidth]{./dsh/finder-relays-series-40_datasheet.pdf}
+%pg, name, label, file, url
+\newcommand{\addDsh}[5]{
+	\includepdf[pages={#1},pagecommand={\insertOnce{\subsection{#2 datasheet}\label{app:#3}\href{#5}{Full datasheet link.}}},width=\textwidth]{#4}	
+	\insertOnceReset
+}
+%pohoda, 2 hodiny straveny s tvorbou tohohle uza commandu... (Bacha!)
 	
-\subsection{DCDC GLVS}\label{app:glvs_dcdc}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/dcdc_datasheet.pdf}
 
-\subsection{Pre-charge resistor}\label{app:precharge_resistors}
-	\includepdf[pages=1,pagecommand={},width=\textwidth]{./dsh/precharge_resistor_datasheet.pdf}
+\addDsh{1-2} 
+	{Discharge resistors}
+	{discharge_resistor_sheet}
+	{./dsh/discharge_resistor.pdf}
+	{https://www.bourns.com/docs/Product-Datasheets/pwr221t-30.pdf}
 
-\subsection{AIR datasheet}\label{app:air_datasheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/AIR_datasheet.pdf}
-	
-\subsection{HVR37 datasheet}\label{app:hvr37_datasheet}
-	\includepdf[pages=1,pagecommand={},width=\textwidth]{./dsh/hvr37_datasheet.pdf}
-	
-\subsection{Precharge fuse datasheet}\label{app:precharge_fuse_datasheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/precharge_fuse_datasheet.pdf}
-
-\subsection{DC/DC fuse datasheet}\label{app:dcdc_fuse_datasheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/precharge_fuse_datasheet.pdf}
-
-\subsection{Aux DCDC datasheet}\label{app:aux_dcdc_datasheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/ECUA_aux_dcdc_datasheet.pdf}
-
-\subsection{Silabs I2C isolator datasheet}\label{app:ecua_isloator_datasheet}
-	\includepdf[pages=1,pagecommand={},width=\textwidth]{./dsh/silabs_isolator_datasheet.pdf}
-	
-\subsection{Charger fuse datasheet}\label{app:charger_fuse_datasheet}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/charger_fuse_datasheet.pdf}
-	
-\subsection{BMS IC datasheet}\label{app:bms_datasheet}
-	\includepdf[pages=1,pagecommand={},width=\textwidth]{./dsh/bms_datasheet.pdf}
-
-\subsection{Viper53 datasheet}\label{app:viper_datasheet}
-	\includepdf[pages=1,pagecommand={},width=\textwidth]{./dsh/viper53_datashet.pdf}
-
-\subsection{Discharge relay datasheet}\label{app:discharge_relay_datasheet}
-\includepdf[pages=1,pagecommand={},width=\textwidth]{./dsh/relay_te_pe.pdf}
-
-\subsection{ACP cable datasheet}\label{app:PowerConductor}
-	\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/power-conductor-Olflex-Heat-datasheet.pdf}
+\addDsh{1}
+	{Discharge relay}
+	{discharge_relay_datasheet}
+	{./dsh/relay_te_pe.pdf}
+	{http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc\&DocId=Data+Sheet\%7FPE\%7F0615\%7Fpdf\%7FEnglish\%7FENG_DS_PE_0615.pdf}
 
 
+\addDsh{1-}
+	{Torque encoder}
+	{torque_encoder_datasheet}
+	{./dsh/torque_encoder_datasheet.pdf}
+	{http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc\&DocId=Data+Sheet\%7FMLP\%7FA\%7Fpdf\%7FEnglish\%7FENG_DS_MLP_A.pdf}
 
+\addDsh{1-2}
+	{Current transducer}
+	{bspd_lem_datasheet}
+	{./dsh/bspd_lem_datasheet.pdf}
+	{https://www.lem.com/docs/products/htfs_200_800-p_sp2.pdf}
 
-\label{app:XT60connector}
-\includepdf[pages=-,pagecommand={},width=\textwidth]{./dsh/XT60L-SPEC.pdf}
+\addDsh{2}
+	{ACS712}
+	{acs712_datasheet}
+	{./dsh/ACS712-datasheet.pdf}
+	{https://www.allegromicro.com/~/media/files/datasheets/acs712-datasheet.ashx}
+
+\addDsh{1}
+	{Precharge fuse datasheet}
+	{precharge_fuse_datasheet}
+	{./dsh/precharge_fuse_datasheet.pdf}
+	{https://www.schurter.com/en/datasheet/typ_SHF_6.3x32.pdf}
+
+\addDsh{2}
+	{Precharge relay}
+	{precharge_relay_datasheet}
+	{./dsh/finder-relays-series-40_datasheet.pdf}
+	{https://www.finder-relais.net/en/finder-relays-series-40.pdf}
+
+\addDsh{1}
+	{Precharge resistor}
+	{precharge_resistors}
+	{./dsh/precharge_resistor_datasheet.pdf}
+	{http://www.arcolresistors.com/wp-content/uploads/2014/03/HS-Datasheet.pdf}
+
+\addDsh{5}
+	{Precharge resistor overload capability}
+	{precharge_resistors_overload}
+	{./dsh/precharge_resistor_overload.pdf}
+	{http://docs-europe.electrocomponents.com/webdocs/00b9/0900766b800b9f2b.pdf}
+
+\addDsh{1-}
+	{DC/DC GLVS}
+	{glvs_dcdc}
+	{./dsh/dcdc_datasheet.pdf}
+	{http://www.cincon.com/upload/media/data\%20sheets/Data\%20Sheet\%20(DC)/FB\%20CASE/SPEC-CFB600-300S-V11.pdf}
+
+\addDsh{1}
+	{DC/DC fuse}
+	{dcdc_fuse_datasheet}
+	{./dsh/dcdc_fuse_datasheet.pdf}
+	{https://www.schurter.com/en/datasheet/typ_SHT_6.3x32.pdf}
+
+\addDsh{1-}
+	{AIR}
+	{air_datasheet}
+	{./dsh/AIR_datasheet.pdf}
+	{http://www.rec-bms.com/datasheet/Technical_datasheet_Kilovac.pdf}
+
+\addDsh{1}
+	{HVR37}
+	{hvr37_datasheet}
+	{./dsh/hvr37_datasheet.pdf}
+	{https://www.vishay.com/docs/30260/hvr2537.pdf}
+
+\addDsh{1-}
+	{Aux DCDC}
+	{aux_dcdc_datasheet}
+	{./dsh/ECUA_aux_dcdc_datasheet.pdf}
+	{http://www.mornsun-power.com/uploads/pdf/F_S-1WR2.pdf}
+
+\addDsh{1}
+	{Silabs I2C isolator}
+	{ecua_isloator_datasheet}
+	{./dsh/silabs_isolator_datasheet.pdf}
+	{https://www.silabs.com/documents/public/data-sheets/Si860x.pdf}
+
+\addDsh{1-}
+	{Charger fuse}
+	{charger_fuse_datasheet}
+	{./dsh/charger_fuse_datasheet.pdf}
+	{http://www.oez.cz/uploads/oez/files/ks/1323-Z01-07_CZ_SK.pdf}
+
+\addDsh{1}
+	{BMS IC}
+	{bms_datasheet}
+	{./dsh/bms_datasheet.pdf}
+	{http://www.ti.com/lit/ds/symlink/bq76pl455a-q1.pdf}
+
+\addDsh{1}
+	{Viper53}
+	{viper_datasheet}
+	{./dsh/viper53_datashet.pdf}
+	{http://www.st.com/resource/en/datasheet/viper53-e.pdf}
+
+\addDsh{1}
+	{ACP cable}
+	{PowerConductor}
+	{./dsh/power-conductor-Olflex-Heat-datasheet.pdf}
+	{https://lappczech.lappgroup.com/fileadmin/documents/technische_doku/datenblaetter/oelflex/DB0047000EN.pdf}
+
+\addDsh{1}
+	{XT-60 connector}
+	{XT-60 conector}
+	{./dsh/XT60L-SPEC.pdf}
+	{https://static.chipdip.ru/lib/509/DOC001509853.pdf}
