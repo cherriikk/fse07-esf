@@ -6,16 +6,11 @@
 \usepackage{hyperref} 
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{tabularx}% sized tables
+\usepackage{tabu}% sized tables
 \usepackage{nameref}% section ref names
-\usepackage{bigstrut}% tables
-
 \usepackage{todonotes}% todos
-
 \usepackage{pgfplots}%plots
-
 \usepackage{pdfpages}%including whole pdf pages (datasheets,...)
-
 \usepackage[all]{hypcap} %fix caption links to point to fig tops
 
 \pgfplotsset{compat=newest} % Allows to place the legend below plot
@@ -60,7 +55,7 @@
 % Section numbering - thhis is faked
 
 % Size of table
-	\newcommand{\TableSize}{.5cm}
+	\tabulinesep=3mm
 
 %---author of template: Ondrej Sereda
 %---Developed only for eForce purpose

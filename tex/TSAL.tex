@@ -23,23 +23,23 @@ The \gls{tsal} proper is connected with 2 wires. When voltage of 24 V is applied
 \begin{table}[H]
 	\centering
 	\caption{Parameters of the TSAL}
-	\begin{tabularx}{\textwidth}{|X|X|}
+	\begin{tabu}{|X|X|}
 		\hline
-		Supply voltage: & +/- 24 V$_{DC}$ \\[\TableSize]
+		Supply voltage: & +/- 24 V$_{DC}$ \\
 		\hline
-		Max. operational current: & 300 mA \\[\TableSize]
+		Max. operational current: & 300 mA \\
 		\hline
-		Lamp type & Bi-color LED \\[\TableSize]
+		Lamp type & Bi-color LED \\
 		\hline
-		Power consumption: & 7.2 W \\[\TableSize]
+		Power consumption: & 7.2 W \\
 		\hline
-		Brightness & 124 Lumen (red), 29 Lumen (green) \\[\TableSize]
+		Brightness & 124 Lumen (red), 29 Lumen (green) \\
 		\hline
-		Frequency: & 3.96 Hz \\[\TableSize]
+		Frequency: & 3.96 Hz \\
 		\hline
-		Size (length x height x width): & 128 mm x 20 mm x 32 mm \\[\TableSize]
+		Size (length x height x width): & 128 mm x 20 mm x 32 mm \\
 		\hline
-	\end{tabularx}%
+	\end{tabu}%
 	\label{tab:TSAL}%
 \end{table}%
 
@@ -88,7 +88,7 @@ Finally, a H-bridge is used to drive the proper power outputs with switchable po
 \begin{table}[H]
 	\centering
 	\caption{TSAL logic table}
-	\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+	\begin{tabu}{|X|X|X|X|X|}
 		\hline
 		\textbf{Tractive System state} & \textbf{GLVS state} & \textbf{TSAL powered from} & \textbf{TSAL polarity} & \textbf{TSAL waveform} \\
 		\hline
@@ -100,7 +100,7 @@ Finally, a H-bridge is used to drive the proper power outputs with switchable po
 		\hline
 		charged & don't care & TS & positive (red) & Square wave, 3.96 Hz, 50\% duty cycle \\
 		\hline
-	\end{tabularx}%
+	\end{tabu}%
 	\label{fig:TSAL-logic-table}
 \end{table}%
 

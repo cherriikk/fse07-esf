@@ -21,18 +21,18 @@ Shutdown circuit (SDC) starts in \gls{ecup} unit, then goes through all \gls{sdc
 \begin{table}[H]
 	\caption{List of switches in the shutdown circuit}
 	\centering
-	\begin{tabularx}{\textwidth}{|X|l|}
-		\hline Part  & Function \\[\TableSize]
-		\hline Main Switch (for control and tractive-system; CSMS, TSMS) & Normally open \\[\TableSize]
-		\hline Brake over travel switch (BOTS) & Normally closed \\[\TableSize]
-		\hline Shutdown buttons (SDB) & Normally closed \\[\TableSize]
-		\hline Insulation Monitoring Device (IMD) & Normally open \\[\TableSize]
-		\hline Battery Management System (BMS) & Normally open \\[\TableSize]
-		\hline Inertia Switch & Normally closed \\[\TableSize]
-		\hline Interlocks & Closed when circuits are connected \\[\TableSize]
-		\hline Brake System Plausibility Device & Normally Open \\[\TableSize]
+	\begin{tabu}{|X|l|}
+		\hline Part  & Function \\
+		\hline Main Switch (for control and tractive-system; CSMS, TSMS) & Normally open \\
+		\hline Brake over travel switch (BOTS) & Normally closed \\
+		\hline Shutdown buttons (SDB) & Normally closed \\
+		\hline Insulation Monitoring Device (IMD) & Normally open \\
+		\hline Battery Management System (BMS) & Normally open \\
+		\hline Inertia Switch & Normally closed \\
+		\hline Interlocks & Closed when circuits are connected \\
+		\hline Brake System Plausibility Device & Normally Open \\
 		\hline
-	\end{tabularx}%
+	\end{tabu}%
 	\label{tab:SDCswitch}%
 \end{table}%
 \todo[inline]{add refs}
@@ -104,19 +104,19 @@ As shown, 4.7 k$\Omega$ resistors are used to limit current through optocoupler.
 \begin{table}[H]
 	\centering
 	\caption{Wiring – Shutdown circuit}
-	\begin{tabularx}{\textwidth}{|X|X|}
+	\begin{tabu}{|X|X|}
 		\hline
-		Total Number of \glspl{air}: & 2 \\[\TableSize]
+		Total Number of \glspl{air}: & 2 \\
 		\hline
-		Current per \gls{air}: & 70 mA \\[\TableSize]
+		Current per \gls{air}: & 70 mA \\
 		\hline
-		Additional parts consumption within the shutdown circuit: & 182.4 mA \\[\TableSize]
+		Additional parts consumption within the shutdown circuit: & 182.4 mA \\
 		\hline
-		Total current: & 322.4 mA \\[\TableSize]
+		Total current: & 322.4 mA \\
 		\hline
-		Cross sectional area of the wiring used: & 0.322 mm$^2$ (AWG22) \\[\TableSize]
+		Cross sectional area of the wiring used: & 0.322 mm$^2$ (AWG22) \\
 		\hline
-	\end{tabularx}%
+	\end{tabu}%
 	\label{tab:SDC-Wiring}%
 \end{table}%
 
