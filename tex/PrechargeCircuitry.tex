@@ -90,9 +90,9 @@ Several safety precautions are implemented, on top of the Rules. First of such i
 
 Diodes D$_2$ and D$_3$ serve to block current flow to the output in case of AIR I is open. This specific topology was chosen to be able to measure the difference voltage across the AIR II utilizing only analog non-programmable circuitry.
 
-Second precaution is a \gls{hv} circuit limiting the maximum pre-charge relay closed time, and assuring a minimum off time for the pre-charge resistor to cool off. This circuit is a non-programmable one, realized using a discrete logic. \phantomsection\label{precharge_arc_breaking}\textbf{In case of a pre-charge time-out or failure (voltages not equalized), AIR I (the Tyco Kilovac EV200 \ref{app:air_datasheet}) is disconnected always first (instead of the pre-charge relay RE$_3$), because the \gls{air} does have the required DC breaking capacity.}
+Second precaution is a \gls{hv} circuit limiting the maximum pre-charge relay closed time, and assuring a minimum off time for the pre-charge resistor to cool off. This circuit is a non-programmable one, realized using a discrete logic. \phantomsection\label{precharge_arc_breaking}
 
-Additional precision \gls{acp} voltage measurement is taken using the HVR$_3$ sense divider, as this measurement is not influenced by the forward voltage drops of diodes D$_2$ to D$_5$. This measurement together with the measured \gls{acp} current serves to calculate power drawn from the \gls{acp}. This measurement is then presented on the \gls{can} bus for other car \glspl{ecu}, for example to estimate the SOC, instantenous power, etc.  
+Additional precision \gls{acp} voltage measurement is taken using the HVR$_3$ sense divider, as this measurement is not influenced by the forward voltage drops of diodes D$_2$ to D$_5$. This measurement together with the measured \gls{acp} current serves to calculate power drawn from the \gls{acp}. This measurement is then presented on the \gls{can} bus for other car \glspl{ecu}, for example to estimate the SOC, instantaneous power, etc.  
 
 The TS voltage sensing dividers HVR$_1$, HVR$_2$ and HVR$_3$ are realized with a high voltage 3500 V rated resistors from Vishay, HVR$_{37}$ series (\ref{app:hvr37_datasheet}). All dividers use 10 M$\Omega$ resistors as the top side of the divider. All diodes D$_1$ to D$_5$ are SM4007 (DATASHEET) or equivalent type, 1000 V rated. The blocking voltage is therefore sufficient to safely withstand the maximum \gls{acp} voltage of 408 V.
 
@@ -150,13 +150,13 @@ There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}.
 	\caption{General data of the pre-charge relay}
 	\begin{tabu}{|X|X|}
 		\hline
-		Relay Type: & Finder 40.52\\
+		Relay Type: & Meder  LI24-1A85\\
 		\hline
-		Contact arrangement: &  SPDT \\
+		Contact arrangement: &  SPST-NO \\
 		\hline
-		Continuous DC current:  & 10 A\\
+		Continuous DC current:  & 2.5 A\\
 		\hline
-		Voltage rating  & 400 V\\
+		Voltage rating  & 1000 V\\
 		\hline
 		Nominal Coil Voltage: & 24 V \\
 		\hline
@@ -167,8 +167,6 @@ There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}.
 \end{table}%
 
 \ref{app:precharge_relay_datasheet}
-\\\\
-Due to relay insufficient DC breaking current rating, we use different approach to break flowing current described in \ref{precharge_arc_breaking}.
 
 \subsubsection{Position in car}
 %Provide CAD-renderings showing all relevant parts. Mark the parts in the rendering, if necessary.
