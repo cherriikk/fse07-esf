@@ -18,7 +18,7 @@ When \glspl{air} are closed, \gls{ecub} sends message to \gls{mc} to open discha
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./img/MC_discharge.pdf}
-	\caption{Discharge circuit of one \gls{mc}.}
+	\caption{Discharge circuit of one \gls{mc}. (two present in car)}
 	\label{fig:discharge-circuit}
 \end{figure}
 
@@ -179,13 +179,13 @@ Peak power on individual resistors is 18W and resistor can handle up to 30W, see
 	\caption{General data of the dis-charge relay}
 	\begin{tabu}{|X|X|}
 		\hline
-		Relay Type: & TE PE014012, one per 3s resistor bank (130 mA)\\
+		Relay Type: & G6A-274P-ST-US, one per 3s resistor bank (130 mA)\\
 		\hline
-		Contact arrangement: & 1 pole, normally closed  \\
+		Contact arrangement: & DPDT \\
 		\hline
-		Continuous DC current: & 5 A \\
+		Continuous DC current: & 2 A \\
 		\hline
-		Voltage rating  & $250 V_{ac}$/$30 V_{dc}$ $^1$ \\
+		Voltage rating  & 220 $V_{dc}$ (per contact, 2 in series) \\
 		\hline
 		Nominal Coil Voltage:  & 12 V\\
 		\hline
@@ -196,8 +196,6 @@ Peak power on individual resistors is 18W and resistor can handle up to 30W, see
 \end{table}%
 
 \ref{app:discharge_relay_datasheet}
-\\
-$^1$ Once the relay is closed, \textbf{it is opened only when \gls{ts} voltage reaches 0V and, no arcing occurs}. DC current braking capacity is not relevant.
 
 
 \subsubsection{Position in car}
