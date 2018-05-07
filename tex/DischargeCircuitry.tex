@@ -2,9 +2,7 @@
 %Describe your concept of the discharge circuitry.
 
 Discharge circuit's purpose is to discharge capacities connected to \gls{ts} voltage and ensure \gls{ts} safety in shutdown state. Such capacities are only in two \glspl{mc}.
-Discharge is activated whenever \gls{sdc} is open. (That means, \gls{acp} is disconnected from \gls{ts} by\glspl{air} ) This behavior is controlled by \gls{ecub}, which monitors latching of \gls{sdc}. It's state is distributed through CAN to other units.
-When \gls{sdc} opens, \gls{ecub} sends message to \glspl{mc}, which then closes relays and connects discharge resistors to capacitor bank charged on \gls{ts} voltage.
-When \glspl{air} are closed, \gls{ecub} sends message to \gls{mc} to open discharge circuit.
+Discharge is activated whenever \gls{sdc} is open. (That means, \gls{acp} is disconnected from \gls{ts} by\glspl{air})
 
 \subsubsection{Wiring, cables, current calculations, connectors}
 %\iffalse Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring.
