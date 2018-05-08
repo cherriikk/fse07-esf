@@ -1,23 +1,23 @@
 
-Electrical systems of the car are divided into small blocks. The concept is to have all the systems distributed by 2 \gls{can} buses (1st “CAN\_Powertrain” for systems crucial data to proper function, 2nd “CAN\_Aux” for all the other systems) and, if possible, all the signals transferred just by \gls{can} bus. Baud rate is 500kbps and \gls{can} is terminated in \gls{ecup} in front of car and in \gls{mcf} by 120$\Omega$ resistor. There are in total 5 main control units – of course all the units are fully self-made (\gls{hw} and \gls{fw}).
+Electrical systems of the car are divided into small blocks. The concept is to have all the systems distributed by 2 \gls{can} buses (1st “CAN\_Powertrain” for systems crucial data to proper function, 2nd “CAN\_Aux” for all the other systems) and, if possible, all the signals transferred just by \gls{can} bus. Baud rate is 500 kbps and \gls{can} is terminated in \gls{ecup} in front of car and in \gls{mcf} by 120 \ohm resistor. There are in total 5 main control units – of course all the units are fully self-made (\gls{hw} and \gls{fw}).
 
 \begin{itemize}
-\item	\Glsdesc{ecup}
+\item	\acrfull{ecup}
 This device measures brake pedal and acceleration pedal positions, implements safety algorithms regarding to rules about torque encoder check and outputs these values to the CAN bus as driver’s foot requests. It also monitors Shutdown Circuit – point BOTS. 
 
-\item	\Glsdesc{vdcu}
+\item	\acrfull{vdcu}
 This device reads driver’s foot requests, actual every wheel speed provided by MC and implements Traction Control Algorithms. The result is sent over private \gls{can} bus to the \gls{mcf} and \gls{mcr}. 
 
-\item	\Glsdesc{mc}
+\item	\acrfull{mc}
 2 units in total – \gls{mcf} and \gls{mcr}. These units drives 4 motors in total, so every unit drives 2 motors. It provides speed of every wheel by actual RPM, temperatures and so on. Field Oriented Control is implemented with Resolvers as a position feedbacks.
 
-\item	\Glsdesc{ecuf} (+ Dashboard)
+\item	\acrfull{ecuf} (+ Dashboard)
 Interaction with driver in cooperation with \gls{ecus} (LCD inside) by informing, warning and error LEDs, switches, rotary switches, push buttons. This is like a driver’s \gls{can} bus console. 
 
-\item	\Glsdesc{ecub}
+\item	\acrfull{ecub}
 Providing low voltage power distribution to all the control units and periphery (Li-Ion \gls{lv} battery with \gls{bms} inside). This unit implements all the safety and control algorithms regarding to Shutdown Circuit rules. The main function is to latch \gls{sdc} and evaluation of \gls{sdc} interruption point. 
 
-\item	\Glsdesc{ecua}
+\item	\acrfull{ecua}
 DC-DC converter, \gls{bms}, Pre-charge and \gls{air} controlling is implemented. This unit also communicate with Charging Station.
 
 There are other control and measuring systems not listed above, but these systems are most important for safety and control.
@@ -36,10 +36,10 @@ There are other control and measuring systems not listed above, but systems list
 	\caption{General parameters}
 	\begin{tabu}{|X|X|}
 		\hline
-		Maximum Tractive-system voltage: & 408 $V_{DC}$  \\
-		\hline Nominal Tractive-system voltage: & 345.6 $V_{DC}$\\
+		Maximum Tractive-system voltage: & 408 \vdc  \\
+		\hline Nominal Tractive-system voltage: & 345.6 \vdc\\
 		\hline
-		Control-system voltage: & 24 $V_{DC}$ \\
+		Control-system voltage: & 24 \vdc \\
 		\hline
 		Accumulator configuration: & 96s9p \\
 		\hline

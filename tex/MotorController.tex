@@ -10,7 +10,7 @@ Galvanic isolation on PCB is shown in \ref{app:mc-top} and \ref{app:mc-bot}. The
 
 Motor Controller communicate with traction control unit by private CAN bus. If any error occurs in their communication – Motor Controller stops driving both motors (error mode). It also implements discharge circuit which is activated by CAN or in case of Auxiliary supply disconnection (resistors are driven by normally-closed relay).
 
-A current limit is set to not overload used motors. For each motor controller different. Rear motor controller has set peak current limit to 202 A and temperature limit to 120 $^\circ$C. Front Motor Controller’s current limit is 70 A and temperature limit also 120 $^\circ$C.
+A current limit is set to not overload used motors. For each motor controller different. Rear motor controller has set peak current limit to 202 A and temperature limit to 120 \degC. Front Motor Controller’s current limit is 70 A and temperature limit also 120 \degC.
 
 \begin{table}[H]
 	\centering
@@ -19,13 +19,13 @@ A current limit is set to not overload used motors. For each motor controller di
 		Motor controller type: & MiRy X-Boss \\\hline
 		Maximum continuous power: & 2 x 90 kW (in:400 V, out:200 A) \\\hline
 		Maximum peak power: & 2 x 146 kW for 5s (in:400 V, out:300 A) \\\hline
-		Maximum Input voltage: & 410 V$_{DC}$ \\\hline
-		Output voltage: & 282 V$_{AC}$ \\\hline
+		Maximum Input voltage: & 410 \vdc \\\hline
+		Output voltage: & 282 \vac \\\hline
 		Maximum continuous output current: & 2 x 200 A \\\hline
 		Maximum peak current: & 2 x 300 A for 5s \\\hline
 		Control method: & CAN \\\hline
 		Cooling method: & Water \\\hline
-		Auxiliary supply voltage: & 24 V$_{DC}$ \\\hline
+		Auxiliary supply voltage: & 24 \vdc \\\hline
 	\end{tabu}%
 	\label{tab:MC:general}%
 \end{table}%
@@ -33,7 +33,7 @@ A current limit is set to not overload used motors. For each motor controller di
 \subsubsection{Wiring, cables, current calculations, connectors}
 %Describe the wiring, show schematics, provide calculations for currents and voltages and show data regarding the cables and connectors used.
 
-Motor controllers are connected with HVD box by high voltage cable. High current connector “ASHD 0 22-24320 P N” by Deutsch is used. 
+Motor controllers are connected with \gls{hvd} box by high voltage cable. High current connector “ASHD 0 22-24320 P N” by Deutsch is used. 
 
 \begin{table}[H]
 	\centering
@@ -43,7 +43,7 @@ Motor controllers are connected with HVD box by high voltage cable. High current
 		Current rating: & 165 A \\\hline
 		Fuse current rating: & 160 A \\\hline
 		Maximum operating voltage: & 500 V \\\hline
-		Temperature rating: & 180 $^\circ$C \\\hline
+		Temperature rating: & 180 \degC \\\hline
 	\end{tabu}%
 	\label{tab:MC:wire}%
 \end{table}%
@@ -62,7 +62,7 @@ The position of both motor controllers is shown in \ref{fig:MC:position}.
 \end{figure}
 \subsection{Motor Controller 2}
 %If identical parts are used, just refer to the corresponding sections, don’t copy and paste.
-Motor controller 2 is identical as Motor controller 1.
+Motor controller 2 is identical to Motor controller 1.
 
 
 

@@ -27,7 +27,7 @@ Module is connected using headers to \gls{ecub}.
 Inside \gls{ecub} box.
 
 \subsection {DC/DC-Converters for the car GLVS and ACP cooling fans}\label{subsec:glvs_dcdc}
-Two additional DC/DC converters are present in the \gls{acp}, within the \gls{ecua}. The first DC/DC supplies the car \gls{glvs} with 24 V. The second one is the power supply for \gls{acp} cooling fans. Both DC/DC converters are of the same type, CINCON, CFB600-300S24. This type converter is an isolated type, 3000 V$_{AC}$ min., as per the device datasheet. (\ref{app:glvs_dcdc}). The \gls{glvs} is therefore safely isolated from the \gls{hv}, same applies for the \gls{acp} cooling system, that is also isolated from the car \gls{glvs}, due to having a separate DC/DC converter. DC/DC inputs are fused by a FU$_1$, fast blow 2A 500V rated fuse (\ref{app:dcdc_fuse_datasheet}).
+Two additional DC/DC converters are present in the \gls{acp}, within the \gls{ecua}. The first DC/DC supplies the car \gls{glvs} with 24 V. The second one is the power supply for \gls{acp} cooling fans. Both DC/DC converters are of the same type, CINCON, CFB600-300S24. This type converter is an isolated type, 3000 \vac min., as per the device datasheet. (\ref{app:glvs_dcdc}). The \gls{glvs} is therefore safely isolated from the \gls{hv}, same applies for the \gls{acp} cooling system, that is also isolated from the car \gls{glvs}, due to having a separate DC/DC converter. DC/DC inputs are fused by a FU$_1$, fast blow 2 A 500 V rated fuse (\ref{app:dcdc_fuse_datasheet}).
 
 \subsubsection{Description}
 
@@ -50,13 +50,13 @@ Relays type is Finder 40.52 (\ref{app:precharge_relay_datasheet}), two contacts 
 \end{itemize}
 
 
-Both DC/DC converters DCDC$_1$ and DCDC$_2$ are fully protected against continuous overload or short circuit condition on their output, as specified in the device datasheet. Additional isolated current sense circuits are used on both converters, using a hall effect sensor, type ACS712 from Allegro \ref{app:acs712_datasheet}. These sensors are only informative, used only for diagnostic purposes to measure current consumption from the car's \gls{glvs} system and \gls{acp} cooling.
+Both DC/DC converters DCDC$_1$ and DCDC$_2$ are fully protected against continuous overload or short circuit condition on their output, as specified in the device datasheet. Additional isolated current sense circuits are used on both converters, using a hall effect sensor, type ACS712 from Allegro (\ref{app:acs712_datasheet}). These sensors are only informative, used only for diagnostic purposes to measure current consumption from the car's \gls{glvs} system and \gls{acp} cooling.
 
 \subsubsection{Wiring, cables}
 All wiring in \gls{acp} is described in \ref{subsec:acp_wiring}.
 
 \subsubsection{Position in car}
-The DC/DC converters and all their associated circuitry are present on the \gls{ecua} PCB. \gls{ecua} is located withing the \gls{acp} container, in a separated compartment neighbouring the AIR box. Please see \ref{fig:ECUA} for details about the \gls{acp} container component placement.
+The DC/DC converters and all their associated circuitry are present on the \gls{ecua} \gls{pcb}. \gls{ecua} is located withing the \gls{acp} container, in a separated compartment neighbouring the \gls{air} box. Please see \ref{fig:ECUA} for details about the \gls{acp} container component placement.
 
 
 
