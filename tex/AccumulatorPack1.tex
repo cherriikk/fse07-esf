@@ -8,13 +8,13 @@ Details are filled in following table:
 	\caption{Main accumulator parameters}
 	\begin{tabu}{|X|X|}
 		\hline
-		Maximum Voltage: & 408 $V_{DC}$ \\
+		Maximum Voltage: & 408 \vdc \\
 		\hline
-		Nominal Voltage: & 345.6 $V_{DC}$ \\
+		Nominal Voltage: & 345.6 \vdc \\
 		\hline
-		Minimum Voltage: & 192 $V_{DC}$ \\
+		Minimum Voltage: & 192 \vdc \\
 		\hline
-		Maximum output current: & 416.7 A (until any cell reaches 80 $^\circ$C) \\
+		Maximum output current: & 416.7 A (until any cell reaches 80 \degC) \\
 		\hline
 		Maximum nominal current: & 231.5 A \\
 		\hline
@@ -26,7 +26,7 @@ Details are filled in following table:
 		\hline
 		Total Capacity: & 27.99 MJ \\
 		\hline
-		Number of cell stacks $<$ 120 $V_{DC}$ & 6 \\
+		Number of cell stacks $<$ 120 \vdc & 6 \\
 		\hline
 	\end{tabu}%
 	\label{tab:acc-main}%
@@ -52,15 +52,15 @@ The used cell is the 18650 type cylindrical Li-ion cell. Detailed specification 
 		\hline
 		Minimum Voltage:  & 2 V \\
 		\hline
-		Maximum output current: & 35 A (until cell reaches 80 $^\circ$C) (14C)\\
+		Maximum output current: & 35 A (until cell reaches 80 \degC) (14C)\\
 		\hline
 		Maximum nominal output current: & 30 A(12C) \\
 		\hline
 		Maximum charging current: & 6 A(2.4C) \\
 		\hline
-		Maximum Cell Temperature (discharging) & 80 $^\circ$C (refer to \hyperref[app:sony-vtc5a]{datasheet}, section 2.8.2) \\
+		Maximum Cell Temperature (discharging) & 80 \degC (refer to \hyperref[app:sony-vtc5a]{datasheet}, section 2.8.2) \\
 		\hline
-		Maximum Cell Temperature (charging) & 60 $^\circ$C \\
+		Maximum Cell Temperature (charging) & 60 \degC \\
 		\hline
 		Cell chemistry: & Lithium-Ion \\
 		\hline
@@ -79,7 +79,7 @@ Cell configuration is 96s9p. Cells are divided into 6 stacks, configuration of e
 \subsubsection{Cell temperature monitoring}
 %Describe how the temperature of the cells is monitored, where the temperature sensors are placed, how many cells are monitored, etc. Show schematics, cover additional parts, etc.
 
-	The cells’ temperature is monitored by \gls{ntc} temperature sensors. The manufacturer is TDK, type is: B57330V2103F260. Insulation of the sensors is done by 3M\textsuperscript{TM} PTFE Film Electrical Tape. Breakdown voltage of this tape 9.5 kV, operating temperature is 180 $^\circ$C. Thickness of this tape is 0.1 mm. Sensors are soldered in \glspl{pcb} that are covered with insulating tape and then mounted to each stack. 
+	The cells’ temperature is monitored by \gls{ntc} temperature sensors. The manufacturer is TDK, type is: B57330V2103F260. Insulation of the sensors is done by 3M\textsuperscript{TM} PTFE Film Electrical Tape. Breakdown voltage of this tape 9.5 kV, operating temperature is 180 \degC. Thickness of this tape is 0.1 mm. Sensors are soldered in \glspl{pcb} that are covered with insulating tape and then mounted to each stack. 
 
 \begin{figure}[H]
 	\centering
@@ -123,9 +123,9 @@ Top and bottom view of one stack
 		\hline
 		Max. distance from monitored negative cell terminal: & 2 mm \\
 		\hline
-		\gls{ams} opens \glspl{air} during dis-charging if cell temperature is above: & 60 $^\circ$C \\
+		\gls{ams} opens \glspl{air} during dis-charging if cell temperature is above: & 60 \degC \\
 		\hline
-		\gls{ams} opens \glspl{air} during charging if cell temperature is above: & 60 $^\circ$C \\
+		\gls{ams} opens \glspl{air} during charging if cell temperature is above: & 60 \degC \\
 		\hline
 	\end{tabu}%
 	\label{tab:acc-temp}%
@@ -168,10 +168,10 @@ Each sense connection is protected with fuse. There are two types of fuses used:
 
 Cell highest allowed voltage is 4.25 V so \gls{ams} reacts when the voltage is above 4.2 V. Cell lowest allowed voltage is 2 V so \gls{ams} reacts when the voltage is below 2.2 V. Reaching any of limits causes \glspl{air} disconnection.
 
-Highest allowed temperature (by datasheet) for discharging is 80 $^\circ$C and for charging 60 $^\circ$C. Due to FSE rules our battery pack is limited to 60 $^\circ$C. \gls{ams} reacts when the temperature is higher than 60 $^\circ$C and causes \glspl{air} disconnection.
+Highest allowed temperature (by datasheet) for discharging is 80 \degC and for charging 60 \degC. Due to FSE rules our battery pack is limited to 60 \degC. \gls{ams} reacts when the temperature is higher than 60 \degC and causes \glspl{air} disconnection.
 
 \paragraph{Recommended Operating Conditions}
-TA = 25 $^\circ$C and TOP = 57.6 V; Min/Max values stated where TA = -40 $^\circ$C to 105 $^\circ$C and TOP = 12 V to 79.2 V (unless otherwise noted)
+TA = 25 \degC and TOP = 57.6 V; Min/Max values stated where TA = -40 \degC to 105 \degC and TOP = 12 V to 79.2 V (unless otherwise noted)
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./img/BMS-operatingparms.pdf}
@@ -180,7 +180,7 @@ TA = 25 $^\circ$C and TOP = 57.6 V; Min/Max values stated where TA = -40 $^\circ
 \end{figure}
 
 
-Each \gls{ams} board senses whole stack, that means it senses 144 cells, connected in 16s9p configuration. Communications wirings are protected by two 1kV 1nF capacitors CC1206KKX7RCBB102 by Yageo. There is placed one on each side (there is one on every \gls{ams}). The \gls{ams} is connected to Accumulator \gls{ecu} that has capability of direct \glspl{air} shutdown. The galvanic isolation between \gls{ts} and \gls{glvs} is done by two 1kV 1nF capacitors CC1206KKX7RCBB102 by Yageo. It is located on separated board connected between first \gls{ams} and Accumulator \gls{ecu}.
+Each \gls{ams} board senses whole stack, that means it senses 144 cells, connected in 16s9p configuration. Communications wirings are protected by two 1kV 1nF capacitors CC1206KKX7RCBB102 by Yageo. There is placed one on each side (there is one on every \gls{ams}). The \gls{ams} is connected to Accumulator \gls{ecu} that has capability of direct \glspl{air} shutdown. The galvanic isolation between \gls{ts} and \gls{glvs} is done by two 1 kV 1 nF capacitors CC1206KKX7RCBB102 by Yageo. It is located on separated board connected between first \gls{ams} and Accumulator \gls{ecu}.
 
 
 
@@ -199,9 +199,9 @@ We use LED indicator placed on Accumulator pack chassis. The LED is powered by a
 %	\item Use tables like the one shown below:
 
 
-We use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor})as Tractive System wires. Total gauge is 16mm2. Total ampacity is 165 A for main DC power buses. All other LV wiring in Accumulator is also done using OLFLEX HEAT 180 SiF wires with gauges ranging from 0,25 mm$^2$ to 1 mm$^2$. Basic data are given in tables below. We use 2 pin Deutsch ASHD connectors as \gls{ts} connectors as the Accumulator Pack outlet, Service box inlet and Motor controllers inlet. For Motor controllers outlets to motors we use 4 pin Deutsch ASHD connectors. Pins are rated each to 200 A of continuous current. According to our data from last season, average continuous DC current is expected to be around 80 A. The maximum DC current should be 250 A for 5 seconds at maximum.
+We use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor})as Tractive System wires. Total gauge is 16mm2. Total ampacity is 165 A for main DC power buses. All other LV wiring in Accumulator is also done using OLFLEX HEAT 180 SiF wires with gauges ranging from 0.25 mm$^2$ to 1 mm$^2$. Basic data are given in tables below. We use 2 pin Deutsch ASHD connectors as \gls{ts} connectors as the Accumulator Pack outlet, Service box inlet and Motor controllers inlet. For Motor controllers outlets to motors we use 4 pin Deutsch ASHD connectors. Pins are rated each to 200 A of continuous current. According to our data from last season, average continuous DC current is expected to be around 80 A. The maximum DC current should be 250 A for 5 seconds at maximum.
 
-To ensure that connectors will withstand in-rush currents, we did following calculation. The most stressed connector is Accumulator pack outlet. The maximum power, Motor Controllers will take, is 80kW, which is 250A in maximum (depends on state of charge of accumulators). Based on heating, thermal capacity of mass of pins and nearest wiring, by power losses on contact resistance and temperature difference 50 $^\circ$C, these connectors will definitely withstand this current for more than 10 seconds, which is far ahead of motors overload capacity (cca. 4-5 seconds). Therefore, these connectors will never reach critical overload condition.
+To ensure that connectors will withstand in-rush currents, we did following calculation. The most stressed connector is Accumulator pack outlet. The maximum power, Motor Controllers will take, is 80kW, which is 250A in maximum (depends on state of charge of accumulators). Based on heating, thermal capacity of mass of pins and nearest wiring, by power losses on contact resistance and temperature difference 50 \degC, these connectors will definitely withstand this current for more than 10 seconds, which is far ahead of motors overload capacity (cca. 4-5 seconds). Therefore, these connectors will never reach critical overload condition.
 
 
 % Table generated by Excel2LaTeX from sheet 'List1'
@@ -212,8 +212,8 @@ To ensure that connectors will withstand in-rush currents, we did following calc
 		Wire type & OLFLEX HEAT 180 SiF \\\hline
 		Continuous current rating: & 165 A \\\hline
 		Cross-sectional area & $16mm^2$ \\\hline
-		Maximum operating voltage: &  500 V$_{DC}$\\\hline
-		Temperature rating: &  125 $^\circ$C\\\hline
+		Maximum operating voltage: &  500 \vdc\\\hline
+		Temperature rating: &  125 \degC\\\hline
 		Wire connects the following components: & Stacks $\,\to\,$ \glspl{air}, fuse $\,\to\,$ \gls{hv} Connector \\\hline
 	\end{tabu}%
 	\label{tab:acc-wire}%
@@ -266,9 +266,9 @@ We use Kilovac EV200 as \glspl{air}, it is widely used standard contactor design
 		\hline
 		Overload DC current rating:  & 2000 A for 1 second \\
 		\hline
-		Maximum operation voltage: & 900 V$_{DC}$ \\
+		Maximum operation voltage: & 900 \vdc \\
 		\hline
-		Nominal coil voltage: & 24 V$_{DC}$ \\
+		Nominal coil voltage: & 24 \vdc \\
 		\hline
 		Normal Load switching: & Make and break up to 650 A \\
 		\hline
@@ -293,7 +293,7 @@ We use OEZ Varius P51T06 as the main fuse. It is intended to protect semiconduct
 		\hline
 		Continuous current rating:  & 160 A \\
 		\hline
-		Maximum operating voltage  & 440 V$_{DC}$ \\
+		Maximum operating voltage  & 440 \vdc \\
 		\hline
 		Type of fuse: & High speed for semiconductors \\
 		\hline

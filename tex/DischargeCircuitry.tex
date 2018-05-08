@@ -22,7 +22,7 @@ Discharge is activated whenever \gls{sdc} is open. (That means, \gls{acp} is dis
 
 \ref{fig:discharge-circuit} shows a simplified discharge circuitry. Discharge resistors are placed in \glspl{mc} right next to the only capacity that provides a storage for potentially dangerous charge/energy in \gls{ts}. If \gls{hv} cable is disconnected on either side, the \gls{sdc} opens due to the interlocks and both \glspl{air} open. Because there is no output capacitance in \gls{acp} there is no way the power could be on \gls{acp} output \gls{hv} connector.
 
-Capacity sum of all capacitors in \glspl{mc} is 2360 uF. For discharging this capacity in less than 5 seconds to voltage (below 60V), maximum resistor value is calculated by solving R from \ref{eq:discharge_voltage_eq}.
+Capacity sum of all capacitors in \glspl{mc} is 2360 $\mu$F. For discharging this capacity in less than 5 seconds to voltage (below 60 V), maximum resistor value is calculated by solving R from \ref{eq:discharge_voltage_eq}.
 
 \begin{equation}
 	V_{c}=V_{s}*e^{(\frac{-t}{R*C})}
@@ -31,13 +31,13 @@ Capacity sum of all capacitors in \glspl{mc} is 2360 uF. For discharging this ca
 
 \paragraph{Values}
 \begin{itemize}
-	\item $V_c = 60 V$ (safe voltage limit)
-	\item $V_s = 400 V$ (TS voltage)
-	\item $t = 5 s$ (maximum discharge time)
-	\item $C = 2360\mu$F (total capacity in TS)
+	\item V$_c$ = 60 V (safe voltage limit)
+	\item V$_s$ = 400 V (\gls{ts} voltage)
+	\item t = 5 s (maximum discharge time)
+	\item C = 2360 $\mu$F (total capacity in \gls{ts})
 \end{itemize}
 
-Maximum resistance from equation \ref{eq:discharge_voltage_eq}, $R = 1112\Omega$ is for discharging all capacitors in \gls{ts}. In our case, capacity is split between two \glspl{mc}. Two parallel resistor combinations of three $1k\Omega$ resistors in series (3s2p) in each \gls{mc} is used (3s4p in total). $1k\Omega$ resistors are PWR221T-30-1001F. Total value of Discharge resistor bank is $R = 750\Omega$, which is less than maximal calculated $R = 1112\Omega$. The 60V threshold with such configuration is reached in $3.37s$. \ref{fig:discharge_voltage_time} shows TS voltage in time during discharging.
+Maximum resistance from equation \ref{eq:discharge_voltage_eq}, $R = 1112\Omega$ is for discharging all capacitors in \gls{ts}. In our case, capacity is split between two \glspl{mc}. Two parallel resistor combinations of three 1 k\ohm resistors in series (3s2p) in each \gls{mc} is used (3s4p in total). 1 k\ohm resistors are PWR221T-30-1001F. Total value of Discharge resistor bank is R = 750 \ohm, which is less than maximal calculated R = 1112 \ohm. The 60V threshold with such configuration is reached in $3.37s$. \ref{fig:discharge_voltage_time} shows \gls{ts} voltage in time during discharging.
 
 \begin{figure}
 	\begin{tikzpicture}
@@ -141,7 +141,7 @@ Where $V_{s}$ is voltage on \gls{ts}, $R_{d}$ is total value of discharge resist
 	\label{fig:discharge_power_time}
 \end{figure}
 
-Peak power on individual resistors is 18W and resistor can handle up to 30W, see \ref{app:discharge_resistor_sheet}.
+Peak power on individual resistors is 18 W and resistor can handle up to 30 W, see \ref{app:discharge_resistor_sheet}.
 
 \begin{table}[H]
 	\centering
@@ -150,7 +150,7 @@ Peak power on individual resistors is 18W and resistor can handle up to 30W, see
 		\hline
 		Resistor Type: & PWR221T-30-1001F in 3s4p configuration \\
 		\hline
-		Resistance: & $1 k\Omega$ \\
+		Resistance: & 1 k\ohm \\
 		\hline
 		Continuous power rating: & 30 W \\
 		\hline
@@ -183,7 +183,7 @@ Peak power on individual resistors is 18W and resistor can handle up to 30W, see
 		\hline
 		Continuous DC current: & 2 A \\
 		\hline
-		Voltage rating  & 220 $V_{dc}$ (per contact, 2 in series) \\
+		Voltage rating  & 220 \vdc (per contact, 2 in series) \\
 		\hline
 		Nominal Coil Voltage:  & 12 V\\
 		\hline

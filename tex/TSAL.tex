@@ -5,7 +5,7 @@ The \gls{tsal} is a distributed system consisting of the following components:
 \begin{itemize}
 \item Tractive System Active Light mounted on main hoop
 \item \gls{tsal} logic \& power circuitry (located in \gls{ecub}; LV only)
-\item DC-DC converter to power the \gls{tsal} in case of charged TS but unpowered \gls{glvs} (located in the \gls{acp}; has a \gls{hv} side and a LV side)
+\item DC-DC converter to power the \gls{tsal} in case of charged TS but un-powered \gls{glvs} (located in the \gls{acp}; has a \gls{hv} side and a LV side)
 \end{itemize}
 
 \paragraph{Tractive System Active Light}
@@ -15,7 +15,7 @@ The \gls{tsal} proper is connected with 2 wires. When voltage of 24 V is applied
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth,trim={6cm 10cm 6cm 7cm},clip]{./img/TSAL-schematic.pdf}
-	\caption{TSAL schematic.}
+	\caption{\Gls{tsal} schematic.}
 	\label{fig:TSAL-schematic}
 \end{figure}
 
@@ -25,7 +25,7 @@ The \gls{tsal} proper is connected with 2 wires. When voltage of 24 V is applied
 	\caption{Parameters of the TSAL}
 	\begin{tabu}{|X|X|}
 		\hline
-		Supply voltage: & +/- 24 V$_{DC}$ \\
+		Supply voltage: & +/- 24 \vdc \\
 		\hline
 		Max. operational current: & 300 mA \\
 		\hline
@@ -61,7 +61,7 @@ Discrete logic is used for selecting the light colour. (\ref{fig:TSAL-logic})
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./img/TSAL-logic.png}
-	\caption[TSAL enable logic]{TSAL enable logic. The signals \texttt{TSAL-RED} and \texttt{TSAL-GREEN} are always complementary.}
+	\caption[TSAL enable logic]{\Gls{tsal} enable logic. The signals \texttt{TSAL-RED} and \texttt{TSAL-GREEN} are always complementary.}
 	\label{fig:TSAL-logic}
 \end{figure}
 
@@ -108,7 +108,7 @@ Finally, a H-bridge is used to drive the proper power outputs with switchable po
 
 To ensure that the \gls{tsal} continues to operate even after disabling \gls{glvs}, the following circuit is used:
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{./img/ECUA_TSAL_POWER.pdf}
 	\caption{TSAL HV part schematic.}

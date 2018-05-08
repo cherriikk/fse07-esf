@@ -78,7 +78,7 @@ The formula describing \ref{fig:precharge_current_time} is:
 \end{equation}
 
 
-Both wirewound power resistors, ARCOL HS25 series, have 250 $\Omega$, 25 W continuous rating, (\ref{app:precharge_resistors}).
+Both wirewound power resistors, ARCOL HS25 series, have 250 \ohm, 25 W continuous rating, (\ref{app:precharge_resistors}).
 
 All three TS relays RE$_1$ to RE$_3$ coils are powered directly from the \gls{sdc} end.
 
@@ -94,7 +94,7 @@ Second precaution is a \gls{hv} circuit limiting the maximum pre-charge relay cl
 
 Additional precision \gls{acp} voltage measurement is taken using the HVR$_3$ sense divider, as this measurement is not influenced by the forward voltage drops of diodes D$_2$ to D$_5$. This measurement together with the measured \gls{acp} current serves to calculate power drawn from the \gls{acp}. This measurement is then presented on the \gls{can} bus for other car \glspl{ecu}, for example to estimate the SOC, instantaneous power, etc.  
 
-The TS voltage sensing dividers HVR$_1$, HVR$_2$ and HVR$_3$ are realized with a high voltage 3500 V rated resistors from Vishay, HVR$_{37}$ series (\ref{app:hvr37_datasheet}). All dividers use 10 M$\Omega$ resistors as the top side of the divider. All diodes D$_1$ to D$_5$ are SM4007 (DATASHEET) or equivalent type, 1000 V rated. The blocking voltage is therefore sufficient to safely withstand the maximum \gls{acp} voltage of 408 V.
+The TS voltage sensing dividers HVR$_1$, HVR$_2$ and HVR$_3$ are realized with a high voltage 3500 V rated resistors from Vishay, HVR$_{37}$ series (\ref{app:hvr37_datasheet}). All dividers use 10 M\ohm resistors as the top side of the divider. All diodes D$_1$ to D$_5$ are SM4007 (DATASHEET) or equivalent type, 1000 V rated. The blocking voltage is therefore sufficient to safely withstand the maximum \gls{acp} voltage of 408 V.
 
 \paragraph{Pre-charge safety on \gls{ecua}}
 Except from what rules require we implemented several safety precautions. In case, that \gls{sdc} error does not occur and driver pushed TS ON button following safety precautions are taken to prevent switching AIR in case of problem that has not yet been detected.
@@ -122,7 +122,7 @@ There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}.
 		Resistor Type: & Wirewound \\
 		\hline
 
-		Resistance: & 250 $\Omega$ in 2s configuration (500 $\Omega$ in total) \\
+		Resistance: & 250 \ohm in 2s configuration (500 \ohm in total) \\
 		\hline
 		Continuous power rating: & 25 W per resistor (50 W  in total)\\
 		\hline
@@ -132,7 +132,7 @@ There is no connectors nor cables it is realised on \gls{pcb} in \gls{ecua}.
 		\hline
 		Overload power rating (15 sec): & not specified \\
 		\hline
-		Voltage rating: & 680 V$_{AC}$\\
+		Voltage rating: & 680 \vac \\
 		\hline
 		Cross-sectional area of the wire used: & 0.195 mm$^2$\\
 		\hline
