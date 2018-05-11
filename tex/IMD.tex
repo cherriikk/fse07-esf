@@ -1,29 +1,29 @@
 \subsubsection{Description (type, operation parameters)}
-\iffalse Describe the IMD used and use a table for the common operation parameters, like supply voltage, set point, etc. Also, describe how the IMD indicator light is wired, etc.
-Additionally, fill out the following table replacing the values with your specification:\fi
+%Describe the IMD used and use a table for the common operation parameters, like supply voltage, set point, etc. Also, describe how the \gls{imd} indicator light is wired, etc.
+%Additionally, fill out the following table replacing the values with your specification
 
-We use A-ISOMETER® IR155-3203 Insulation monitoring device (IMD) for unearthed DC drive systems. Our maximum tractive voltage is 403.2 VDC. The rules require minimal insulation value between TS and GLVS 500 Ohm/V. Minimal resistance value for our car is 408*500 = 204 000 Ohm. This was set as request for manufacturer, and device was programmed in factory.
+We use A-ISOMETER® IR155-3203 \Acrfull{imd} for unearthed DC drive systems. Our maximum tractive voltage is 403.2 \vdc. The rules require minimal insulation value between \gls{ts} and \gls{glvs} 500 \ohm/V. Minimal resistance value for our car is $408*500 = 204 000$ \ohm. This was set as request for manufacturer, and device was programmed in factory.
 \begin{table}[H]
 	\centering
-	\caption{Parameters of the IMD}
+	\caption{Parameters of the \gls{imd}}
 	\begin{tabu}{|X|l|}
-	 \hline	Supply voltage range: & 10..36VDC \\
-	 \hline	Supply voltage & 24VDC \\
-	 \hline	Environmental temperature range: & -40..105°C \\
+	 \hline	Supply voltage range: & 10 to 36 \vdc \\
+	 \hline	Supply voltage & 24 \vdc \\
+	 \hline	Environmental temperature range: & -40 to 105 \degC \\
 	 \hline	Selftest interval: & Always at startup, then every 5 minutes \\
-	 \hline	High voltage range: & DC 0..1000V \\
-	 \hline	Set response value: & 204kΩ (500Ω/Volt) \\
-	 \hline	Max. operation current: & 150mA \\
-	 \hline	Approximate time to shut down at 50\% of the response value: & 20s \\
+	 \hline	High voltage range: & 0 to 1000 \vdc \\
+	 \hline	Set response value: & 204 k\ohm (500 \ohm/Volt) \\
+	 \hline	Max. operation current: & 150 mA \\
+	 \hline	Approximate time to shut down at 50\% of the response value: & 20 s \\
 	  \hline
 	\end{tabu}%
 	\label{tab:IMD}%
 \end{table}%
 
 \subsubsection{Wiring/cables/connectors/}
- Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring including wire gauge/temp/voltage rating and fuses protecting the wiring. 
+%Describe wiring, show schematics, describe connectors and cables used and show useful data regarding the wiring including wire gauge/temp/voltage rating and fuses protecting the wiring. 
 
-Relay of Insulation Monitoring Device is electrically placed between MCF and relay for AMS measurement. Wiring is done using Raychem Spec44 wire, AWG 22, rated to 600V. Wiring is shown on \ref{fig:SDC-scheme}. IMD opens relay in case of fault. IMD have output for relay, so there is not necessary adding zero diode on output. HV input to IMD is connected in according to datasheet.
+Relay of \gls{imd} is electrically placed between \gls{mcf} and relay for \gls{ams} measurement. Wiring is done using Raychem Spec44 wire, AWG 22, rated to 600V. Wiring is shown on \ref{fig:SDC-scheme}. \gls{imd} opens relay in case of fault. \gls{imd} have output for relay, so there is not necessary adding zero diode on output. \gls{hv} input to \gls{imd} is connected in according to datasheet.
 
 \subsubsection{Position in car}
 % Provide CAD-renderings showing the relevant parts. Mark the parts in the rendering, if necessary
@@ -31,6 +31,6 @@ Relay of Insulation Monitoring Device is electrically placed between MCF and rel
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth,trim={0cm 0cm 0cm 0cm},clip]{./img/IMD-position.jpg}
-	\caption{IMD position.}
+	\caption{\gls{imd} position.}
 	\label{fig:IMD-position}
 \end{figure}

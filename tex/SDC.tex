@@ -8,17 +8,16 @@ Describe your concept of the shutdown circuit, the master switches, shut down bu
 Additionally, fill out the following table replacing the values with your specification and append additional switches from your setup:
 \fi
 
-Shutdown circuit (SDC) starts in \gls{ecup} unit, then goes through all \gls{sdc} elements in the car and ends in \gls{ecua}, which is placed inside the Accumulator Pack. In \gls{ecup} \gls{sdc} starts from \gls{lv} power +24V and ends in \gls{acp} by powering \gls{air} coils switching circuit (See \ref{fig:SDC-scheme}). The \gls{sdc} consists of 2 master switches, 3 shut-down buttons(SDB), the brake-over-travel-switch(\gls{bots}), the insulation monitoring device (\gls{imd}, the inertia switch, the brake system plausibility device(\gls{bspd}), interlocks in Motor Controllers and Accumulator Pack and the accumulator management system (\gls{ams}) and Front Wheel Interlock(FWIL). FWIL triggers shutdown circuit in case of front suspension failure(see \ref{fig:fwil}). 
+\Acrfull{sdc} starts in \gls{ecup}, then goes through all \gls{sdc} elements in the car and ends in \gls{ecua}, which is placed inside the Accumulator Pack. In \gls{ecup}, \gls{sdc} starts from \gls{lv} power +24V and ends in \gls{acp} by powering \gls{air} coils switching circuit (See \ref{fig:SDC-scheme}). The \gls{sdc} consists of 2 master switches, 3 \acrfullpl{sdb}, the (\acrfull{bots}), (\acrfull{imd}, the inertia switch, the \acrfull{bspd}, interlocks in \acrfullpl{mc} and \acrfull{acp} and the accumulator management system (\gls{ams}) and \gls{fwil}. \gls{fwil} triggers shutdown circuit in case of front suspension failure(see \ref{fig:fwil_scheme}). 
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{./img/fwil.png}
-	\caption{FWIL positon.}
-	\label{fig:fwil}
+	\caption{\gls{fwil} position.}
+	\label{fig:fwil_scheme}
 \end{figure}
 
 All of these crucial parts do not act through any power stage, but carry directly the \gls{air} current.
 
-%\todo[inline]{convert to full name refs}
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth, trim={2cm 3cm 2cm 2cm},clip]{./img/SDC-scheme.pdf}
@@ -31,29 +30,28 @@ All of these crucial parts do not act through any power stage, but carry directl
 	\centering
 	\begin{tabu}{|X|l|}
 		\hline Part  & Function \\
-		\hline Main Switch (for control and tractive-system; CSMS, TSMS) & Normally open \\
-		\hline Brake over travel switch (BOTS) & Normally closed \\
-		\hline Shutdown buttons (SDB) & Normally closed \\
-		\hline Insulation Monitoring Device (IMD) & Normally open \\
-		\hline Battery Management System (BMS) & Normally open \\
+		\hline Main Switch (for control and tractive-system; CSMS, \gls{tsms}) & Normally open \\
+		\hline \Acrfull{bots} & Normally closed \\
+		\hline \Acrfullpl{sdb} & Normally closed \\
+		\hline \Acrfull{imd} & Normally open \\
+		\hline \Acrfull{bms} & Normally open \\
 		\hline Inertia Switch & Normally closed \\
 		\hline Interlocks & Closed when circuits are connected \\
-		\hline Brake System Plausibility Device & Normally Open \\
+		\hline \Acrfull{bspd} & Normally Open \\
 		\hline
 	\end{tabu}%
 	\label{tab:SDCswitch}%
 \end{table}%
-\todo[inline]{add refs}
 
 \paragraph{Monitoring SDC}
 Every part of \gls{sdc} is monitored by specific \gls{ecu} in order to identify disconnected element. \gls{bots} is measured by \gls{ecup}, SDB-center  and Inertia switch are measured by \gls{ecuf} , interlocks in \glspl{mc} (\gls{fwil}) are measured by \glspl{mc}, Interlock in Accumulator Pack is measured by \gls{ecua}  and finally SDB-right, SDB-left and \gls{tsms} are measured by \gls{ecub}. Every piece of information regarding the state of closure \gls{sdc} are running between ECU´s by \gls{can}. 
 
-We designed \gls{sdc} to be ‘single wire’ alike and distanced it from the system as much as it was possible. In order to remain \gls{sdc} as a stand-alone wire we used optocouplers for main points of \gls{sdc}. Optocouplers are connected in such a way, that they become active only in case of nonzero voltage occurance at a certain point of \gls{sdc}.
+We designed \gls{sdc} to be ‘single wire’ alike and distanced it from the system as much as it was possible. In order to remain \gls{sdc} as a stand-alone wire we used optocouplers for main points of \gls{sdc}. Optocouplers are connected in such a way, that they become active only in case of nonzero voltage occurrence at a certain point of \gls{sdc}.
 
 \Gls{ecub} is last part of \gls{sdc} before \gls{tsms}. If a state of error on \gls{sdc} is detected \gls{ecub} latches the off-state of \gls{sdc} to stay off. If the occurred error is non-critical, it allows pilot to re-enter the TSON state. If monitored error is critical (such as \gls{imd} etc.), it notes the error to the memory-storage and does not allow \gls{sdc} to become active until appropriate steps are taken.
 
 \paragraph{Master Switch}
-We use Autolec Mini-Master battery cut-out switches with continuous current rating 100A, shown on \ref{fig:SDC-TSMS}.
+We use Autolec Mini-Master battery cut-out switches with continuous current rating 100 A, shown on \ref{fig:SDC-TSMS}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\textwidth]{./img/SDC-TSMS.jpg}
@@ -62,13 +60,13 @@ We use Autolec Mini-Master battery cut-out switches with continuous current rati
 \end{figure}
 
 \paragraph{Shutdown Switch}
-We use OMRON A165E shutdown buttons, which have 3A current rating at 30VDC.
+We use OMRON A165E shutdown buttons, which have 3A current rating at 30 \vdc.
 
 On the cockpit it is OMRON A165E-LS, shown on \ref{fig:SDC-A165E-LS}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\textwidth]{./img/SDC-A165E-LS.pdf}
-	\caption{Cockpit SDB.}
+	\caption{Cockpit \gls{sdb}.}
 	\label{fig:SDC-A165E-LS}
 \end{figure}
 
@@ -81,7 +79,7 @@ On the left and on the right sides there are OMRON A165E-LM buttons, shown on \r
 \end{figure}
 
 \paragraph{Brake Over Travel Switch}
-It is type A165E-M, current raging 3A, shown on \ref{fig:SDC-A165E-M}
+It is type A165E-M, current raging 3 A, shown on \ref{fig:SDC-A165E-M}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\textwidth]{./img/SDC-A165E-M.pdf}
@@ -107,7 +105,7 @@ The cross-section of Shutdown System wire is AWG22. Block wiring scheme shown on
 	\label{fig:SDC-schematic}
 \end{figure}
 
-As shown, 4.7 k$\Omega$ resistors are used to limit current through optocoupler. With 24 V supply that makes 15.2 mA per optocoupler. We used 8 optocouplers: $12*15.2= 182.4$ mA.
+As shown, 4.7 k\ohm resistors are used to limit current through optocoupler. With 24 V supply that makes 15.2 mA per optocoupler. We used 8 optocouplers: $12*15.2= 182.4$ mA.
 % Table generated by Excel2LaTeX from sheet 'List1'
 \begin{table}[H]
 	\centering
