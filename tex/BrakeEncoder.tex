@@ -23,13 +23,15 @@ Car is using two pressure sensors as encoders for brake pedal. Each one is for s
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=\textwidth]{./img/BRK-pos.jpg}
-		\caption{Pressure sensor positon.}
+		\caption{Pressure sensor position.}
 		\label{fig:brake_pressure_position}
 	\end{center}
 \end{figure}
 
 \subsection{Brake Encoder Plausibility Check}
-Implausibility is not checked, because eForce does not use brake pedal information to control \glspl{mc}.
+Implausibility between brake sensors is not checked, because e-Force does not use brake pedal information to control \glspl{mc}.
+Electrical signal validity is checked using same circuit an algorithm as \ref{sec:TorqueEncoder}. 
+When brake pedal is pressed and APPS travel is over 25\%, motor torque is set to 0Nm and remain 0Nm until APPS position falls below 5\%. (rule EV 2.4)
 
 %
 %\subsection{Wiring}
