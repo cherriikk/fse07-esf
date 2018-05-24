@@ -31,6 +31,8 @@ Analog input circuitry of \gls{ecup} is shown in \ref{fig:ecup_analog_input}. In
 
 When \gls{adc} measures 0V or value close to 0V, TEST signal logic level is switched \textit{high} to charge $C_1$ through $R_3$. After short while, logic level of TEST signal is read back. If \textit{high} logic level is read, sensor input is evaluated as \textit{open circuit}, otherwise it is \textit{short circuit} to GND. If measured value is close to power voltage of sensor or above measurable range, it is evaluated as \textit{short circuit} to power voltage or higher.
 
+To recognize short between signals of both sensors (rule \textit{T 10.3.6}), one potentiometer has resistor in series to achieve different transfer function (gradient). 
+
 \paragraph{Implausibility}
 Position values difference is calculated and compared with maximal allowed error threshold (10\%).
 
