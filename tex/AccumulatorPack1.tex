@@ -170,6 +170,21 @@ Cell highest allowed voltage is 4.25 V so \gls{ams} reacts when the voltage is a
 
 Highest allowed temperature (by datasheet) for discharging is 80 \degC and for charging 60 \degC. Due to FSE rules our battery pack is limited to 60 \degC. \gls{ams} reacts when the temperature is higher than 60 \degC and causes \glspl{air} disconnection.
 
+To fufil galvanic isolation there is 4mm isolation gap (\ref{fig:ams-com-pcb-isolation-gap}) on pcb that communicates with BMS. Communication goes thru capacitors soldered on PCB. Both capacitors and pcb is coated in epoxy insulating resin. There is also additional isolation on each BMS (\ref{fig:ams-pcb-isolation-gap}) with 1.6 mm air gap (on each side of BMS) for additional safety. All capacitors are rated for 1kV. See more renders at \ref{app:ams-3d} and \ref{app:ams-3d-prevodnik}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\textwidth]{./img/pcb_BMS.jpg}
+	\caption{AMS PCB isolation gap.}
+	\label{fig:ams-pcb-isolation-gap}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\textwidth]{./img/pcb_prevodnik.jpg}
+	\caption{AMS communication PCB isolation gap.}
+	\label{fig:ams-com-pcb-isolation-gap}
+\end{figure}
+
 \paragraph{Recommended Operating Conditions}
 TA = 25 \degC and TOP = 57.6 V; Min/Max values stated where TA = -40 \degC to 105 \degC and TOP = 12 V to 79.2 V (unless otherwise noted)
 \begin{figure}[H]
@@ -200,6 +215,7 @@ We use LED indicator placed on Accumulator pack chassis. The LED is powered by a
 
 
 We use OLFLEX HEAT 180 SiF (see. \ref{app:PowerConductor})as Tractive System wires. Total gauge is 16mm2. Total ampacity is 165 A for main DC power buses. All other LV wiring in Accumulator is also done using OLFLEX HEAT 180 SiF wires with gauges ranging from 0.25 mm$^2$ to 1 mm$^2$. Basic data are given in tables below. We use 2 pin Deutsch ASHD connectors as \gls{ts} connectors as the Accumulator Pack outlet, Service box inlet and Motor controllers inlet. For Motor controllers outlets to motors we use 4 pin Deutsch ASHD connectors. Pins are rated each to 200 A of continuous current. According to our data from last season, average continuous DC current is expected to be around 80 A. The maximum DC current should be 250 A for 5 seconds at maximum.
+
 
 To ensure that connectors will withstand in-rush currents, we did following calculation. The most stressed connector is Accumulator pack outlet. The maximum power, Motor Controllers will take, is 80kW, which is 250A in maximum (depends on state of charge of accumulators). Based on heating, thermal capacity of mass of pins and nearest wiring, by power losses on contact resistance and temperature difference 50 \degC, these connectors will definitely withstand this current for more than 10 seconds, which is far ahead of motors overload capacity (cca. 4-5 seconds). Therefore, these connectors will never reach critical overload condition.
 
