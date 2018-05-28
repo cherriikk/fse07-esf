@@ -8,7 +8,10 @@ Describe your concept of the shutdown circuit, the master switches, shut down bu
 Additionally, fill out the following table replacing the values with your specification and append additional switches from your setup:
 \fi
 
-\Acrfull{sdc} starts in \gls{ecup}, then goes through all \gls{sdc} elements in the car and ends in \gls{ecua}, which is placed inside the Accumulator Pack. In \gls{ecup}, \gls{sdc} starts from \gls{lv} power +24V and ends in \gls{acp} by powering \gls{air} coils switching circuit (See \ref{fig:SDC-scheme}). The \gls{sdc} consists of 2 master switches, 3 \acrfullpl{sdb}, the (\acrfull{bots}), (\acrfull{imd}, the inertia switch, the \acrfull{bspd}, interlocks in \acrfullpl{mc} and \acrfull{acp} and the accumulator management system (\gls{ams}) and \gls{fwil}. \gls{fwil} triggers shutdown circuit in case of front suspension failure(see \ref{fig:fwil_scheme}). 
+\Acrfull{sdc} starts in \gls{ecup}, then goes through all \gls{sdc} elements in the car and ends in \gls{ecua}, which is placed inside the Accumulator Pack. In \gls{ecup}, \gls{sdc} starts from \gls{lv} power +24V and ends in \gls{acp} by powering \gls{air} coils switching circuit (See \ref{fig:SDC-scheme}). The \gls{sdc} consists of 2 master switches, 3 \acrfullpl{sdb}, the (\acrfull{bots}), (\acrfull{imd}, the inertia switch, the \acrfull{bspd}, interlocks in \acrfullpl{mc} and \acrfull{acp} and the accumulator management system (\gls{ams}) and \gls{fwil}. \gls{fwil} triggers shutdown circuit in case of front suspension failure(see \ref{fig:fwil_scheme}).
+
+Last closing element in \gls{sdc} is switch controlled by \gls{ecub}, which requires pressing TS ON button to close \gls{sdc}.
+This action is required after every \gls{sdc} break event, including car startup.
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{./img/fwil.png}
