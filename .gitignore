@@ -12,4 +12,6 @@
 *.acr
 *.alg
 *.glsdefs
+*.bbl
+*.blg
 *ESF.pdf
