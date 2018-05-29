@@ -1,6 +1,14 @@
 \subsubsection{Description}
 Our \gls{glvs} Accumulator is made using 18650 Li-ion cells Sony VTC-5. The configuration is 6s1p which equals to our low-voltage system voltage 24 V. Datasheet is in appendix.
 
+\subsubsection{Battery management}
+
+An LTC6084 chip is used to monitor individual cells in the LV battery. The circuit and software are part of ECU-B, which is the unit which also controls power to the rest of GLVS.
+
+Undervoltage condition is checked continuously during vehicle operation; if the voltage of any cell falls below the specified range for several measurements in a row, the battery is cut off. If the HV-to-LV DCDC Converter was able to start in time, it will continue to power GLVS. Otherwise GLVS will shut down.
+
+Overvoltage condition is monitored only when the LV battery is being charged. The cut-off for each cell is slightly below the specified maximum, to account for measurement uncertainty and to extend cell life.
+
 \subsubsection{Wiring, cables, current calculations, connectors}
 %Describe wiring, show schematics, describe connectors and cables and show useful data regarding the wiring.  Include information on the working voltage and current rating of the accumulator.
 
