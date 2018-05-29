@@ -3,7 +3,7 @@
 \subsubsection{Description}
 %Describe your concept of the RTDS, how the sound is produced, what are the parameters for activating the RTDS, etc.
 
-We use piezo siren AE20M. The siren makes sound when \gls{ecub} recognize ready-to-drive state of car, it receives message from \gls{ecuf} about TS ON button and \gls{sdc} is in non-error state, if message would be lost \gls{ecub} does not send confirmation status and \gls{ecuf} does not allow to activate ready to drive status. Sound pressure level of this siren is more than 90 dB(A) at 1 m, Output frequency is from 2.9 kHz. Controlling of \gls{rtds} is done by \gls{ecub} by transistor. \gls{rtds} beeps 2 seconds.
+We use piezo siren AE20M. The siren makes sound when \gls{ecub} recognize ready-to-drive state of car, it receives message from \gls{ecuf} about TS ON button while brake pedal is active (i.e. brake circuit is pressurised and the pressure information is reported by CAN message from \gls{ecup}) and \gls{sdc} is in non-error state. If message would be lost \gls{ecub} does not send confirmation status and \gls{ecuf} does not allow to activate ready to drive status. Sound pressure level of this siren is more than 90 dB(A) at 1 m, Output frequency is from 2.9 kHz. Controlling of \gls{rtds} is done by \gls{ecub} by transistor. \gls{rtds} beeps 2 seconds.
 
 \begin{figure}[H]
 	\centering
